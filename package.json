@@ -19,7 +19,9 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./bin/www",
     "debug": "DEBUG=MERNjs:* npm run start",
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "docs": "mr-doc -s modules/ -o docs/ -n 'MERNjs'",
+    "doc": "webpack-dev-server"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -42,7 +44,9 @@
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "mr-doc": "^3.2.1",
     "nodemon": "^1.10.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

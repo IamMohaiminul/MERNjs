@@ -1,2 +1,4 @@
 # Generated files
-bundle.min.js
+*
+
+!.gitignore

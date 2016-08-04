@@ -13,7 +13,7 @@ import http from 'http';
  * Set MongoDB connection in Express.
  */
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://root:admin@localhost:27017/MERNjs');
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/MERNjs');
 mongoose.connection.on('error', function() {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });

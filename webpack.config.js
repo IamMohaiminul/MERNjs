@@ -1,4 +1,11 @@
+'use strict';
+
 module.exports = {
+  devServer: {
+    inline: true,
+    contentBase: './docs',
+    port: 5000
+  },
   entry: './modules/app.js',
   output: {
     path: './public/javascripts',
