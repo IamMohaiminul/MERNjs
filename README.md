@@ -1,5 +1,5 @@
 # MERNjs
-MongoDB, ExpressJS, ReactJS and NodeJS with ECMAScript 2015 (ES6)
+A Scaffolding of MongoDB, ExpressJS, ReactJS and NodeJS with ECMAScript 2015 (ES6)
 
 ## Getting Started
 To get started, first install all the necessary dependencies

@@ -1,7 +1,7 @@
 {
   "name": "MERNjs",
   "version": "0.0.0",
-  "description": "MongoDB, ExpressJS, ReactJS and NodeJS with ECMAScript 2015 (ES6)",
+  "description": "A Scaffolding of MongoDB, ExpressJS, ReactJS and NodeJS with ECMAScript 2015 (ES6)",
   "keywords": [
     "MongoDB",
     "ExpressJS",
@@ -24,18 +24,20 @@
     "doc": "webpack-dev-server"
   },
   "dependencies": {
-    "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
-    "express": "~4.13.4",
-    "jade": "~1.11.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.2.0",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "jquery": "^2.2.4",
     "mongoose": "^4.5.8",
-    "morgan": "~1.7.0",
+    "morgan": "^1.7.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1",
     "sanitize-html": "^1.13.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "^2.3.0",
+    "toastr": "^2.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

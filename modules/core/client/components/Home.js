@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import toastr from 'toastr';
 
 export default class Home extends Component {
   constructor(props) {
@@ -8,6 +9,11 @@ export default class Home extends Component {
 
   componentDidMount() {
     console.log("Home Component...");
+
+    toastr.info('Home Component...', 'Info');
+    toastr.success('Home Component...', 'Success')
+    toastr.warning('Home Component...', 'Warning');
+    toastr.error('Home Component...', 'Error!')
   }
 
   render() {
