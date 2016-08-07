@@ -49,7 +49,7 @@ export function addUser(req, res, next) {
 
   const newUser = new User({
     username: sanitizeHtml(req.body.username),
-    password: sanitizeHtml(req.body.password)
+    password: new User().generateHash(sanitizeHtml(req.body.password))
   });
 
   newUser.save((err, user) => {
@@ -123,7 +123,7 @@ export function updateUser(req, res, next) {
     }
 
     user.username = sanitizeHtml(req.body.username);
-    user.password = sanitizeHtml(req.body.password);
+    user.password = new User().generateHash(sanitizeHtml(req.body.password));
 
     user.save((err, user) => {
       if (err) {

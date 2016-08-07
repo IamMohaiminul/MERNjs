@@ -1,12 +1,14 @@
 {
   "name": "MERNjs",
   "version": "0.0.0",
-  "description": "A Scaffolding of MongoDB, ExpressJS, ReactJS and NodeJS with ECMAScript 2015 (ES6)",
+  "description": "A Scaffolding of MongoDB, ExpressJS, ReactJS and NodeJS with Redux and ECMAScript 2015 (ES6)",
   "keywords": [
     "MongoDB",
     "ExpressJS",
     "ReactJS",
     "NodeJS",
+    "Redux",
+    "Webpack",
     "ECMAScript 2015 (ES6)"
   ],
   "author": "Muhammad Mohaiminul Islam <IamMohaiminul@gmail.com>",
@@ -19,22 +21,27 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./bin/www",
     "debug": "DEBUG=MERNjs:* npm run start",
+    "debug-win": "SET DEBUG=MERNjs:* & npm run start",
     "postinstall": "webpack",
     "docs": "mr-doc -s modules/ -o docs/ -n 'MERNjs'",
     "doc": "webpack-dev-server"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "debug": "^2.2.0",
     "express": "^4.14.0",
     "jade": "^1.11.0",
     "jquery": "^2.2.4",
+    "moment": "^2.14.1",
     "mongoose": "^4.5.8",
     "morgan": "^1.7.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
+    "redux": "^3.5.2",
     "sanitize-html": "^1.13.0",
     "serve-favicon": "^2.3.0",
     "toastr": "^2.1.2"
