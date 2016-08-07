@@ -62,7 +62,7 @@ export function addUser(req, res, next) {
     }
     res.json({
       status: 200,
-      message: 'User created!',
+      message: 'User is created successfully!',
       user: user
     });
   });
@@ -118,7 +118,7 @@ export function updateUser(req, res, next) {
     if (!req.body.password) {
       res.json({
         status: 403,
-        message: 'Password is required'
+        message: 'Password is required.'
       });
     }
 
@@ -135,7 +135,7 @@ export function updateUser(req, res, next) {
       }
       res.json({
         status: 200,
-        message: 'User created!',
+        message: 'User is updated successfully!',
         user: user
       });
     });
@@ -156,7 +156,7 @@ export function deleteUser(req, res, next) {
     }
     res.json({
       status: 200,
-      message: 'Successfully deleted!'
+      message: 'User is deleted successfully!'
     });
   });
 }

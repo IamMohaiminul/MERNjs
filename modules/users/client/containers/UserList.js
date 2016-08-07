@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import toastr from 'toastr';
 
 import { selectUser } from '../actions/index';
 
-class UserIndex extends Component {
+class UserList extends Component {
   constructor(props) {
     super(props);
   }
 
   renderList() {
-    toastr.info('UserIndex Component...', 'Info');
     return this.props.users.map((user) => {
       return (
         <tr key={user._id} onClick={() => this.props.selectUser(user)}>
@@ -27,14 +25,14 @@ class UserIndex extends Component {
   }
 
   componentDidMount() {
-    console.log("User Index Component...");
+    console.log("User List Container...");
   }
 
   render() {
     return (
       <div className='row'>
         <div className='col-xs-12'>
-          <h3 className='text-center'>User Index Component</h3>
+          <h3 className='text-center'>User List Container</h3>
           <table className="table table-bordered">
             <thead>
               <tr>
@@ -65,7 +63,7 @@ function mapStateToProps(state) {
 
 // Get actions and pass them as props to to UserIndex
 //  > now UserIndex has this.props.selectUser
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     selectUser: selectUser
   }, dispatch);
@@ -73,4 +71,4 @@ function matchDispatchToProps(dispatch){
 
 // We don't want to return the plain UserList (component) anymore, we want to return the smart Container
 //  > UserIndex is now aware of state and actions
-export default connect(mapStateToProps, matchDispatchToProps)(UserIndex);
+export default connect(mapStateToProps, matchDispatchToProps)(UserList);
