@@ -10,7 +10,6 @@ const store = createStore(
     allReducers
 );
 
-// ReactDOM.render(<Routes />, document.getElementById('app'));
 ReactDOM.render(
     <Provider store={store}>
         <Routes />

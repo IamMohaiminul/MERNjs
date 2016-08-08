@@ -25,6 +25,9 @@ export const activeUserReducer = (state = null, action) => {
     case 'USER_SELECTED':
       return action.payload;
       break;
+    case 'USER_CREATED':
+      return action.payload;
+      break;
     case 'USER_UPDATED':
       return action.payload;
       break;

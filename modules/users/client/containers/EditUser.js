@@ -123,10 +123,51 @@ class EditUser extends Component {
                 </div>
               </form>
               <button
-                className="btn btn-default"
-                onClick={this.deleteUser.bind(this)}>
+                type="button"
+                className="btn btn-primary"
+                data-toggle="modal"
+                data-target="#userDeleteConfirm">
                 Delete User
               </button>
+              {/* User delete confirmation modal */}
+              <div
+                id="userDeleteConfirm"
+                className="modal fade"
+                tabIndex="-1"
+                role="dialog">
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <button
+                        type="button"
+                        className="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 className="modal-title">Delete User</h4>
+                    </div>
+                    <div className="modal-body">
+                      <p>Are you want to delete this user?</p>
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-default"
+                        data-dismiss="modal">
+                        No
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        data-dismiss="modal"
+                        onClick={this.deleteUser.bind(this)}>
+                        Yes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div> : <p>Please select a user...</p>
           }
         </div>

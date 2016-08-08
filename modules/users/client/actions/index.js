@@ -24,7 +24,7 @@ export const createUser = (user) => {
   toastr.success(payload.message);
   return {
     type: 'USER_CREATED',
-    payload: payload.user
+    payload: null
   }
 };
 
