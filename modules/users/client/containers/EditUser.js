@@ -17,9 +17,8 @@ class EditUser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps...');
+    console.log('componentWillReceiveProps...', nextProps);
     // You don't have to do this check first, but it can help prevent an unneeded render
-    // if (nextProps.user && nextProps.user.username && nextProps.user.username !== this.state.username) {
     if (nextProps.user && nextProps.user.username && !_.isEqual(nextProps.user.username, this.state.username)) {
       this.setState({
         username: nextProps.user.username
@@ -32,7 +31,7 @@ class EditUser extends Component {
   }
 
   handleUsernameChange(event) {
-    console.log('handleUsernameChange: ', event);
+    console.log('handleUsernameChange...', event);
     this.setState({
       username: event.target.value
     });
@@ -176,12 +175,17 @@ class EditUser extends Component {
   }
 }
 
+// Get apps state and pass it as props to EditUser
+//  > whenever state changes, the EditUser will automatically re-render
+// "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
     return {
         user: state.activeUser
     };
 }
 
+// Get actions and pass them as props to to EditUser
+//  > now EditUser has this.props.updateUser and this.props.deleteUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     updateUser: updateUser,
@@ -189,4 +193,7 @@ function matchDispatchToProps(dispatch) {
   }, dispatch);
 }
 
+// We don't want to return the plain EditUser (component) anymore,
+// we want to return the smart Container
+//  > EditUser is now aware of state and actions
 export default connect(mapStateToProps, matchDispatchToProps)(EditUser);

@@ -30,6 +30,8 @@ class UserDetail extends Component {
   }
 }
 
+// Get apps state and pass it as props to UserDetail
+//  > whenever state changes, the UserDetail will automatically re-render
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
     return {
@@ -37,4 +39,7 @@ function mapStateToProps(state) {
     };
 }
 
+// We don't want to return the plain UserDetail (component) anymore,
+// we want to return the smart Container
+//  > UserDetail is now aware of state
 export default connect(mapStateToProps)(UserDetail);

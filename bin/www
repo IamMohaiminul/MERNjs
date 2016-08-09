@@ -10,10 +10,11 @@ import mongoose from 'mongoose';
 import http from 'http';
 
 /**
- * Set MongoDB connection in Express.
+ * Set database connection in Express.
  */
+import database from '../config/database';
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/MERNjs');
+mongoose.connect(database.url);
 mongoose.connection.on('error', function() {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });

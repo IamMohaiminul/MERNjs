@@ -15,15 +15,15 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // handle every other route with index.html, which will contain
 // a script tag to your application's JavaScript file(s).
-app.get('/', function (req, res){
-  res.sendFile(path.resolve(__dirname, 'views', 'index.html'))
+app.get('/', function (req, res) {
+  res.sendFile(path.resolve(__dirname, 'views', 'index.html'));
 });
 app.use('/api', api);
 

@@ -82,10 +82,15 @@ class CreateUser extends Component {
   }
 }
 
+// Get actions and pass them as props to to CreateUser
+//  > now CreateUser has this.props.createUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     createUser: createUser
   }, dispatch);
 }
 
+// We don't want to return the plain CreateUser (component) anymore,
+// we want to return the smart Container
+//  > CreateUser is now aware of actions
 export default connect(null, matchDispatchToProps)(CreateUser);
