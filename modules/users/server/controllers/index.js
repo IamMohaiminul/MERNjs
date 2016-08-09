@@ -9,17 +9,17 @@ import User from '../models';
  * @param next
  * @returns void
  */
-export function getUsers(req, res, next) {
+export function getUsers(req, res) {
   User.find().sort('-createdAt').exec((err, users) => {
     if (err) {
-      res.json({
-        status: 500,
-        message: '---',
+      return res.json({
+        success: false,
+        message: 'Unable to get all users.',
         error: err
       });
     }
-    res.json({
-      status: 200,
+    return res.json({
+      success: true,
       message: 'All Users',
       users: users
     });
@@ -33,16 +33,16 @@ export function getUsers(req, res, next) {
  * @param next
  * @returns void
  */
-export function addUser(req, res, next) {
+export function addUser(req, res) {
   if (!req.body.username) {
-    res.json({
-      status: 403,
+    return res.json({
+      success: false,
       message: 'Username is required.'
     });
   }
   if (!req.body.password) {
-    res.json({
-      status: 403,
+    return res.json({
+      success: false,
       message: 'Password is required'
     });
   }
@@ -54,14 +54,14 @@ export function addUser(req, res, next) {
 
   newUser.save((err, user) => {
     if (err) {
-      res.json({
-        status: 500,
-        message: '---',
+      return res.json({
+        success: false,
+        message: 'Unable to create a user.',
         error: err
       });
     }
-    res.json({
-      status: 200,
+    return res.json({
+      success: true,
       message: 'User is created successfully!',
       user: user
     });
@@ -69,23 +69,23 @@ export function addUser(req, res, next) {
 }
 
 /**
- * Get a single user
+ * Get a user
  * @param req
  * @param res
  * @param next
  * @returns void
  */
-export function getUser(req, res, next) {
+export function getUser(req, res) {
   User.findById(req.params._id).exec((err, user) => {
     if (err) {
-      res.json({
-        status: 500,
-        message: '---',
+      return res.json({
+        success: false,
+        message: 'Unable to get a user',
         error: err
       });
     }
-    res.json({
-      status: 200,
+    return res.json({
+      success: true,
       message: 'Single User',
       user: user
     });
@@ -99,25 +99,25 @@ export function getUser(req, res, next) {
  * @param next
  * @returns void
  */
-export function updateUser(req, res, next) {
+export function updateUser(req, res) {
   User.findById(req.params._id).exec((err, user) => {
     if (err) {
-      res.json({
-        status: 500,
-        message: '---',
+      return res.json({
+        success: false,
+        message: 'Unable to find a user',
         error: err
       });
     }
 
     if (!req.body.username) {
-      res.json({
-        status: 403,
+      return res.json({
+        success: false,
         message: 'Username is required.'
       });
     }
     if (!req.body.password) {
-      res.json({
-        status: 403,
+      return res.json({
+        success: false,
         message: 'Password is required.'
       });
     }
@@ -127,14 +127,14 @@ export function updateUser(req, res, next) {
 
     user.save((err, user) => {
       if (err) {
-        res.json({
-          status: 500,
-          message: '---',
+        return res.json({
+          success: false,
+          message: 'Unable to update a user',
           error: err
         });
       }
-      res.json({
-        status: 200,
+      return res.json({
+        success: true,
         message: 'User is updated successfully!',
         user: user
       });
@@ -149,13 +149,17 @@ export function updateUser(req, res, next) {
  * @param next
  * @returns void
  */
-export function deleteUser(req, res, next) {
+export function deleteUser(req, res) {
   User.remove({ _id: req.params._id }).exec((err, user) => {
     if (err) {
-      res.send(err);
+      return res.json({
+        success: false,
+        message: 'Unable to delete a user',
+        error: err
+      });
     }
-    res.json({
-      status: 200,
+    return res.json({
+      success: true,
       message: 'User is deleted successfully!'
     });
   });

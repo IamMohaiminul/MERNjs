@@ -9,12 +9,13 @@ import debug from 'debug';
 import mongoose from 'mongoose';
 import http from 'http';
 
+import config from '../config';
+
 /**
  * Set database connection in Express.
  */
-import database from '../config/database';
 
-mongoose.connect(database.url);
+mongoose.connect(config.database);
 mongoose.connection.on('error', function() {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
@@ -23,7 +24,7 @@ mongoose.connection.on('error', function() {
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(config.port);
 app.set('port', port);
 
 /**

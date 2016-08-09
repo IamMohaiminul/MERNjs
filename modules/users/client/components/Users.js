@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
 
 import UserList from '../containers/UserList';
 import CreateUser from '../containers/CreateUser';

@@ -7,6 +7,8 @@ import bodyParser from 'body-parser';
 
 import api from './modules/api';
 
+import config from './config';
+
 const app = express();
 
 // view engine setup

@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import cookie from 'react-cookie';
 
 /*
  * This reducer will always return an array of users no matter what
@@ -6,13 +7,23 @@ import $ from 'jquery';
  */
 export const userReducer = () => {
   let users = [];
-  $.ajax({
-    url: "http://localhost:3000/api/users",
-    success: function(data) {
-      users = data.users;
-    },
-    async: false
-  });
+  if (cookie.load('x-access-token')) {
+    $.ajax({
+      type: "GET",
+      beforeSend: function (req)
+      {
+        req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
+      },
+      url: "http://localhost:3000/api/users",
+      success: function(data) {
+        if (data.success) users = data.users;
+      },
+      error: function (xhr, sts, err) {
+        console.log("userReducer: ", xhr, sts, err);
+      },
+      async: false
+    });
+  }
   return users;
 };
 /*
@@ -26,13 +37,13 @@ export const activeUserReducer = (state = null, action) => {
       return action.payload;
       break;
     case 'USER_CREATED':
-      return action.payload;
+      return null;
       break;
     case 'USER_UPDATED':
-      return action.payload;
+      return null;
       break;
     case 'USER_DELETED':
-      return action.payload;
+      return null;
       break;
   }
   return state;
