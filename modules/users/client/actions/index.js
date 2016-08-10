@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import { hashHistory } from 'react-router';
-import cookie from 'react-cookie';
 import toastr from 'toastr';
+
+import * as AuthService from '../services/auth';
 
 import config from '../../../../config';
 
@@ -11,14 +12,14 @@ import config from '../../../../config';
 export const selectUser = (user) => {
   console.log("You clicked on user: ", user);
   // check cookie token availability
-  if (cookie.load('x-access-token')) {
+  if (AuthService.isAuth()) {
     return {
       type: 'USER_SELECTED',
       payload: user
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/users/auth');
+    hashHistory.push('/auth');
   }
 };
 
@@ -29,12 +30,12 @@ export const createUser = (user) => {
   console.log("You created a user: ", user);
   let payload = {};
   // check cookie token availability
-  if (cookie.load('x-access-token')) {
+  if (AuthService.isAuth()) {
     $.ajax({
       type: "POST",
       beforeSend: function (req)
       {
-        req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
+        req.setRequestHeader("x-access-token", AuthService.getToken());
       },
       url: config.API_URL + 'users',
       data: user,
@@ -57,7 +58,7 @@ export const createUser = (user) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/users/auth');
+    hashHistory.push('/auth');
   }
 };
 
@@ -68,12 +69,12 @@ export const updateUser = (user, _id) => {
   console.log("You updated a user: ", user);
   let payload = {};
   // check cookie token availability
-  if (cookie.load('x-access-token')) {
+  if (AuthService.isAuth()) {
     $.ajax({
       type: "PUT",
       beforeSend: function (req)
       {
-        req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
+        req.setRequestHeader("x-access-token", AuthService.getToken());
       },
       url: config.API_URL + 'users/' + _id,
       data: user,
@@ -96,7 +97,7 @@ export const updateUser = (user, _id) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/users/auth');
+    hashHistory.push('/auth');
   }
 };
 
@@ -107,12 +108,12 @@ export const deleteUser = (_id) => {
   console.log("You deleted a user: ", _id);
   let payload = {};
   // check cookie token availability
-  if (cookie.load('x-access-token')) {
+  if (AuthService.isAuth()) {
     $.ajax({
       type: "DELETE",
       beforeSend: function (req)
       {
-        req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
+        req.setRequestHeader("x-access-token", AuthService.getToken());
       },
       url: config.API_URL + 'users/' + _id,
       success: function(data) {
@@ -134,7 +135,7 @@ export const deleteUser = (_id) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/users/auth');
+    hashHistory.push('/auth');
   }
 };
 
@@ -150,7 +151,7 @@ export const authUser = (user) => {
     data: user,
     success: function(data) {
       if (data.success) {
-        cookie.save('x-access-token', data.token, { expires: config.REACT_COOKIE.EXPIRES });
+        AuthService.setToken(data.token);
         toastr.success(data.message);
         payload = data;
       } else {

@@ -3,38 +3,34 @@ import { Route, IndexRoute } from 'react-router';
 import cookie from 'react-cookie';
 import toastr from 'toastr';
 
+import * as AuthService from '../services/auth';
+
 import UserLayout from '../layouts/UserLayout';
+import AuthLayout from '../layouts/AuthLayout';
 import Users from '../components/Users';
 import Auth from '../components/Auth';
 
-// checking is login or not
-function isAuth(nextState, replaceState) {
-  if (!cookie.load('x-access-token')) {
-    toastr.warning('Need to login.');
-    replaceState('/users/auth');
-  }
+function isAuthRouter(nextState, replaceState) {
+  AuthService.isAuthRouter(nextState, replaceState);
 }
-// checking is already login or not
-function isGuest(nextState, replaceState) {
-  if (cookie.load('x-access-token')) {
-    toastr.info('Already login');
-    replaceState('/users');
-  }
+
+function isGuestRouter(nextState, replaceState) {
+  AuthService.isGuestRouter(nextState, replaceState);
 }
-// trigger the logout
-function signOut(nextState, replaceState) {
-  cookie.remove('x-access-token');
-  toastr.success('Logout successfully');
-  replaceState('/users/auth');
+
+function logOutRouter(nextState, replaceState) {
+  AuthService.logOutRouter(nextState, replaceState);
 }
 
 export default function() {
   return (
-    <Route path='users' component={UserLayout}>
-      <IndexRoute component={Users} onEnter={isAuth} />
-      <Route path='auth'>
-        <IndexRoute component={Auth} onEnter={isGuest} />
-        <Route path='logout' onEnter={signOut}/>
+    <Route>
+      <Route path='users' component={UserLayout} onEnter={isAuthRouter}>
+        <IndexRoute component={Users} />
+      </Route>
+      <Route path='auth' component={AuthLayout}>
+        <IndexRoute component={Auth} onEnter={isGuestRouter} />
+        <Route path='logout' onEnter={logOutRouter} />
       </Route>
       {/*<Route path='create' component={UserCreate} />
       <Route path=':_id' component={UserShow} />
