@@ -16,7 +16,7 @@ export const userReducer = () => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: config.BASE_URL + 'api/users',
+      url: config.API_URL + 'users',
       success: function(data) {
         if (data.success) users = data.users;
       },

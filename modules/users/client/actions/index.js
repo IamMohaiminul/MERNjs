@@ -36,7 +36,7 @@ export const createUser = (user) => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: config.BASE_URL + 'api/users',
+      url: config.API_URL + 'users',
       data: user,
       success: function(data) {
         if (data.success) {
@@ -75,7 +75,7 @@ export const updateUser = (user, _id) => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: config.BASE_URL + 'api/users/' + _id,
+      url: config.API_URL + 'users/' + _id,
       data: user,
       success: function(data) {
         if (data.success) {
@@ -114,7 +114,7 @@ export const deleteUser = (_id) => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: config.BASE_URL + 'api/users/' + _id,
+      url: config.API_URL + 'users/' + _id,
       success: function(data) {
         if (data.success) {
           toastr.success(data.message);
@@ -146,7 +146,7 @@ export const authUser = (user) => {
   let payload = {};
   $.ajax({
     type: "POST",
-    url: config.BASE_URL + 'api/auth',
+    url: config.API_URL + 'auth',
     data: user,
     success: function(data) {
       if (data.success) {

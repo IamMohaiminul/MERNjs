@@ -123,7 +123,7 @@ export function updateUser(req, res) {
     }
 
     user.username = sanitizeHtml(req.body.username);
-    user.password = new User().generateHash(sanitizeHtml(req.body.password));
+    user.password = user.generateHash(sanitizeHtml(req.body.password));
 
     user.save((err, user) => {
       if (err) {

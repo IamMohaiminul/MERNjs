@@ -12,14 +12,15 @@ const apiRoutes = express.Router();
 // route to api (GET http://localhost:3000/api)
 apiRoutes.get('/', function(req, res, next) {
   return res.json({
-    success: true,
-    message: 'This is a base API GET request',
-    users: {
-      'get all users': 'GET http://localhost:3000/api/users',
-      'create a user': 'POST http://localhost:3000/api/users',
-      'get a user': 'GET http://localhost:3000/api/users/_id',
-      'update a user': 'PUT http://localhost:3000/api/users/_id',
-      'delete a user': 'DELETE http://localhost:3000/api/users/_id'
+    'success': true,
+    'message': 'This is a base API GET request',
+    'auth a user': 'POST ' + config.API_URL + 'api/auth',
+    'users': {
+      'get all users': 'GET ' + config.API_URL + 'users',
+      'create a user': 'POST ' + config.API_URL + 'users',
+      'get a user': 'GET ' + config.API_URL + 'users/_id',
+      'update a user': 'PUT ' + config.API_URL + 'users/_id',
+      'delete a user': 'DELETE ' + config.API_URL + 'users/_id'
     }
   });
 });
