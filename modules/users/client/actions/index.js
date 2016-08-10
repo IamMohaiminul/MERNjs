@@ -3,17 +3,32 @@ import { hashHistory } from 'react-router';
 import cookie from 'react-cookie';
 import toastr from 'toastr';
 
+import config from '../../../../config';
+
+/*
+ * select a user
+ */
 export const selectUser = (user) => {
   console.log("You clicked on user: ", user);
-  return {
-    type: 'USER_SELECTED',
-    payload: user
+  // check cookie token availability
+  if (cookie.load('x-access-token')) {
+    return {
+      type: 'USER_SELECTED',
+      payload: user
+    }
+  } else {
+    toastr.warning('Need to login.');
+    hashHistory.push('/users/auth');
   }
 };
 
+/*
+ * create a user
+ */
 export const createUser = (user) => {
   console.log("You created a user: ", user);
   let payload = {};
+  // check cookie token availability
   if (cookie.load('x-access-token')) {
     $.ajax({
       type: "POST",
@@ -21,7 +36,7 @@ export const createUser = (user) => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: "http://localhost:3000/api/users",
+      url: config.BASE_URL + 'api/users',
       data: user,
       success: function(data) {
         if (data.success) {
@@ -36,19 +51,23 @@ export const createUser = (user) => {
       },
       async: false
     });
+    return {
+      type: 'USER_CREATED',
+      payload: payload
+    }
   } else {
     toastr.warning('Need to login.');
     hashHistory.push('/users/auth');
   }
-  return {
-    type: 'USER_CREATED',
-    payload: payload
-  }
 };
 
+/*
+ * update a user
+ */
 export const updateUser = (user, _id) => {
   console.log("You updated a user: ", user);
   let payload = {};
+  // check cookie token availability
   if (cookie.load('x-access-token')) {
     $.ajax({
       type: "PUT",
@@ -56,7 +75,7 @@ export const updateUser = (user, _id) => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: "http://localhost:3000/api/users/" + _id,
+      url: config.BASE_URL + 'api/users/' + _id,
       data: user,
       success: function(data) {
         if (data.success) {
@@ -71,19 +90,23 @@ export const updateUser = (user, _id) => {
       },
       async: false
     });
+    return {
+      type: 'USER_UPDATED',
+      payload: payload
+    }
   } else {
     toastr.warning('Need to login.');
     hashHistory.push('/users/auth');
   }
-  return {
-    type: 'USER_UPDATED',
-    payload: payload
-  }
 };
 
+/*
+ * delete a user
+ */
 export const deleteUser = (_id) => {
   console.log("You deleted a user: ", _id);
   let payload = {};
+  // check cookie token availability
   if (cookie.load('x-access-token')) {
     $.ajax({
       type: "DELETE",
@@ -91,7 +114,7 @@ export const deleteUser = (_id) => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: "http://localhost:3000/api/users/" + _id,
+      url: config.BASE_URL + 'api/users/' + _id,
       success: function(data) {
         if (data.success) {
           toastr.success(data.message);
@@ -105,26 +128,29 @@ export const deleteUser = (_id) => {
       },
       async: false
     });
+    return {
+      type: 'USER_DELETED',
+      payload: payload
+    }
   } else {
     toastr.warning('Need to login.');
     hashHistory.push('/users/auth');
   }
-  return {
-    type: 'USER_DELETED',
-    payload: payload
-  }
 };
 
+/*
+ * authenticate a user
+ */
 export const authUser = (user) => {
   console.log("You authenticate with user: ", user);
   let payload = {};
   $.ajax({
     type: "POST",
-    url: "http://localhost:3000/api/auth",
+    url: config.BASE_URL + 'api/auth',
     data: user,
     success: function(data) {
       if (data.success) {
-        cookie.save('x-access-token', data.token);
+        cookie.save('x-access-token', data.token, { expires: config.REACT_COOKIE.EXPIRES });
         toastr.success(data.message);
         payload = data;
       } else {

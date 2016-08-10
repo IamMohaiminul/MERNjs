@@ -46,8 +46,8 @@ apiRoutes.post('/auth', function(req, res) {
       } else {
         // if user is found and password is right
         // create a token
-        var token = jwt.sign(user, config.secret, {
-          expiresIn: '1d'
+        var token = jwt.sign(user, config.JWT.SECRET, {
+          expiresIn: config.JWT.EXPIRES
         });
         // return the information including token as JSON
         return res.json({
@@ -62,12 +62,12 @@ apiRoutes.post('/auth', function(req, res) {
 
 // route middleware to verify a token
 apiRoutes.use(function(req, res, next) {
-  // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  // check header for token
+  var token = req.headers['x-access-token'];
   // decode token
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, config.secret, function(err, decoded) {
+    jwt.verify(token, config.JWT.SECRET, function(err, decoded) {
       if (err) {
         return res.json({
           success: false,

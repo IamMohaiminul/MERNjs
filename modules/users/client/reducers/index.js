@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import cookie from 'react-cookie';
 
+import config from '../../../../config';
+
 /*
  * This reducer will always return an array of users no matter what
  * You need to return something, so if there are no users then just return an empty array
@@ -14,7 +16,7 @@ export const userReducer = () => {
       {
         req.setRequestHeader("x-access-token", cookie.load('x-access-token'));
       },
-      url: "http://localhost:3000/api/users",
+      url: config.BASE_URL + 'api/users',
       success: function(data) {
         if (data.success) users = data.users;
       },
@@ -43,6 +45,9 @@ export const activeUserReducer = (state = null, action) => {
       return null;
       break;
     case 'USER_DELETED':
+      return null;
+      break;
+    case 'USER_AUTHED':
       return null;
       break;
   }

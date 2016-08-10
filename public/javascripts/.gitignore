@@ -1,2 +1,4 @@
-# Generated files
+# All generated files
 bundle.min.js
+*.hot-update.js
+*.hot-update.json

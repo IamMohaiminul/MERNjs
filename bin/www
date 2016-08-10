@@ -12,19 +12,19 @@ import http from 'http';
 import config from '../config';
 
 /**
- * Set database connection in Express.
+ * Get database from config and connect in Express throw mongoose.
  */
 
-mongoose.connect(config.database);
+mongoose.connect(config.MONGO_URL);
 mongoose.connection.on('error', function() {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
 /**
- * Get port from environment and store in Express.
+ * Get port from config and store in Express.
  */
 
-const port = normalizePort(config.port);
+const port = normalizePort(config.PORT);
 app.set('port', port);
 
 /**

@@ -7,8 +7,6 @@ import bodyParser from 'body-parser';
 
 import api from './modules/api';
 
-import config from './config';
-
 const app = express();
 
 // view engine setup
@@ -27,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'views', 'index.html'));
 });
+// handle every api route
 app.use('/api', api);
 
 // catch 404 and forward to error handler
@@ -59,6 +58,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
