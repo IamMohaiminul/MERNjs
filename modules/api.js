@@ -16,8 +16,15 @@ apiRoutes.get('/', function (req, res) {
 
 apiRoutes.use('/auth', auth);
 
-apiRoutes.use(Middleware.verifyToken);
+// apiRoutes.use(Middleware.verifyToken);
 
 apiRoutes.use('/users', users);
+
+// catch 404 and forward to error handler
+apiRoutes.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 module.exports = apiRoutes;
