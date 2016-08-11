@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import toastr from 'toastr';
 
-import { updateUser, deleteUser } from '../actions/index';
-
-class EditUser extends Component {
+class EditUserComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -17,7 +13,6 @@ class EditUser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps...', nextProps);
     // You don't have to do this check first, but it can help prevent an unneeded render
     if (nextProps.user && nextProps.user.username && !_.isEqual(nextProps.user.username, this.state.username)) {
       this.setState({
@@ -26,52 +21,7 @@ class EditUser extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log("Edit User Component...componentDidMount");
-  }
-
-  handleUsernameChange(event) {
-    console.log('handleUsernameChange...', event);
-    this.setState({
-      username: event.target.value
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
-    const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
-
-    if (username.length < 1) {
-      toastr.warning('Username is required');
-      return false;
-    }
-    if (password.length < 1) {
-      toastr.warning('Password is required');
-      return false;
-    }
-
-    // create object
-    const user = {
-      username: username,
-      password: password
-    }
-
-    // call the action
-    this.props.updateUser(user, this.props.user._id);
-
-    // Clear form
-    ReactDOM.findDOMNode(this.refs.password).value = "";
-  }
-
-  deleteUser(event) {
-    console.log('deleteUser...');
-    this.props.deleteUser(this.props.user._id);
-  }
-
   render() {
-    console.log('state username: ', this.state.username);
     return (
       <div className='row'>
         <div className='col-xs-12'>
@@ -173,27 +123,46 @@ class EditUser extends Component {
       </div>
     );
   }
+
+  handleUsernameChange(event) {
+    console.log('handleUsernameChange...', event);
+    this.setState({
+      username: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
+    const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+
+    if (username.length < 1) {
+      toastr.warning('Username is required');
+      return false;
+    }
+    if (password.length < 1) {
+      toastr.warning('Password is required');
+      return false;
+    }
+
+    // create object
+    const user = {
+      username: username,
+      password: password
+    }
+
+    // call the action
+    this.props.updateUser(user, this.props.user._id);
+
+    // Clear form
+    ReactDOM.findDOMNode(this.refs.password).value = "";
+  }
+
+  deleteUser(event) {
+    event.preventDefault();
+    this.props.deleteUser(this.props.user._id);
+  }
 }
 
-// Get apps store and pass it as props to EditUser
-//  > whenever store changes, the EditUser will automatically re-render
-// "store.activeUser" is set in reducers/index.js
-function mapStateToProps(store) {
-    return {
-        user: store.activeUser
-    };
-}
-
-// Get actions and pass them as props to to EditUser
-//  > now EditUser has this.props.updateUser and this.props.deleteUser
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    updateUser: updateUser,
-    deleteUser: deleteUser
-  }, dispatch);
-}
-
-// We don't want to return the plain EditUser (component) anymore,
-// we want to return the smart Container
-//  > EditUser is now aware of state and actions
-export default connect(mapStateToProps, matchDispatchToProps)(EditUser);
+export default EditUserComponent;

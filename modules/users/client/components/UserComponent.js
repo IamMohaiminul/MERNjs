@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 
-import UserList from '../containers/UserList';
-import CreateUser from '../containers/CreateUser';
-import UserDetail from '../containers/UserDetail';
-import EditUser from '../containers/EditUser';
+import UserCreateContainer from '../containers/UserCreateContainer';
+import UserListContainer from '../containers/UserListContainer';
+import UserDetailContainer from '../containers/UserDetailContainer';
+import EditUserContainer from '../containers/EditUserContainer';
 
-class Users extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    console.log("Users Component...");
-  }
-
+class UserComponent extends Component {
   render() {
     return (
       <div className='row'>
@@ -21,18 +13,18 @@ class Users extends Component {
           <h1 className='text-center'>Users Component</h1>
           <div className='row'>
             <div className='col-xs-4'>
-              <CreateUser />
+              <UserCreateContainer />
             </div>
             <div className='col-xs-4'>
-              <UserDetail />
+              <UserDetailContainer />
             </div>
             <div className='col-xs-4'>
-              <EditUser />
+              <EditUserContainer />
             </div>
           </div>
           <div className='row'>
             <div className='col-xs-12'>
-              <UserList />
+              <UserListContainer />
             </div>
           </div>
         </div>
@@ -41,4 +33,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default UserComponent;

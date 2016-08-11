@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import * as AuthService from '../services/auth';
 
 import UserLayout from '../layouts/UserLayout';
-import Users from '../components/Users';
+import UserComponent from '../components/UserComponent';
 
 function isAuthRouter(nextState, replaceState) {
   AuthService.isAuthRouter(nextState, replaceState);
@@ -13,7 +13,7 @@ function isAuthRouter(nextState, replaceState) {
 export default function() {
   return (
     <Route path='users' component={UserLayout} onEnter={isAuthRouter}>
-      <IndexRoute component={Users} />
+      <IndexRoute component={UserComponent} />
       {/*<Route path='create' component={UserCreate} />
       <Route path=':_id' component={UserShow} />
       <Route path=':_id/edit' component={UserEdit} />*/}

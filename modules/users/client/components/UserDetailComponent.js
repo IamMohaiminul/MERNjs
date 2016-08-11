@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 
-class UserDetail extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    console.log("User Detail Container...");
-  }
-
+class UserDetailComponent extends Component {
   render() {
     return (
       <div className='row'>
@@ -30,16 +21,4 @@ class UserDetail extends Component {
   }
 }
 
-// Get apps store and pass it as props to UserDetail
-//  > whenever store changes, the UserDetail will automatically re-render
-// "store.activeUser" is set in reducers/index.js
-function mapStateToProps(store) {
-    return {
-        user: store.activeUser
-    };
-}
-
-// We don't want to return the plain UserDetail (component) anymore,
-// we want to return the smart Container
-//  > UserDetail is now aware of state
-export default connect(mapStateToProps)(UserDetail);
+export default UserDetailComponent;
