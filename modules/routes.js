@@ -5,7 +5,8 @@ import CoreLayout from './core/client/layouts/CoreLayout';
 import Home from './core/client/components/Home';
 import NotFound from './core/client/components/NotFound';
 
-import UserRoute from './users/client/routes';
+import AuthRoute from './users/client/routes/auth';
+import UserRoute from './users/client/routes/user';
 
 class Routes extends Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends Component {
         <Route path='/' component={CoreLayout}>
           <IndexRoute component={Home} />
         </Route>
+        {AuthRoute()}
         {UserRoute()}
         <Route path='*' component={NotFound} />
       </Router>

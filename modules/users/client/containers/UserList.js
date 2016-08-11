@@ -53,11 +53,11 @@ class UserList extends Component {
   }
 }
 
-// Get apps state and pass it as props to UserList
-//  > whenever state changes, the UserList will automatically re-render
-function mapStateToProps(state) {
+// Get apps store and pass it as props to UserList
+//  > whenever store changes, the UserList will automatically re-render
+function mapStateToProps(store) {
   return {
-    users: state.users
+    users: store.users
   };
 }
 

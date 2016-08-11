@@ -175,12 +175,12 @@ class EditUser extends Component {
   }
 }
 
-// Get apps state and pass it as props to EditUser
-//  > whenever state changes, the EditUser will automatically re-render
-// "state.activeUser" is set in reducers/index.js
-function mapStateToProps(state) {
+// Get apps store and pass it as props to EditUser
+//  > whenever store changes, the EditUser will automatically re-render
+// "store.activeUser" is set in reducers/index.js
+function mapStateToProps(store) {
     return {
-        user: state.activeUser
+        user: store.activeUser
     };
 }
 

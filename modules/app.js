@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import allReducers from './reducers';
+import userReducers from './users/client/reducers';
 import Routes from './routes';
 
 const store = createStore(
-    allReducers
+    userReducers
 );
 
 ReactDOM.render(

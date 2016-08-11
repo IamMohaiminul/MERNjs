@@ -30,12 +30,12 @@ class UserDetail extends Component {
   }
 }
 
-// Get apps state and pass it as props to UserDetail
-//  > whenever state changes, the UserDetail will automatically re-render
-// "state.activeUser" is set in reducers/index.js
-function mapStateToProps(state) {
+// Get apps store and pass it as props to UserDetail
+//  > whenever store changes, the UserDetail will automatically re-render
+// "store.activeUser" is set in reducers/index.js
+function mapStateToProps(store) {
     return {
-        user: state.activeUser
+        user: store.activeUser
     };
 }
 
