@@ -16,7 +16,7 @@ apiRoutes.get('/', function (req, res) {
 
 apiRoutes.use('/auth', auth);
 
-// apiRoutes.use(Middleware.verifyToken);
+apiRoutes.use(Middleware.verifyToken);
 
 apiRoutes.use('/users', users);
 
