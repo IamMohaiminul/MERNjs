@@ -1,5 +1,5 @@
+import { browserHistory } from 'react-router';
 import $ from 'jquery';
-import { hashHistory } from 'react-router';
 import toastr from 'toastr';
 
 import * as AuthService from '../services/auth';
@@ -19,7 +19,7 @@ export const selectUser = (user) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/auth');
+    browserHistory.push('/auth');
   }
 };
 
@@ -58,7 +58,7 @@ export const createUser = (user) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/auth');
+    browserHistory.push('/auth');
   }
 };
 
@@ -97,7 +97,7 @@ export const updateUser = (user, _id) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/auth');
+    browserHistory.push('/auth');
   }
 };
 
@@ -135,7 +135,7 @@ export const deleteUser = (_id) => {
     }
   } else {
     toastr.warning('Need to login.');
-    hashHistory.push('/auth');
+    browserHistory.push('/auth');
   }
 };
 

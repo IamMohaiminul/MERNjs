@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import CoreLayout from './core/client/layouts/CoreLayout';
 import Home from './core/client/components/Home';
@@ -10,7 +10,7 @@ import UserRoute from './users/client/routes';
 class Routes extends Component {
   render() {
     return (
-      <Router history={hashHistory}>
+      <Router history={browserHistory}>
         <Route path='/' component={CoreLayout}>
           <IndexRoute component={Home} />
         </Route>

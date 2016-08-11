@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
 import toastr from 'toastr';
 
 import { authUser } from '../actions/index';
@@ -44,7 +44,7 @@ class Auth extends Component {
       ReactDOM.findDOMNode(this.refs.username).value = "";
       ReactDOM.findDOMNode(this.refs.password).value = "";
       // triggered to users
-      hashHistory.push('/users');
+      browserHistory.push('/users');
     }
   }
 

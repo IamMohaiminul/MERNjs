@@ -7,6 +7,13 @@ import users from './users/server/routes/users';
 
 const apiRoutes = express.Router();
 
+apiRoutes.get('/', function (req, res) {
+  return res.json({
+    success: true,
+    message: 'This is a API GET Request!'
+  });
+});
+
 apiRoutes.use('/auth', auth);
 
 apiRoutes.use(Middleware.verifyToken);

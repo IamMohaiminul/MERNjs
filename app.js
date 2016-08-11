@@ -20,13 +20,15 @@ app.use(cookieParser());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// route handlers
+
+// api handler
+app.use('/api', api);
 // handle every other route with index.html, which will contain
 // a script tag to your application's JavaScript file(s).
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'views', 'index.html'));
 });
-// handle every api route
-app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
