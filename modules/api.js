@@ -10,7 +10,7 @@ const apiRoutes = express.Router();
 apiRoutes.get('/', function (req, res) {
   return res.json({
     success: true,
-    message: 'This is a API GET Request!'
+    message: 'Welcome to MERNjs RESTful API services!'
   });
 });
 

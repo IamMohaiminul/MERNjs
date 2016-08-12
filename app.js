@@ -9,10 +9,6 @@ import api from './modules/api';
 
 const app = express();
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,10 +38,6 @@ if (app.get('env') === 'development') {
       message: err.message,
       error: err
     });
-    // res.render('error', {
-    //   message: err.message,
-    //   error: err
-    // });
   });
 }
 
@@ -58,10 +50,6 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
-  // res.render('error', {
-  //   message: err.message,
-  //   error: {}
-  // });
 });
 
 module.exports = app;

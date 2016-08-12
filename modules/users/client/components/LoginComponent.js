@@ -1,16 +1,16 @@
 // Import Styles
-import './UserCreateComponent.scss';
+import './LoginComponent.scss';
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr';
 
-class UserCreateComponent extends Component {
+class LoginComponent extends Component {
   render() {
     return (
       <div className='row'>
         <div className='col-xs-12'>
-          <h3 className='text-center'>Create User Component</h3>
+          <h3 className='text-center'>Login Component</h3>
           <form className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
               <label htmlFor="username" className="col-sm-2 control-label">Username</label>
@@ -33,8 +33,8 @@ class UserCreateComponent extends Component {
               </div>
             </div>
             <div className="form-group">
-              <div className="col-sm-offset-2 col-sm-10">
-                <button type="submit" className="btn btn-default">Add User</button>
+              <div className="col-xs-offset-2 col-xs-10">
+                <button type="submit" className="btn btn-default">Login</button>
               </div>
             </div>
           </form>
@@ -64,7 +64,7 @@ class UserCreateComponent extends Component {
     }
 
     // call the action
-    this.props.createUser(user);
+    this.props.authUser(user);
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.username).value = "";
@@ -72,4 +72,4 @@ class UserCreateComponent extends Component {
   }
 }
 
-export default UserCreateComponent;
+export default LoginComponent;

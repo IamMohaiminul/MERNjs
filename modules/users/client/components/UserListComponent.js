@@ -1,3 +1,6 @@
+// Import Styles
+import './UserListComponent.scss';
+
 import React, { Component } from 'react';
 import moment from 'moment';
 
@@ -6,7 +9,7 @@ class UserListComponent extends Component {
     return (
       <div className='row'>
         <div className='col-xs-12'>
-          <h3 className='text-center'>User List Container</h3>
+          <h3 className='text-center'>User List Component</h3>
           <table className="table table-bordered">
             <thead>
               <tr>

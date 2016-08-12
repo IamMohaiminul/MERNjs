@@ -17,19 +17,24 @@ module.exports = {
     path: path.join(__dirname, 'public/javascripts'),
     filename: 'bundle.min.js'
   },
+  module: {
+    loaders: [
+      {
+        test: /\.(scss|css)$/,
+        include: __dirname,
+        loaders: [ 'style', 'css', 'sass' ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: __dirname,
+        loaders: [ 'babel' ]
+      }
+    ]
+  },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: [ 'babel' ],
-        exclude: /node_modules/,
-        include: __dirname
-      }
-    ]
-  }
-}
+  ]
+};

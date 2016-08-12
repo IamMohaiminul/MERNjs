@@ -1,3 +1,6 @@
+// Import Styles
+import './EditUserComponent.scss';
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
@@ -25,7 +28,7 @@ class EditUserComponent extends Component {
     return (
       <div className='row'>
         <div className='col-xs-12'>
-          <h3 className='text-center'>Edit User Container</h3>
+          <h3 className='text-center'>Edit User Component</h3>
           { this.props.user ?
             <div>
               <form

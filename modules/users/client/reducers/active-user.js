@@ -1,8 +1,8 @@
 /*
- * All reducers get two parameters passed in, state and action that occurred
- *  > state isn't entire apps state, only the part of state that this reducer is responsible for
+ * All reducers get two parameters passed in, store and action that occurred
+ *  > store isn't entire apps store, only the part of store that this reducer is responsible for
  */
-// "state = null" is set so that we don't throw an error when app first boots up
+// "store = null" is set so that we don't throw an error when app first boots up
 export const activeUserReducer = (store = null, action) => {
   switch (action.type) {
     case 'USER_SELECTED':

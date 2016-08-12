@@ -1,23 +1,18 @@
+// Import Styles
+import './UserLayout.scss';
+
 import React, { Component } from 'react';
 
-import Nav from '../components/Nav.js';
+import NavComponent from '../components/NavComponent';
 
 class UserLayout extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    console.log("User Layout...");
-  }
-
   render() {
     return (
       <div className="container">
         <div className='row'>
           <div className='col-xs-12'>
             <h1 className='text-center'>User Layout</h1>
-            <Nav />
+            <NavComponent />
             {this.props.children}
           </div>
         </div>

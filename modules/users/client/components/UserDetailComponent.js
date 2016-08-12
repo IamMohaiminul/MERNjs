@@ -1,3 +1,6 @@
+// Import Styles
+import './UserDetailComponent.scss';
+
 import React, { Component } from 'react';
 import moment from 'moment';
 
@@ -6,7 +9,7 @@ class UserDetailComponent extends Component {
     return (
       <div className='row'>
         <div className='col-xs-12'>
-          <h3 className='text-center'>User Detail Container</h3>
+          <h3 className='text-center'>User Detail Component</h3>
           { this.props.user ?
             <div>
               <p>ID: {this.props.user._id}</p>

@@ -1,3 +1,6 @@
+// Import Styles
+import './UserComponent.scss';
+
 import React, { Component } from 'react';
 
 import UserCreateContainer from '../containers/UserCreateContainer';

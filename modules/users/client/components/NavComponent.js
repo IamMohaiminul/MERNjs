@@ -1,15 +1,10 @@
+// Import Styles
+import './NavComponent.scss';
+
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-export default class Nav extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    console.log("Nav Component...");
-  }
-
+class NavComponent extends Component {
   render() {
     return (
       <nav>
@@ -23,3 +18,5 @@ export default class Nav extends Component {
     );
   }
 }
+
+export default NavComponent;
