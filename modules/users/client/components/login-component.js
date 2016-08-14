@@ -28,13 +28,14 @@ class LoginComponent extends Component {
             <span className="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div className="row">
-            <div className="col-xs-offset-6 col-xs-6">
+            <div className="col-xs-12">
               <button type="submit" className="btn btn-primary btn-block btn-flat">Sign In</button>
             </div>
           </div>
         </form>
         <div className="text-center">
-          <p>- Do not have an account? -</p>
+          <hr/>
+          <p>Do not have an account?</p>
           <a href="#" className="btn btn-default btn-block btn-flat">Create an account</a>
         </div>
       </div>

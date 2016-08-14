@@ -132,7 +132,6 @@ class UserEditComponent extends Component {
   }
 
   handleUsernameChange(event) {
-    console.log('handleUsernameChange...', event);
     this.setState({
       username: event.target.value
     });
