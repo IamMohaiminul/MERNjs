@@ -1,7 +1,7 @@
 {
   "name": "MERNjs",
   "version": "0.0.0",
-  "description": "A Scaffolding of MongoDB, ExpressJS, ReactJS and NodeJS with Redux and ECMAScript 2015 (ES6)",
+  "description": "A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack.",
   "keywords": [
     "MongoDB",
     "ExpressJS",

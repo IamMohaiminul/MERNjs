@@ -1,13 +1,11 @@
 # MERNjs
 MERNjs is a javascript scaffolding tool which makes it easy to build isomorphic apps using MongoBD, ExpressJS, ReactJS and NodeJS.
 
-<img src="./public/images/mongodb.png" alt="MongoDB" width="200" />
-<img src="./public/images/express.png" alt="ExpressJS" width="200" />
-<img src="./public/images/react.png" alt="ReactJS" width="200" />
-<img src="./public/images/nodejs.png" alt="NodeJS" width="200" />
-
-<img src="./public/images/redux.png" alt="Redux" width="200" />
-<img src="./public/images/webpack.png" alt="Webpack" width="200" />
+<img src="./public/images/mongodb.png" alt="MongoDB" width="150" align="middle" />
+<img src="./public/images/express.png" alt="ExpressJS" width="150" align="middle" />
+<img src="./public/images/react.png" alt="ReactJS" width="150" align="middle" />
+<img src="./public/images/nodejs.png" alt="NodeJS" width="150" align="middle" />
+<img src="./public/images/redux.png" alt="Redux" width="150" align="middle" />
 
 ## Getting Started
 To get started, first install all the necessary dependencies

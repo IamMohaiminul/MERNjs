@@ -1,4 +1,4 @@
-// Import Styles
+// Import toastr CSS
 import '../node_modules/toastr/build/toastr.css';
 
 import React from 'react';

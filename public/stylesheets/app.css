@@ -1,0 +1,20 @@
+.form-control {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #d2d6de;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.form-control::-moz-placeholder,
+.form-control:-ms-input-placeholder,
+.form-control::-webkit-input-placeholder {
+  opacity: 1;
+}
+.btn-flat {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-width: 1px;
+}

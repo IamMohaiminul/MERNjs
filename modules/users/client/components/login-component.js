@@ -14,7 +14,7 @@ class LoginComponent extends Component {
           <div className="form-group has-feedback">
             <input
               type="text"
-              className="form-control login-form-control"
+              className="form-control"
               ref="username"
               placeholder="Username" />
             <span className="glyphicon glyphicon-user form-control-feedback"></span>
@@ -22,14 +22,14 @@ class LoginComponent extends Component {
           <div className="form-group has-feedback">
             <input
               type="password"
-              className="form-control login-form-control"
+              className="form-control"
               ref="password"
               placeholder="Password" />
             <span className="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div className="row">
             <div className="col-xs-offset-8 col-xs-4">
-              <button type="submit" className="btn btn-primary btn-block login-btn-flat">Sign In</button>
+              <button type="submit" className="btn btn-primary btn-block btn-flat">Sign In</button>
             </div>
           </div>
         </form>
