@@ -34,10 +34,10 @@ class UserEditComponent extends Component {
                 <div className="form-group">
                   <label
                     htmlFor="username"
-                    className="col-sm-2 control-label">
+                    className="col-xs-2 control-label">
                     Username
                   </label>
-                  <div className="col-sm-10">
+                  <div className="col-xs-10">
                     <input
                       type="text"
                       className="form-control"
@@ -50,10 +50,10 @@ class UserEditComponent extends Component {
                 <div className="form-group">
                   <label
                     htmlFor="password"
-                    className="col-sm-2 control-label">
+                    className="col-xs-2 control-label">
                     Password
                   </label>
-                  <div className="col-sm-10">
+                  <div className="col-xs-10">
                     <input
                       type="password"
                       className="form-control"
@@ -62,22 +62,23 @@ class UserEditComponent extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div className="col-sm-offset-2 col-sm-10">
+                  <div className="col-xs-offset-2 col-xs-5">
+                    <a
+                      className="btn btn-default btn-block btn-flat"
+                      data-toggle="modal"
+                      data-target="#userDeleteConfirm">
+                      Delete User
+                    </a>
+                  </div>
+                  <div className="col-xs-5">
                     <button
                       type="submit"
-                      className="btn btn-default">
+                      className="btn btn-primary btn-block btn-flat">
                       Edit User
                     </button>
                   </div>
                 </div>
               </form>
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-toggle="modal"
-                data-target="#userDeleteConfirm">
-                Delete User
-              </button>
               {/* User delete confirmation modal */}
               <div
                 id="userDeleteConfirm"
@@ -94,30 +95,36 @@ class UserEditComponent extends Component {
                         aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                      <h4 className="modal-title">Delete User</h4>
+                      <h4 className="modal-title text-center">User Delete Confirmation</h4>
                     </div>
                     <div className="modal-body">
-                      <p>Are you want to delete this user?</p>
+                      <p>Are you really want to delete this user?</p>
                     </div>
                     <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-default"
-                        data-dismiss="modal">
-                        No
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        data-dismiss="modal"
-                        onClick={this.deleteUser.bind(this)}>
-                        Yes
-                      </button>
+                      <div className="row">
+                        <div className="col-xs-offset-6 col-xs-3">
+                          <button
+                            type="button"
+                            className="btn btn-default btn-block btn-flat"
+                            data-dismiss="modal">
+                            No
+                          </button>
+                        </div>
+                        <div className="col-xs-3">
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-block btn-flat"
+                            data-dismiss="modal"
+                            onClick={this.deleteUser.bind(this)}>
+                            Yes
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div> : <p>Please select a user...</p>
+            </div> : <p><b><i>Please select a user...</i></b></p>
           }
         </div>
       </div>

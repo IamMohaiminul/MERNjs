@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import toastr from 'toastr';
 
-import { createUser } from '../actions/index';
-
+import { createUser, getAllUser } from '../actions/index';
 import UserCreateComponent from '../components/user-create-component';
 
 class UserCreateContainer extends Component {
@@ -15,7 +15,13 @@ class UserCreateContainer extends Component {
   }
 
   createUser(user) {
-    this.props.createUser(user);
+    const res = this.props.createUser(user);
+    if (res.payload.success) {
+      toastr.success(res.payload.message);
+    } else {
+      toastr.warning(res.payload.message);
+    }
+    this.props.getAllUser();
   }
 }
 
@@ -23,7 +29,8 @@ class UserCreateContainer extends Component {
 //  > now UserCreateContainer has this.props.createUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    createUser: createUser
+    createUser: createUser,
+    getAllUser: getAllUser
   }, dispatch);
 }
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import toastr from 'toastr';
 
-import { updateUser, deleteUser } from '../actions/index';
-
+import { updateUser, deleteUser, getAllUser } from '../actions/index';
 import UserEditComponent from '../components/user-edit-component';
 
 class UserEditContainer extends Component {
@@ -17,11 +17,23 @@ class UserEditContainer extends Component {
   }
 
   updateUser(user, _id) {
-    this.props.updateUser(user, _id);
+    const res = this.props.updateUser(user, _id);
+    if (res.payload.success) {
+      toastr.success(res.payload.message);
+    } else {
+      toastr.warning(res.payload.message);
+    }
+    this.props.getAllUser();
   }
 
   deleteUser(_id) {
-    this.props.deleteUser(_id);
+    const res = this.props.deleteUser(_id);
+    if (res.payload.success) {
+      toastr.success(res.payload.message);
+    } else {
+      toastr.warning(res.payload.message);
+    }
+    this.props.getAllUser();
   }
 }
 
@@ -40,7 +52,8 @@ function mapStateToProps(store) {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     updateUser: updateUser,
-    deleteUser: deleteUser
+    deleteUser: deleteUser,
+    getAllUser: getAllUser
   }, dispatch);
 }
 

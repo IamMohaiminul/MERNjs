@@ -13,7 +13,7 @@ export default class Home extends Component {
     return (
       <div className='row'>
         <div className='col-xs-12'>
-          <h3 className='text-center'>Home Component</h3>
+          <h1 className='text-center'>Welcome to MERN stack.</h1>
         </div>
       </div>
     );

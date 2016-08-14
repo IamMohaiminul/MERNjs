@@ -1,3 +1,4 @@
+import { browserHistory } from 'react-router';
 import cookie from 'react-cookie';
 import toastr from 'toastr';
 
@@ -52,6 +53,21 @@ export function isAuth () {
     return true;
   } else {
     return false;
+  }
+};
+
+/**
+ * check user authentication
+ * @param nextState
+ * @param replaceState
+ * @returns boolean
+ */
+export function isAuthWithFailTrigger () {
+  if (cookie.load('x-access-token')) {
+    return true;
+  } else {
+    toastr.warning('Need to login.');
+    browserHistory.push('/auth');
   }
 };
 

@@ -10,8 +10,8 @@ class UserCreateComponent extends Component {
           <h3 className='text-center'>Create User Component</h3>
           <form className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
             <div className="form-group">
-              <label htmlFor="username" className="col-sm-2 control-label">Username</label>
-              <div className="col-sm-10">
+              <label htmlFor="username" className="col-xs-2 control-label">Username</label>
+              <div className="col-xs-10">
                 <input
                   type="text"
                   className="form-control"
@@ -20,8 +20,8 @@ class UserCreateComponent extends Component {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="password" className="col-sm-2 control-label">Password</label>
-              <div className="col-sm-10">
+              <label htmlFor="password" className="col-xs-2 control-label">Password</label>
+              <div className="col-xs-10">
                 <input
                   type="password"
                   className="form-control"
@@ -30,8 +30,8 @@ class UserCreateComponent extends Component {
               </div>
             </div>
             <div className="form-group">
-              <div className="col-sm-offset-2 col-sm-10">
-                <button type="submit" className="btn btn-default">Add User</button>
+              <div className="col-xs-offset-7 col-xs-5">
+                <button type="submit" className="btn btn-primary btn-block btn-flat">Add User</button>
               </div>
             </div>
           </form>

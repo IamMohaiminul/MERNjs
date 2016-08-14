@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import toastr from 'toastr';
 
-import { selectUser } from '../actions/index';
-
+import { getAllUser, selectUser } from '../actions/index';
 import UserListComponent from '../components/user-list-component';
 
 class UserListContainer extends Component {
+  componentDidMount() {
+    this.props.getAllUser();
+  }
+
   render() {
     return (
       <UserListComponent
@@ -28,6 +32,7 @@ function mapStateToProps(store) {
 //  > now UserListContainer has this.props.selectUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
+    getAllUser: getAllUser,
     selectUser: selectUser
   }, dispatch);
 }

@@ -1,25 +1,47 @@
-import { browserHistory } from 'react-router';
 import $ from 'jquery';
-import toastr from 'toastr';
 
 import * as AuthService from '../services/auth';
-
 import config from '../../../../config';
+
+/*
+ * get all user
+ */
+export const getAllUser = () => {
+  // check cookie token availability
+  if (AuthService.isAuthWithFailTrigger()) {
+    let payload = [];
+    $.ajax({
+      type: "GET",
+      beforeSend: function (req)
+      {
+        req.setRequestHeader("x-access-token", AuthService.getToken());
+      },
+      url: config.API_URL + 'users',
+      success: function(data) {
+        payload = data
+      },
+      error: function (xhr, sts, err) {
+        console.log("userReducer: ", xhr, sts, err);
+      },
+      async: false
+    });
+    return {
+      type: 'USER_LIST',
+      payload: payload
+    }
+  }
+};
 
 /*
  * select a user
  */
 export const selectUser = (user) => {
-  console.log("You clicked on user: ", user);
   // check cookie token availability
-  if (AuthService.isAuth()) {
+  if (AuthService.isAuthWithFailTrigger()) {
     return {
       type: 'USER_SELECTED',
       payload: user
     }
-  } else {
-    toastr.warning('Need to login.');
-    browserHistory.push('/auth');
   }
 };
 
@@ -27,10 +49,9 @@ export const selectUser = (user) => {
  * create a user
  */
 export const createUser = (user) => {
-  console.log("You created a user: ", user);
-  let payload = {};
   // check cookie token availability
-  if (AuthService.isAuth()) {
+  if (AuthService.isAuthWithFailTrigger()) {
+    let payload = {};
     $.ajax({
       type: "POST",
       beforeSend: function (req)
@@ -40,12 +61,7 @@ export const createUser = (user) => {
       url: config.API_URL + 'users',
       data: user,
       success: function(data) {
-        if (data.success) {
-          toastr.success(data.message);
-          payload = data;
-        } else {
-          toastr.warning(data.message);
-        }
+        payload = data;
       },
       error: function (xhr, sts, err) {
         console.warn("createUser: ", xhr, sts, err);
@@ -56,9 +72,6 @@ export const createUser = (user) => {
       type: 'USER_CREATED',
       payload: payload
     }
-  } else {
-    toastr.warning('Need to login.');
-    browserHistory.push('/auth');
   }
 };
 
@@ -66,10 +79,9 @@ export const createUser = (user) => {
  * update a user
  */
 export const updateUser = (user, _id) => {
-  console.log("You updated a user: ", user);
-  let payload = {};
   // check cookie token availability
-  if (AuthService.isAuth()) {
+  if (AuthService.isAuthWithFailTrigger()) {
+    let payload = {};
     $.ajax({
       type: "PUT",
       beforeSend: function (req)
@@ -79,12 +91,7 @@ export const updateUser = (user, _id) => {
       url: config.API_URL + 'users/' + _id,
       data: user,
       success: function(data) {
-        if (data.success) {
-          toastr.success(data.message);
-          payload = data;
-        } else {
-          toastr.warning(data.message);
-        }
+        payload = data;
       },
       error: function (xhr, sts, err) {
         console.warn("updateUser: ", xhr, sts, err);
@@ -95,9 +102,6 @@ export const updateUser = (user, _id) => {
       type: 'USER_UPDATED',
       payload: payload
     }
-  } else {
-    toastr.warning('Need to login.');
-    browserHistory.push('/auth');
   }
 };
 
@@ -105,10 +109,9 @@ export const updateUser = (user, _id) => {
  * delete a user
  */
 export const deleteUser = (_id) => {
-  console.log("You deleted a user: ", _id);
-  let payload = {};
   // check cookie token availability
-  if (AuthService.isAuth()) {
+  if (AuthService.isAuthWithFailTrigger()) {
+    let payload = {};
     $.ajax({
       type: "DELETE",
       beforeSend: function (req)
@@ -117,12 +120,7 @@ export const deleteUser = (_id) => {
       },
       url: config.API_URL + 'users/' + _id,
       success: function(data) {
-        if (data.success) {
-          toastr.success(data.message);
-          payload = data;
-        } else {
-          toastr.warning(data.message);
-        }
+        payload = data;
       },
       error: function (xhr, sts, err) {
         console.warn("deleteUser: ", xhr, sts, err);
@@ -133,9 +131,6 @@ export const deleteUser = (_id) => {
       type: 'USER_DELETED',
       payload: payload
     }
-  } else {
-    toastr.warning('Need to login.');
-    browserHistory.push('/auth');
   }
 };
 
@@ -143,20 +138,14 @@ export const deleteUser = (_id) => {
  * authenticate a user
  */
 export const authUser = (user) => {
-  console.log("You authenticate with user: ", user);
   let payload = {};
   $.ajax({
     type: "POST",
     url: config.API_URL + 'auth',
     data: user,
     success: function(data) {
-      if (data.success) {
-        AuthService.setToken(data.token);
-        toastr.success(data.message);
-        payload = data;
-      } else {
-        toastr.warning(data.message);
-      }
+      AuthService.setToken(data.token);
+      payload = data;
     },
     error: function (xhr, sts, err) {
       console.warn("authUser: ", xhr, sts, err);

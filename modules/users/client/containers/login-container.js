@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import toastr from 'toastr';
 
 import { authUser } from '../actions/index';
-
 import LoginComponent from '../components/login-component';
 
 class LoginContainer extends Component {
@@ -18,8 +18,11 @@ class LoginContainer extends Component {
   authUser(user) {
     const res = this.props.authUser(user);
     if (res.payload.success) {
+      toastr.success(res.payload.message);
       // triggered to users
       browserHistory.push('/users');
+    } else {
+      toastr.warning(res.payload.message);
     }
   }
 }
