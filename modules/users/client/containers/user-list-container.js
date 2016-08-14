@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { selectUser } from '../actions/index';
 
-import UserListComponent from '../components/UserListComponent';
+import UserListComponent from '../components/user-list-component';
 
 class UserListContainer extends Component {
   render() {

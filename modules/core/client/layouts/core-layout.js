@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Nav from '../components/Nav.js';
+import Nav from '../components/nav';
 
 export default class CoreLayout extends Component {
   constructor(props) {

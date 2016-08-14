@@ -1,6 +1,3 @@
-// Import Styles
-import './UserListComponent.scss';
-
 import React, { Component } from 'react';
 import moment from 'moment';
 

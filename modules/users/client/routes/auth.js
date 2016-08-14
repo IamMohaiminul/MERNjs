@@ -3,8 +3,8 @@ import { Route, IndexRoute } from 'react-router';
 
 import * as AuthService from '../services/auth';
 
-import AuthLayout from '../layouts/AuthLayout';
-import AuthComponent from '../components/AuthComponent';
+import AuthLayout from '../layouts/auth-layout';
+import AuthComponent from '../components/auth-component';
 
 function isGuestRouter(nextState, replaceState) {
   AuthService.isGuestRouter(nextState, replaceState);

@@ -1,9 +1,6 @@
-// Import Styles
-import './UserLayout.scss';
-
 import React, { Component } from 'react';
 
-import NavComponent from '../components/NavComponent';
+import NavComponent from '../components/nav-component';
 
 class UserLayout extends Component {
   render() {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { createUser } from '../actions/index';
 
-import UserCreateComponent from '../components/UserCreateComponent';
+import UserCreateComponent from '../components/user-create-component';
 
 class UserCreateContainer extends Component {
   render() {

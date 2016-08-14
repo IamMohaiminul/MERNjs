@@ -1,6 +1,3 @@
-// Import Styles
-import './UserCreateComponent.scss';
-
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr';

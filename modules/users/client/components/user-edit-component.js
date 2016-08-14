@@ -1,12 +1,9 @@
-// Import Styles
-import './EditUserComponent.scss';
-
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import toastr from 'toastr';
 
-class EditUserComponent extends Component {
+class UserEditComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -168,4 +165,4 @@ class EditUserComponent extends Component {
   }
 }
 
-export default EditUserComponent;
+export default UserEditComponent;

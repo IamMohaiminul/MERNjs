@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 
 import { authUser } from '../actions/index';
 
-import LoginComponent from '../components/LoginComponent';
+import LoginComponent from '../components/login-component';
 
 class LoginContainer extends Component {
   render() {

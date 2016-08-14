@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 import { updateUser, deleteUser } from '../actions/index';
 
-import EditUserComponent from '../components/EditUserComponent';
+import UserEditComponent from '../components/user-edit-component';
 
-class EditUserContainer extends Component {
+class UserEditContainer extends Component {
   render() {
     return (
-      <EditUserComponent
+      <UserEditComponent
         user={this.props.user}
         updateUser={this.updateUser.bind(this)}
         deleteUser={this.deleteUser.bind(this)} />
@@ -25,8 +25,8 @@ class EditUserContainer extends Component {
   }
 }
 
-// Get apps store and pass it as props to EditUserContainer
-//  > whenever store changes, the EditUserContainer will automatically re-render
+// Get apps store and pass it as props to UserEditContainer
+//  > whenever store changes, the UserEditContainer will automatically re-render
 // "store.activeUser" is set in reducers/index.js
 function mapStateToProps(store) {
   return {
@@ -34,9 +34,9 @@ function mapStateToProps(store) {
   };
 }
 
-// Get actions and pass them as props to to EditUserContainer
-//  > now EditUserContainer has this.props.updateUser
-//  > now EditUserContainer has this.props.deleteUser
+// Get actions and pass them as props to to UserEditContainer
+//  > now UserEditContainer has this.props.updateUser
+//  > now UserEditContainer has this.props.deleteUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     updateUser: updateUser,
@@ -44,7 +44,7 @@ function matchDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-// We don't want to return the plain EditUserContainer (component) anymore,
+// We don't want to return the plain UserEditContainer (component) anymore,
 // we want to return the smart Container
-//  > EditUserContainer is now aware of state and actions
-export default connect(mapStateToProps, matchDispatchToProps)(EditUserContainer);
+//  > UserEditContainer is now aware of state and actions
+export default connect(mapStateToProps, matchDispatchToProps)(UserEditContainer);

@@ -1,12 +1,9 @@
-// Import Styles
-import './UserComponent.scss';
-
 import React, { Component } from 'react';
 
-import UserCreateContainer from '../containers/UserCreateContainer';
-import UserListContainer from '../containers/UserListContainer';
-import UserDetailContainer from '../containers/UserDetailContainer';
-import EditUserContainer from '../containers/EditUserContainer';
+import UserCreateContainer from '../containers/user-create-container';
+import UserListContainer from '../containers/user-list-container';
+import UserDetailContainer from '../containers/user-detail-container';
+import UserEditContainer from '../containers/user-edit-container';
 
 class UserComponent extends Component {
   render() {
@@ -22,7 +19,7 @@ class UserComponent extends Component {
               <UserDetailContainer />
             </div>
             <div className='col-xs-4'>
-              <EditUserContainer />
+              <UserEditContainer />
             </div>
           </div>
           <div className='row'>
