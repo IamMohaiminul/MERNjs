@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 import toastr from 'toastr';
 
-import { authUser } from '../actions/index';
-import LoginComponent from '../components/login-component';
+import {authUser} from '../actions/index';
+import LoginComponent from '../components/login-component.jsx';
 
 class LoginContainer extends Component {
   render() {
-    return (
-      <LoginComponent
-        authUser={this.authUser.bind(this)} />
-    );
+    return (<LoginComponent authUser={this.authUser.bind(this)} />);
   }
 
   authUser(user) {

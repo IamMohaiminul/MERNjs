@@ -1,8 +1,9 @@
-import { browserHistory } from 'react-router';
+import {
+  browserHistory
+} from 'react-router';
+import moment from 'moment';
 import cookie from 'react-cookie';
 import toastr from 'toastr';
-
-import config from '../../../../config';
 
 /**
  * check user authentication from react router
@@ -10,7 +11,7 @@ import config from '../../../../config';
  * @param replaceState
  * @returns void
  */
-export function isAuthRouter (nextState, replaceState) {
+export function isAuthRouter(nextState, replaceState) {
   if (!cookie.load('x-access-token')) {
     toastr.warning('Need to login.');
     replaceState('/auth');
@@ -23,7 +24,7 @@ export function isAuthRouter (nextState, replaceState) {
  * @param replaceState
  * @returns void
  */
-export function isGuestRouter (nextState, replaceState) {
+export function isGuestRouter(nextState, replaceState) {
   if (cookie.load('x-access-token')) {
     toastr.info('Already login');
     replaceState('/users');
@@ -36,7 +37,7 @@ export function isGuestRouter (nextState, replaceState) {
  * @param replaceState
  * @returns void
  */
-export function logOutRouter (nextState, replaceState) {
+export function logOutRouter(nextState, replaceState) {
   cookie.remove('x-access-token');
   toastr.success('Logout successfully');
   replaceState('/auth');
@@ -48,7 +49,7 @@ export function logOutRouter (nextState, replaceState) {
  * @param replaceState
  * @returns boolean
  */
-export function isAuth () {
+export function isAuth() {
   if (cookie.load('x-access-token')) {
     return true;
   } else {
@@ -62,7 +63,7 @@ export function isAuth () {
  * @param replaceState
  * @returns boolean
  */
-export function isAuthWithFailTrigger () {
+export function isAuthWithFailTrigger() {
   if (cookie.load('x-access-token')) {
     return true;
   } else {
@@ -75,13 +76,15 @@ export function isAuthWithFailTrigger () {
  * get token from react cookie
  * @returns token
  */
-export function getToken () {
+export function getToken() {
   return cookie.load('x-access-token');
 };
 /**
  * set token to react cookie
  * @returns void
  */
-export function setToken (token) {
-  cookie.save('x-access-token', token, { expires: config.REACT_COOKIE.EXPIRES });
+export function setToken(token) {
+  cookie.save('x-access-token', token, {
+    expires: moment().add(1, 'h').toDate()
+  });
 };

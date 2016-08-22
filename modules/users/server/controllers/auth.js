@@ -1,9 +1,8 @@
+import config from 'config';
 import jwt from 'jsonwebtoken';
 import sanitizeHtml from 'sanitize-html';
 
 import User from '../models';
-
-import config from '../../../../config';
 
 /**
  * authenticate a user
@@ -32,8 +31,8 @@ export function authenticateUser(req, res) {
       } else {
         // if user is found and password is right
         // create a token
-        var token = jwt.sign(user, config.JWT.SECRET, {
-          expiresIn: config.JWT.EXPIRES
+        var token = jwt.sign(user, config.get('JWT.SECRET'), {
+          expiresIn: config.get('JWT.EXPIRES')
         });
         // return the information including token as JSON
         return res.json({

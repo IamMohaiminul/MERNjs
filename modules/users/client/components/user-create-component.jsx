@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr';
 
@@ -12,21 +12,13 @@ class UserCreateComponent extends Component {
             <div className="form-group">
               <label htmlFor="username" className="col-xs-2 control-label">Username</label>
               <div className="col-xs-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  ref="username"
-                  placeholder="Username" />
+                <input type="text" className="form-control" ref="username" placeholder="Username"/>
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="password" className="col-xs-2 control-label">Password</label>
               <div className="col-xs-10">
-                <input
-                  type="password"
-                  className="form-control"
-                  ref="password"
-                  placeholder="Password" />
+                <input type="password" className="form-control" ref="password" placeholder="Password"/>
               </div>
             </div>
             <div className="form-group">

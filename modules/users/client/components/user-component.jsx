@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import UserCreateContainer from '../containers/user-create-container';
-import UserListContainer from '../containers/user-list-container';
-import UserDetailContainer from '../containers/user-detail-container';
-import UserEditContainer from '../containers/user-edit-container';
+import UserCreateContainer from '../containers/user-create-container.jsx';
+import UserListContainer from '../containers/user-list-container.jsx';
+import UserDetailContainer from '../containers/user-detail-container.jsx';
+import UserEditContainer from '../containers/user-edit-container.jsx';
 
 class UserComponent extends Component {
   render() {
@@ -13,18 +13,18 @@ class UserComponent extends Component {
           <h1 className='text-center'>Users Component</h1>
           <div className='row'>
             <div className='col-xs-4'>
-              <UserCreateContainer />
+              <UserCreateContainer/>
             </div>
             <div className='col-xs-4'>
-              <UserDetailContainer />
+              <UserDetailContainer/>
             </div>
             <div className='col-xs-4'>
-              <UserEditContainer />
+              <UserEditContainer/>
             </div>
           </div>
           <div className='row'>
             <div className='col-xs-12'>
-              <UserListContainer />
+              <UserListContainer/>
             </div>
           </div>
         </div>

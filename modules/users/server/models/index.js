@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, {
+  Schema
+} from 'mongoose';
 import bcrypt from 'bcrypt-nodejs';
-
-const Schema = mongoose.Schema;
 
 // create a schema
 const userSchema = new Schema({
@@ -23,6 +23,8 @@ const userSchema = new Schema({
   },
   createdAt: Date,
   updatedAt: Date
+}, {
+  versionKey: false
 });
 
 // on every save, add the date
@@ -38,22 +40,26 @@ userSchema.pre('save', function(next) {
   next();
 });
 
+
 /*
  * Methods.......
  */
+
 // generating a hash
 userSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
 
 // checking if password is valid
 userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+  return bcrypt.compareSync(password, this.password);
 };
+
 
 // the schema is useless so far
 // we need to create a model using it
 const User = mongoose.model('User', userSchema);
+
 
 // make this available to our users in our Node applications
 export default User;

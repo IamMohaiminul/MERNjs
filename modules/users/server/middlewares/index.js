@@ -1,6 +1,5 @@
+import config from 'config';
 import jwt from 'jsonwebtoken';
-
-import config from '../../../../config';
 
 /**
  * verify a jwt token
@@ -14,7 +13,7 @@ export function verifyToken(req, res, next) {
   // decode token
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, config.JWT.SECRET, function(err, decoded) {
+    jwt.verify(token, config.get('JWT.SECRET'), function(err, decoded) {
       if (err) {
         return res.json({
           success: false,

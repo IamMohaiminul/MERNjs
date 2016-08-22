@@ -1,9 +1,11 @@
 /* Login Component CSS declarations go here */
+
 .login-box-body {
   padding: 20px;
   border-top: 0;
   color: #666;
 }
+
 .login-box-msg {
   margin: 0;
   text-align: center;

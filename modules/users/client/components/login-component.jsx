@@ -1,7 +1,7 @@
 // Import CSS
 import './login-component.css';
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr';
 
@@ -12,19 +12,11 @@ class LoginComponent extends Component {
         <p className="login-box-msg">Sign in to start your session</p>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group has-feedback">
-            <input
-              type="text"
-              className="form-control"
-              ref="username"
-              placeholder="Username" />
+            <input type="text" className="form-control" ref="username" placeholder="Username"/>
             <span className="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div className="form-group has-feedback">
-            <input
-              type="password"
-              className="form-control"
-              ref="password"
-              placeholder="Password" />
+            <input type="password" className="form-control" ref="password" placeholder="Password"/>
             <span className="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div className="row">

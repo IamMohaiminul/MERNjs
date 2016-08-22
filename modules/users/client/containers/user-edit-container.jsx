@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import toastr from 'toastr';
 
-import { updateUser, deleteUser, getAllUser } from '../actions/index';
-import UserEditComponent from '../components/user-edit-component';
+import {updateUser, deleteUser, getAllUser} from '../actions/index';
+import UserEditComponent from '../components/user-edit-component.jsx';
 
 class UserEditContainer extends Component {
   render() {
@@ -13,7 +13,7 @@ class UserEditContainer extends Component {
         user={this.props.user}
         updateUser={this.updateUser.bind(this)}
         deleteUser={this.deleteUser.bind(this)} />
-    );
+      );
   }
 
   updateUser(user, _id) {
@@ -41,9 +41,7 @@ class UserEditContainer extends Component {
 //  > whenever store changes, the UserEditContainer will automatically re-render
 // "store.activeUser" is set in reducers/index.js
 function mapStateToProps(store) {
-  return {
-    user: store.activeUser
-  };
+  return {user: store.activeUser};
 }
 
 // Get actions and pass them as props to to UserEditContainer

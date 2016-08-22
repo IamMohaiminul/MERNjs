@@ -14,20 +14,14 @@ To get started, first install all the necessary dependencies
 ```
 Start the development server (changes will now update live in browser)
 ```
-> npm run start
+> npm start
+```
+Start the development server with debug mode (changes will now update live in browser)
+```
+> npm run debug
 ```
 *Note : Please make sure your MongoDB is running.*
 
 To view your project, go to: [http://localhost:3000/](http://localhost:3000/)
 
 To view your project's RESTful API, go to: [http://localhost:3000/api](http://localhost:3000/api)
-
-To generate documentation
-```
-> npm run docs
-```
-Start the documentation server
-```
-> npm run doc
-```
-To view your documentation, go to: [http://localhost:5000/](http://localhost:5000/)

@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import toastr from 'toastr';
 
-import { createUser, getAllUser } from '../actions/index';
-import UserCreateComponent from '../components/user-create-component';
+import {createUser, getAllUser} from '../actions/index';
+import UserCreateComponent from '../components/user-create-component.jsx';
 
 class UserCreateContainer extends Component {
   render() {
-    return (
-      <UserCreateComponent
-        createUser={this.createUser.bind(this)} />
-    );
+    return (<UserCreateComponent createUser={this.createUser.bind(this)} />);
   }
 
   createUser(user) {

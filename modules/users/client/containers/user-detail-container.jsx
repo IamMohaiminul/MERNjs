@@ -1,23 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import UserDetailComponent from '../components/user-detail-component';
+import UserDetailComponent from '../components/user-detail-component.jsx';
 
 class UserDetailContainer extends Component {
   render() {
-    return (
-      <UserDetailComponent
-        user={this.props.user} />
-    );
+    return (<UserDetailComponent user={this.props.user}/>);
   }
 }
 
 // Get apps store and pass it as props to UserDetailContainer
 //  > whenever store changes, the UserDetailContainer will automatically re-render
 function mapStateToProps(store) {
-  return {
-    user: store.activeUser
-  };
+  return {user: store.activeUser};
 }
 
 // We don't want to return the plain UserDetailContainer (component) anymore,

@@ -1,7 +1,8 @@
 import $ from 'jquery';
 
 import * as AuthService from '../services/auth';
-import config from '../../../../config';
+
+const API_URL = 'http://localhost:3000/api/';
 
 /*
  * get all user
@@ -12,15 +13,14 @@ export const getAllUser = () => {
     let payload = [];
     $.ajax({
       type: "GET",
-      beforeSend: function (req)
-      {
+      beforeSend: function(req) {
         req.setRequestHeader("x-access-token", AuthService.getToken());
       },
-      url: config.API_URL + 'users',
+      url: API_URL + 'users',
       success: function(data) {
         payload = data
       },
-      error: function (xhr, sts, err) {
+      error: function(xhr, sts, err) {
         console.log("userReducer: ", xhr, sts, err);
       },
       async: false
@@ -54,16 +54,15 @@ export const createUser = (user) => {
     let payload = {};
     $.ajax({
       type: "POST",
-      beforeSend: function (req)
-      {
+      beforeSend: function(req) {
         req.setRequestHeader("x-access-token", AuthService.getToken());
       },
-      url: config.API_URL + 'users',
+      url: API_URL + 'users',
       data: user,
       success: function(data) {
         payload = data;
       },
-      error: function (xhr, sts, err) {
+      error: function(xhr, sts, err) {
         console.warn("createUser: ", xhr, sts, err);
       },
       async: false
@@ -84,16 +83,15 @@ export const updateUser = (user, _id) => {
     let payload = {};
     $.ajax({
       type: "PUT",
-      beforeSend: function (req)
-      {
+      beforeSend: function(req) {
         req.setRequestHeader("x-access-token", AuthService.getToken());
       },
-      url: config.API_URL + 'users/' + _id,
+      url: API_URL + 'users/' + _id,
       data: user,
       success: function(data) {
         payload = data;
       },
-      error: function (xhr, sts, err) {
+      error: function(xhr, sts, err) {
         console.warn("updateUser: ", xhr, sts, err);
       },
       async: false
@@ -114,15 +112,14 @@ export const deleteUser = (_id) => {
     let payload = {};
     $.ajax({
       type: "DELETE",
-      beforeSend: function (req)
-      {
+      beforeSend: function(req) {
         req.setRequestHeader("x-access-token", AuthService.getToken());
       },
-      url: config.API_URL + 'users/' + _id,
+      url: API_URL + 'users/' + _id,
       success: function(data) {
         payload = data;
       },
-      error: function (xhr, sts, err) {
+      error: function(xhr, sts, err) {
         console.warn("deleteUser: ", xhr, sts, err);
       },
       async: false
@@ -141,13 +138,13 @@ export const authUser = (user) => {
   let payload = {};
   $.ajax({
     type: "POST",
-    url: config.API_URL + 'auth',
+    url: API_URL + 'auth',
     data: user,
     success: function(data) {
       AuthService.setToken(data.token);
       payload = data;
     },
-    error: function (xhr, sts, err) {
+    error: function(xhr, sts, err) {
       console.warn("authUser: ", xhr, sts, err);
     },
     async: false

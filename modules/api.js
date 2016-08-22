@@ -7,7 +7,7 @@ import users from './users/server/routes/users';
 
 const apiRoutes = express.Router();
 
-apiRoutes.get('/', function (req, res) {
+apiRoutes.get('/', function(req, res) {
   return res.json({
     success: true,
     message: 'Welcome to MERNjs RESTful API services!'

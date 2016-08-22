@@ -1,4 +1,5 @@
 # All generated files
-app.min.js
+bundle.js
+bundle.min.js
 *.hot-update.js
 *.hot-update.json

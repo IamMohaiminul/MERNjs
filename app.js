@@ -1,3 +1,5 @@
+'use strict';
+
 import express from 'express';
 import path from 'path';
 import favicon from 'serve-favicon';
@@ -9,22 +11,31 @@ import api from './modules/api';
 
 const app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
-app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // route handlers
 
 // api handler
 app.use('/api', api);
-// handle every other route with index.html, which will contain
+
+// handle every other route with index.pug, which will contain
 // a script tag to your application's JavaScript file(s).
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'views', 'index.html'));
-});
+app.get('*', function(req, res) {
+  res.render('index', {
+    title: 'MERNjs'
+  })
+})
 
 // error handlers
 
@@ -52,4 +63,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-module.exports = app;
+export default app;

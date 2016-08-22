@@ -1,30 +1,32 @@
 #!/usr/bin/env node
 
+'use strict';
+
 /**
  * Module dependencies.
  */
 
 import app from '../app';
 import debug from 'debug';
+import config from 'config';
 import mongoose from 'mongoose';
 import http from 'http';
-
-import config from '../config';
 
 /**
  * Get database from config and connect in Express throw mongoose.
  */
 
-mongoose.connect(config.MONGO_URL);
+mongoose.connect(config.get('MONGO_URL'));
 mongoose.connection.on('error', function() {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
+mongoose.Promise = Promise;
 
 /**
  * Get port from config and store in Express.
  */
 
-const port = normalizePort(config.PORT);
+const port = normalizePort(config.get('PORT'));
 app.set('port', port);
 
 /**
@@ -70,9 +72,9 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = typeof port === 'string' ?
+    'Pipe ' + port :
+    'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -95,8 +97,8 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  const bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
   debug('MERNjs:server')('Listening on ' + bind);
 }

@@ -4,33 +4,25 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  devServer: {
-    inline: true,
-    contentBase: './docs',
-    port: 5000
-  },
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    './modules/app.js'
+    './modules/index.jsx'
   ],
   output: {
     path: path.join(__dirname, 'public/javascripts'),
-    filename: 'app.min.js'
+    filename: 'bundle.js'
   },
   module: {
-    loaders: [
-      {
-        test: /\.(scss|css)$/,
-        include: __dirname,
-        loaders: [ 'style', 'css', 'sass' ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        include: __dirname,
-        loaders: [ 'babel' ]
-      }
-    ]
+    loaders: [{
+      test: /\.(scss|css)$/,
+      include: __dirname,
+      loaders: ['style', 'css', 'sass']
+    }, {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      include: __dirname,
+      loaders: ['babel']
+    }]
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

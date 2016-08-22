@@ -150,7 +150,9 @@ export function updateUser(req, res) {
  * @returns void
  */
 export function deleteUser(req, res) {
-  User.remove({ _id: req.params._id }).exec((err, user) => {
+  User.remove({
+    _id: req.params._id
+  }).exec((err, user) => {
     if (err) {
       return res.json({
         success: false,

@@ -1,24 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+
+/* Auth Layout CSS declarations go here */
+
 body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #f3f5f9;
 }
+
 footer {
   margin-top: 25px;
 }
+
 .form-control {
   border-radius: 0;
   box-shadow: none;
   border-color: #d2d6de;
 }
+
 .form-control:focus {
   box-shadow: none;
 }
+
 .form-control::-moz-placeholder,
 .form-control:-ms-input-placeholder,
 .form-control::-webkit-input-placeholder {
   opacity: 1;
 }
+
 .btn-flat {
   border-radius: 0;
   -webkit-box-shadow: none;
