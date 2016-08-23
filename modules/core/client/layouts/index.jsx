@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 
 import Nav from '../components/nav.jsx';
 

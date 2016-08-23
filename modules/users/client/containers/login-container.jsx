@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
+'use strict';
+
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import toastr from 'toastr';
 
-import {authUser} from '../actions/index';
+import { authUser } from '../actions/index';
 import LoginComponent from '../components/login-component.jsx';
 
 class LoginContainer extends Component {
@@ -16,8 +18,7 @@ class LoginContainer extends Component {
     const res = this.props.authUser(user);
     if (res.payload.success) {
       toastr.success(res.payload.message);
-      // triggered to users
-      browserHistory.push('/users');
+      browserHistory.push('/users');  // triggered to users
     } else {
       toastr.warning(res.payload.message);
     }
@@ -28,7 +29,7 @@ class LoginContainer extends Component {
 //  > now AuthContainer has this.props.createUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    authUser: authUser
+    authUser: authUser,
   }, dispatch);
 }
 

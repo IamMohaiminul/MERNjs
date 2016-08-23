@@ -1,3 +1,5 @@
+'use strict';
+
 import $ from 'jquery';
 
 import * as AuthService from '../services/auth';
@@ -12,23 +14,26 @@ export const getAllUser = () => {
   if (AuthService.isAuthWithFailTrigger()) {
     let payload = [];
     $.ajax({
-      type: "GET",
-      beforeSend: function(req) {
-        req.setRequestHeader("x-access-token", AuthService.getToken());
+      type: 'GET',
+      beforeSend: function (req) {
+        req.setRequestHeader('x-access-token', AuthService.getToken());
       },
+
       url: API_URL + 'users',
-      success: function(data) {
-        payload = data
+      success: function (data) {
+        payload = data;
       },
-      error: function(xhr, sts, err) {
-        console.log("userReducer: ", xhr, sts, err);
+
+      error: function (xhr, sts, err) {
+        console.log('userReducer: ', xhr, sts, err);
       },
-      async: false
+
+      async: false,
     });
     return {
       type: 'USER_LIST',
-      payload: payload
-    }
+      payload: payload,
+    };
   }
 };
 
@@ -40,8 +45,8 @@ export const selectUser = (user) => {
   if (AuthService.isAuthWithFailTrigger()) {
     return {
       type: 'USER_SELECTED',
-      payload: user
-    }
+      payload: user,
+    };
   }
 };
 
@@ -53,24 +58,27 @@ export const createUser = (user) => {
   if (AuthService.isAuthWithFailTrigger()) {
     let payload = {};
     $.ajax({
-      type: "POST",
-      beforeSend: function(req) {
-        req.setRequestHeader("x-access-token", AuthService.getToken());
+      type: 'POST',
+      beforeSend: function (req) {
+        req.setRequestHeader('x-access-token', AuthService.getToken());
       },
+
       url: API_URL + 'users',
       data: user,
-      success: function(data) {
+      success: function (data) {
         payload = data;
       },
-      error: function(xhr, sts, err) {
-        console.warn("createUser: ", xhr, sts, err);
+
+      error: function (xhr, sts, err) {
+        console.warn('createUser: ', xhr, sts, err);
       },
-      async: false
+
+      async: false,
     });
     return {
       type: 'USER_CREATED',
-      payload: payload
-    }
+      payload: payload,
+    };
   }
 };
 
@@ -82,24 +90,27 @@ export const updateUser = (user, _id) => {
   if (AuthService.isAuthWithFailTrigger()) {
     let payload = {};
     $.ajax({
-      type: "PUT",
-      beforeSend: function(req) {
-        req.setRequestHeader("x-access-token", AuthService.getToken());
+      type: 'PUT',
+      beforeSend: function (req) {
+        req.setRequestHeader('x-access-token', AuthService.getToken());
       },
+
       url: API_URL + 'users/' + _id,
       data: user,
-      success: function(data) {
+      success: function (data) {
         payload = data;
       },
-      error: function(xhr, sts, err) {
-        console.warn("updateUser: ", xhr, sts, err);
+
+      error: function (xhr, sts, err) {
+        console.warn('updateUser: ', xhr, sts, err);
       },
-      async: false
+
+      async: false,
     });
     return {
       type: 'USER_UPDATED',
-      payload: payload
-    }
+      payload: payload,
+    };
   }
 };
 
@@ -111,23 +122,26 @@ export const deleteUser = (_id) => {
   if (AuthService.isAuthWithFailTrigger()) {
     let payload = {};
     $.ajax({
-      type: "DELETE",
-      beforeSend: function(req) {
-        req.setRequestHeader("x-access-token", AuthService.getToken());
+      type: 'DELETE',
+      beforeSend: function (req) {
+        req.setRequestHeader('x-access-token', AuthService.getToken());
       },
+
       url: API_URL + 'users/' + _id,
-      success: function(data) {
+      success: function (data) {
         payload = data;
       },
-      error: function(xhr, sts, err) {
-        console.warn("deleteUser: ", xhr, sts, err);
+
+      error: function (xhr, sts, err) {
+        console.warn('deleteUser: ', xhr, sts, err);
       },
-      async: false
+
+      async: false,
     });
     return {
       type: 'USER_DELETED',
-      payload: payload
-    }
+      payload: payload,
+    };
   }
 };
 
@@ -137,20 +151,22 @@ export const deleteUser = (_id) => {
 export const authUser = (user) => {
   let payload = {};
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: API_URL + 'auth',
     data: user,
-    success: function(data) {
+    success: function (data) {
       AuthService.setToken(data.token);
       payload = data;
     },
-    error: function(xhr, sts, err) {
-      console.warn("authUser: ", xhr, sts, err);
+
+    error: function (xhr, sts, err) {
+      console.warn('authUser: ', xhr, sts, err);
     },
-    async: false
+
+    async: false,
   });
   return {
     type: 'USER_AUTHED',
-    payload: payload
-  }
+    payload: payload,
+  };
 };

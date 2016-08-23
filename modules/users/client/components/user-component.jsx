@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 
 import UserCreateContainer from '../containers/user-create-container.jsx';
 import UserListContainer from '../containers/user-list-container.jsx';

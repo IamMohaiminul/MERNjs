@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+'use strict';
+
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import toastr from 'toastr';
 
-import {getAllUser, selectUser} from '../actions/index';
+import { getAllUser, selectUser } from '../actions/index';
 import UserListComponent from '../components/user-list-component.jsx';
 
 class UserListContainer extends Component {
@@ -23,7 +25,9 @@ class UserListContainer extends Component {
 // Get apps store and pass it as props to UserListContainer
 //  > whenever store changes, the UserListContainer will automatically re-render
 function mapStateToProps(store) {
-  return {users: store.users};
+  return {
+    users: store.users,
+  };
 }
 
 // Get actions and pass them as props to to UserListContainer
@@ -31,7 +35,7 @@ function mapStateToProps(store) {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     getAllUser: getAllUser,
-    selectUser: selectUser
+    selectUser: selectUser,
   }, dispatch);
 }
 

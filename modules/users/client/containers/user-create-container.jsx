@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+'use strict';
+
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import toastr from 'toastr';
 
-import {createUser, getAllUser} from '../actions/index';
+import { createUser, getAllUser } from '../actions/index';
 import UserCreateComponent from '../components/user-create-component.jsx';
 
 class UserCreateContainer extends Component {
@@ -18,6 +20,7 @@ class UserCreateContainer extends Component {
     } else {
       toastr.warning(res.payload.message);
     }
+
     this.props.getAllUser();
   }
 }
@@ -27,7 +30,7 @@ class UserCreateContainer extends Component {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     createUser: createUser,
-    getAllUser: getAllUser
+    getAllUser: getAllUser,
   }, dispatch);
 }
 

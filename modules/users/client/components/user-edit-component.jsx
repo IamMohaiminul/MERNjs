@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import toastr from 'toastr';
@@ -8,14 +10,18 @@ class UserEditComponent extends Component {
     super(props);
 
     this.state = {
-      username: null
+      username: null,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
-    if (nextProps.user && nextProps.user.username && !_.isEqual(nextProps.user.username, this.state.username)) {
-      this.setState({username: nextProps.user.username});
+    if (nextProps.user &&
+      nextProps.user.username &&
+      !_.isEqual(nextProps.user.username, this.state.username)) {
+      this.setState({
+        username: nextProps.user.username,
+      });
     }
   }
 
@@ -34,9 +40,12 @@ class UserEditComponent extends Component {
                       Username
                     </label>
                     <div className="col-xs-10">
-                      <input type="text" className="form-control" ref="username" value={this.state.username} onChange={this
-                        .handleUsernameChange
-                        .bind(this)} placeholder="Username"/>
+                      <input type="text"
+                        className="form-control"
+                        ref="username"
+                        value={this.state.username}
+                        onChange={this.handleUsernameChange.bind(this)}
+                        placeholder="Username" />
                     </div>
                   </div>
                   <div className="form-group">
@@ -44,12 +53,19 @@ class UserEditComponent extends Component {
                       Password
                     </label>
                     <div className="col-xs-10">
-                      <input type="password" className="form-control" ref="password" placeholder="Password"/>
+                      <input
+                        type="password"
+                        className="form-control"
+                        ref="password"
+                        placeholder="Password" />
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-xs-offset-2 col-xs-5">
-                      <a className="btn btn-default btn-block btn-flat" data-toggle="modal" data-target="#userDeleteConfirm">
+                      <a
+                        className="btn btn-default btn-block btn-flat"
+                        data-toggle="modal"
+                        data-target="#userDeleteConfirm">
                         Delete User
                       </a>
                     </div>
@@ -65,7 +81,11 @@ class UserEditComponent extends Component {
                   <div className="modal-dialog" role="document">
                     <div className="modal-content">
                       <div className="modal-header">
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button
+                          type="button"
+                          className="close"
+                          data-dismiss="modal"
+                          aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                         <h4 className="modal-title text-center">User Delete Confirmation</h4>
@@ -76,14 +96,19 @@ class UserEditComponent extends Component {
                       <div className="modal-footer">
                         <div className="row">
                           <div className="col-xs-offset-6 col-xs-3">
-                            <button type="button" className="btn btn-default btn-block btn-flat" data-dismiss="modal">
+                            <button
+                              type="button"
+                              className="btn btn-default btn-block btn-flat"
+                              data-dismiss="modal">
                               No
                             </button>
                           </div>
                           <div className="col-xs-3">
-                            <button type="button" className="btn btn-primary btn-block btn-flat" data-dismiss="modal" onClick={this
-                              .deleteUser
-                              .bind(this)}>
+                            <button
+                              type="button"
+                              className="btn btn-primary btn-block btn-flat"
+                              data-dismiss="modal"
+                              onClick={this.deleteUser.bind(this)}>
                               Yes
                             </button>
                           </div>
@@ -105,7 +130,9 @@ class UserEditComponent extends Component {
   }
 
   handleUsernameChange(event) {
-    this.setState({username: event.target.value});
+    this.setState({
+      username: event.target.value,
+    });
   }
 
   handleSubmit(event) {
@@ -124,6 +151,7 @@ class UserEditComponent extends Component {
       toastr.warning('Username is required');
       return false;
     }
+
     if (password.length < 1) {
       toastr.warning('Password is required');
       return false;
@@ -132,18 +160,14 @@ class UserEditComponent extends Component {
     // create object
     const user = {
       username: username,
-      password: password
-    }
+      password: password,
+    };
 
     // call the action
-    this
-      .props
-      .updateUser(user, this.props.user._id);
+    this.props.updateUser(user, this.props.user._id);
 
     // Clear form
-    ReactDOM
-      .findDOMNode(this.refs.password)
-      .value = "";
+    ReactDOM.findDOMNode(this.refs.password).value = '';
   }
 
   deleteUser(event) {

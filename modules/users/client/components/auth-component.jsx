@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 
 import LoginContainer from '../containers/login-container.jsx';
 

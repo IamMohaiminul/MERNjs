@@ -1,6 +1,6 @@
-import {
-  browserHistory
-} from 'react-router';
+'use strict';
+
+import { browserHistory } from 'react-router';
 import moment from 'moment';
 import cookie from 'react-cookie';
 import toastr from 'toastr';
@@ -16,7 +16,7 @@ export function isAuthRouter(nextState, replaceState) {
     toastr.warning('Need to login.');
     replaceState('/auth');
   }
-};
+}
 
 /**
  * check guest from react router
@@ -29,7 +29,7 @@ export function isGuestRouter(nextState, replaceState) {
     toastr.info('Already login');
     replaceState('/users');
   }
-};
+}
 
 /**
  * trigger to logout for react-router
@@ -41,7 +41,7 @@ export function logOutRouter(nextState, replaceState) {
   cookie.remove('x-access-token');
   toastr.success('Logout successfully');
   replaceState('/auth');
-};
+}
 
 /**
  * check user authentication
@@ -55,7 +55,7 @@ export function isAuth() {
   } else {
     return false;
   }
-};
+}
 
 /**
  * check user authentication
@@ -70,7 +70,7 @@ export function isAuthWithFailTrigger() {
     toastr.warning('Need to login.');
     browserHistory.push('/auth');
   }
-};
+}
 
 /**
  * get token from react cookie
@@ -78,13 +78,14 @@ export function isAuthWithFailTrigger() {
  */
 export function getToken() {
   return cookie.load('x-access-token');
-};
+}
+
 /**
  * set token to react cookie
  * @returns void
  */
 export function setToken(token) {
   cookie.save('x-access-token', token, {
-    expires: moment().add(1, 'h').toDate()
+    expires: moment().add(1, 'h').toDate(),
   });
-};
+}

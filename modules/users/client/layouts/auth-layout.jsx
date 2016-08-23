@@ -1,7 +1,9 @@
+'use strict';
+
 // Import CSS
 import './auth-layout.css';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class AuthLayout extends Component {
   render() {

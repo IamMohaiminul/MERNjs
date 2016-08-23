@@ -1,5 +1,7 @@
+'use strict';
+
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import * as AuthService from '../services/auth';
 
@@ -17,5 +19,5 @@ export default function () {
       <Route path=':_id' component={UserShow} />
       <Route path=':_id/edit' component={UserEdit} />*/}
     </Route>
-  )
+  );
 };

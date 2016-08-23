@@ -16,11 +16,11 @@ import http from 'http';
  * Get database from config and connect in Express throw mongoose.
  */
 
+mongoose.Promise = Promise;
 mongoose.connect(config.get('MONGO_URL'));
-mongoose.connection.on('error', function() {
+mongoose.connection.on('error', function () {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
-mongoose.Promise = Promise;
 
 /**
  * Get port from config and store in Express.

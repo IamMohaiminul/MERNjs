@@ -1,3 +1,5 @@
+'use strict';
+
 import config from 'config';
 import jwt from 'jsonwebtoken';
 
@@ -8,16 +10,15 @@ import jwt from 'jsonwebtoken';
  * @returns JSON
  */
 export function verifyToken(req, res, next) {
-  // check header for token
-  var token = req.headers['x-access-token'];
+  var token = req.headers['x-access-token'];  // check header for token
   // decode token
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, config.get('JWT.SECRET'), function(err, decoded) {
+    jwt.verify(token, config.get('JWT.SECRET'), function (err, decoded) {
       if (err) {
         return res.json({
           success: false,
-          message: 'Failed to authenticate token.'
+          message: 'Failed to authenticate token.',
         });
       } else {
         // if everything is good, save to request for use in other routes
@@ -30,7 +31,7 @@ export function verifyToken(req, res, next) {
     // return an error
     return res.json({
       success: false,
-      message: 'No token provided.'
+      message: 'No token provided.',
     });
   }
 }

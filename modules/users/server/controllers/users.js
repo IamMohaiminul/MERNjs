@@ -1,3 +1,5 @@
+'use strict';
+
 import sanitizeHtml from 'sanitize-html';
 
 import User from '../models';
@@ -15,13 +17,14 @@ export function getUsers(req, res) {
       return res.json({
         success: false,
         message: 'Unable to get all users.',
-        error: err
+        error: err,
       });
     }
+
     return res.json({
       success: true,
       message: 'All Users',
-      users: users
+      users: users,
     });
   });
 }
@@ -37,19 +40,20 @@ export function addUser(req, res) {
   if (!req.body.username) {
     return res.json({
       success: false,
-      message: 'Username is required.'
+      message: 'Username is required.',
     });
   }
+
   if (!req.body.password) {
     return res.json({
       success: false,
-      message: 'Password is required'
+      message: 'Password is required',
     });
   }
 
   const newUser = new User({
     username: sanitizeHtml(req.body.username),
-    password: new User().generateHash(sanitizeHtml(req.body.password))
+    password: new User().generateHash(sanitizeHtml(req.body.password)),
   });
 
   newUser.save((err, user) => {
@@ -57,13 +61,14 @@ export function addUser(req, res) {
       return res.json({
         success: false,
         message: 'Unable to create a user.',
-        error: err
+        error: err,
       });
     }
+
     return res.json({
       success: true,
       message: 'User is created successfully!',
-      user: user
+      user: user,
     });
   });
 }
@@ -81,13 +86,14 @@ export function getUser(req, res) {
       return res.json({
         success: false,
         message: 'Unable to get a user',
-        error: err
+        error: err,
       });
     }
+
     return res.json({
       success: true,
       message: 'Single User',
-      user: user
+      user: user,
     });
   });
 }
@@ -105,20 +111,21 @@ export function updateUser(req, res) {
       return res.json({
         success: false,
         message: 'Unable to find a user',
-        error: err
+        error: err,
       });
     }
 
     if (!req.body.username) {
       return res.json({
         success: false,
-        message: 'Username is required.'
+        message: 'Username is required.',
       });
     }
+
     if (!req.body.password) {
       return res.json({
         success: false,
-        message: 'Password is required.'
+        message: 'Password is required.',
       });
     }
 
@@ -130,13 +137,14 @@ export function updateUser(req, res) {
         return res.json({
           success: false,
           message: 'Unable to update a user',
-          error: err
+          error: err,
         });
       }
+
       return res.json({
         success: true,
         message: 'User is updated successfully!',
-        user: user
+        user: user,
       });
     });
   });
@@ -151,18 +159,19 @@ export function updateUser(req, res) {
  */
 export function deleteUser(req, res) {
   User.remove({
-    _id: req.params._id
+    _id: req.params._id,
   }).exec((err, user) => {
     if (err) {
       return res.json({
         success: false,
         message: 'Unable to delete a user',
-        error: err
+        error: err,
       });
     }
+
     return res.json({
       success: true,
-      message: 'User is deleted successfully!'
+      message: 'User is deleted successfully!',
     });
   });
 }

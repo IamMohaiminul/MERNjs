@@ -1,6 +1,6 @@
-import mongoose, {
-  Schema
-} from 'mongoose';
+'use strict';
+
+import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt-nodejs';
 
 // create a schema
@@ -9,57 +9,53 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   admin: Boolean,
   location: String,
   meta: {
     age: Number,
-    website: String
+    website: String,
   },
   createdAt: Date,
-  updatedAt: Date
+  updatedAt: Date,
 }, {
-  versionKey: false
+  versionKey: false,
 });
 
 // on every save, add the date
-userSchema.pre('save', function(next) {
-  // get the current date
-  var currentDate = new Date();
-  // change the updated_at field to current date
-  this.updatedAt = currentDate;
+userSchema.pre('save', function (next) {
+  var currentDate = new Date(); // get the current date
+  this.updatedAt = currentDate; // change the updated_at field to current date
   // if created_at doesn't exist, add to that field
   if (!this.createdAt) {
     this.createdAt = currentDate;
   }
+
   next();
 });
-
 
 /*
  * Methods.......
  */
 
 // generating a hash
-userSchema.methods.generateHash = function(password) {
+userSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
 
 // checking if password is valid
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
-
 
 // the schema is useless so far
 // we need to create a model using it
 const User = mongoose.model('User', userSchema);
-
 
 // make this available to our users in our Node applications
 export default User;

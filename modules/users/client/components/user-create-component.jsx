@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr';
 
@@ -18,12 +20,20 @@ class UserCreateComponent extends Component {
             <div className="form-group">
               <label htmlFor="password" className="col-xs-2 control-label">Password</label>
               <div className="col-xs-10">
-                <input type="password" className="form-control" ref="password" placeholder="Password"/>
+                <input
+                  type="password"
+                  className="form-control"
+                  ref="password"
+                  placeholder="Password" />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-offset-7 col-xs-5">
-                <button type="submit" className="btn btn-primary btn-block btn-flat">Add User</button>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block btn-flat">
+                  Add User
+                </button>
               </div>
             </div>
           </form>
@@ -41,6 +51,7 @@ class UserCreateComponent extends Component {
       toastr.warning('Username is required');
       return false;
     }
+
     if (password.length < 1) {
       toastr.warning('Password is required');
       return false;
@@ -49,15 +60,15 @@ class UserCreateComponent extends Component {
     // create object
     const user = {
       username: username,
-      password: password
-    }
+      password: password,
+    };
 
     // call the action
     this.props.createUser(user);
 
     // Clear form
-    ReactDOM.findDOMNode(this.refs.username).value = "";
-    ReactDOM.findDOMNode(this.refs.password).value = "";
+    ReactDOM.findDOMNode(this.refs.username).value = '';
+    ReactDOM.findDOMNode(this.refs.password).value = '';
   }
 }
 

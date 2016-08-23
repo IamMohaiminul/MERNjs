@@ -1,7 +1,9 @@
+'use strict';
+
 // Import CSS
 import './login-component.css';
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import toastr from 'toastr';
 
@@ -43,6 +45,7 @@ class LoginComponent extends Component {
       toastr.warning('Username is required');
       return false;
     }
+
     if (password.length < 1) {
       toastr.warning('Password is required');
       return false;
@@ -51,15 +54,15 @@ class LoginComponent extends Component {
     // create object
     const user = {
       username: username,
-      password: password
-    }
+      password: password,
+    };
 
     // call the action
     this.props.authUser(user);
 
     // Clear form
-    ReactDOM.findDOMNode(this.refs.username).value = "";
-    ReactDOM.findDOMNode(this.refs.password).value = "";
+    ReactDOM.findDOMNode(this.refs.username).value = '';
+    ReactDOM.findDOMNode(this.refs.password).value = '';
   }
 }
 

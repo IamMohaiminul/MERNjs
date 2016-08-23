@@ -1,5 +1,7 @@
+'use strict';
+
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import * as AuthService from '../services/auth';
 
@@ -20,5 +22,5 @@ export default function () {
       <IndexRoute component={AuthComponent} onEnter={isGuestRouter}/>
       <Route path='logout' onEnter={logOutRouter}/>
     </Route>
-  )
+  );
 };

@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+'use strict';
+
+import React, { Component } from 'react';
 import moment from 'moment';
 
 class UserDetailComponent extends Component {
@@ -17,10 +19,10 @@ class UserDetailComponent extends Component {
                   {this.props.user.username}</p>
                 <p>
                   <b>CreatedAt:</b>
-                  {moment(this.props.user.createdAt).format("MMMM Do YYYY, h:mm:ss a")}</p>
+                  {moment(this.props.user.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</p>
                 <p>
                   <b>UpdatedAt:</b>
-                  {moment(this.props.user.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}</p>
+                  {moment(this.props.user.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</p>
               </div>
             : <p>
                 <b>
