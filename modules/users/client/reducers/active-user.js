@@ -11,6 +11,6 @@ export const activeUserReducer = (state, action) => {
     case 'USER_SELECTED':
       return action.payload;
     default:
-      return state ? state : null;
+      return null;
   }
 };
