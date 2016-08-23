@@ -7,15 +7,18 @@ import UserDetailComponent from '../components/user-detail-component.jsx';
 
 class UserDetailContainer extends Component {
   render() {
-    return (<UserDetailComponent user={this.props.user}/>);
+    return (
+      <UserDetailComponent user={this.props.user} />
+    );
   }
 }
 
 // Get apps store and pass it as props to UserDetailContainer
 //  > whenever store changes, the UserDetailContainer will automatically re-render
+// "store.activeUser" is set in reducers/index.js
 function mapStateToProps(store) {
   return {
-    user: store.activeUser,
+    user: store.activeUser
   };
 }
 

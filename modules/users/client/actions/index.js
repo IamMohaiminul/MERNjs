@@ -18,21 +18,18 @@ export const getAllUser = () => {
       beforeSend: function (req) {
         req.setRequestHeader('x-access-token', AuthService.getToken());
       },
-
       url: API_URL + 'users',
       success: function (data) {
         payload = data;
       },
-
       error: function (xhr, sts, err) {
         console.log('userReducer: ', xhr, sts, err);
       },
-
-      async: false,
+      async: false
     });
     return {
       type: 'USER_LIST',
-      payload: payload,
+      payload: payload
     };
   }
 };
@@ -45,7 +42,7 @@ export const selectUser = (user) => {
   if (AuthService.isAuthWithFailTrigger()) {
     return {
       type: 'USER_SELECTED',
-      payload: user,
+      payload: user
     };
   }
 };
@@ -62,22 +59,19 @@ export const createUser = (user) => {
       beforeSend: function (req) {
         req.setRequestHeader('x-access-token', AuthService.getToken());
       },
-
       url: API_URL + 'users',
       data: user,
       success: function (data) {
         payload = data;
       },
-
       error: function (xhr, sts, err) {
         console.warn('createUser: ', xhr, sts, err);
       },
-
-      async: false,
+      async: false
     });
     return {
       type: 'USER_CREATED',
-      payload: payload,
+      payload: payload
     };
   }
 };
@@ -94,22 +88,19 @@ export const updateUser = (user, _id) => {
       beforeSend: function (req) {
         req.setRequestHeader('x-access-token', AuthService.getToken());
       },
-
       url: API_URL + 'users/' + _id,
       data: user,
       success: function (data) {
         payload = data;
       },
-
       error: function (xhr, sts, err) {
         console.warn('updateUser: ', xhr, sts, err);
       },
-
-      async: false,
+      async: false
     });
     return {
       type: 'USER_UPDATED',
-      payload: payload,
+      payload: payload
     };
   }
 };
@@ -126,21 +117,18 @@ export const deleteUser = (_id) => {
       beforeSend: function (req) {
         req.setRequestHeader('x-access-token', AuthService.getToken());
       },
-
       url: API_URL + 'users/' + _id,
       success: function (data) {
         payload = data;
       },
-
       error: function (xhr, sts, err) {
         console.warn('deleteUser: ', xhr, sts, err);
       },
-
-      async: false,
+      async: false
     });
     return {
       type: 'USER_DELETED',
-      payload: payload,
+      payload: payload
     };
   }
 };
@@ -158,15 +146,13 @@ export const authUser = (user) => {
       AuthService.setToken(data.token);
       payload = data;
     },
-
     error: function (xhr, sts, err) {
       console.warn('authUser: ', xhr, sts, err);
     },
-
-    async: false,
+    async: false
   });
   return {
     type: 'USER_AUTHED',
-    payload: payload,
+    payload: payload
   };
 };

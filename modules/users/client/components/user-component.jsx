@@ -15,18 +15,18 @@ class UserComponent extends Component {
           <h1 className='text-center'>Users Component</h1>
           <div className='row'>
             <div className='col-xs-4'>
-              <UserCreateContainer/>
+              <UserCreateContainer />
             </div>
             <div className='col-xs-4'>
-              <UserDetailContainer/>
+              <UserDetailContainer />
             </div>
             <div className='col-xs-4'>
-              <UserEditContainer/>
+              <UserEditContainer />
             </div>
           </div>
           <div className='row'>
             <div className='col-xs-12'>
-              <UserListContainer/>
+              <UserListContainer />
             </div>
           </div>
         </div>

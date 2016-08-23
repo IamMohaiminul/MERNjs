@@ -6,8 +6,5 @@
   "JWT": {
     "SECRET": "474e6e206b7bef61c075693d99d690df",
     "EXPIRES": "1h"
-  },
-  "REACT_COOKIE": {
-    "EXPIRES": ["1", "h"]
   }
 }

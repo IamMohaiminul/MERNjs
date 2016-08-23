@@ -6,11 +6,11 @@
  */
 
 // "state = null" is set so that we don't throw an error when app first boots up
-export const activeUserReducer = (state = null, action) => {
+export const activeUserReducer = (state, action) => {
   switch (action.type) {
     case 'USER_SELECTED':
       return action.payload;
     default:
-      return null;
+      return state ? state : null;
   }
 };

@@ -18,24 +18,26 @@ class UserListContainer extends Component {
       <UserListComponent
         users={this.props.users}
         selectUser={this.props.selectUser} />
-      );
+    );
   }
 }
 
 // Get apps store and pass it as props to UserListContainer
 //  > whenever store changes, the UserListContainer will automatically re-render
+// "store.users" is set in reducers/index.js
 function mapStateToProps(store) {
   return {
-    users: store.users,
+    users: store.users
   };
 }
 
 // Get actions and pass them as props to to UserListContainer
+//  > now UserListContainer has this.props.getAllUser
 //  > now UserListContainer has this.props.selectUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     getAllUser: getAllUser,
-    selectUser: selectUser,
+    selectUser: selectUser
   }, dispatch);
 }
 

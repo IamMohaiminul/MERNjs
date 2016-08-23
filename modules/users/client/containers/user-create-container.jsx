@@ -10,7 +10,9 @@ import UserCreateComponent from '../components/user-create-component.jsx';
 
 class UserCreateContainer extends Component {
   render() {
-    return (<UserCreateComponent createUser={this.createUser.bind(this)} />);
+    return (
+      <UserCreateComponent createUser={this.createUser.bind(this)} />
+    );
   }
 
   createUser(user) {
@@ -20,13 +22,13 @@ class UserCreateContainer extends Component {
     } else {
       toastr.warning(res.payload.message);
     }
-
     this.props.getAllUser();
   }
 }
 
 // Get actions and pass them as props to to UserCreateContainer
 //  > now UserCreateContainer has this.props.createUser
+//  > now UserCreateContainer has this.props.getAllUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     createUser: createUser,

@@ -29,17 +29,17 @@ class UserListComponent extends Component {
   }
 
   renderList() {
-    return this.props.users.map(function (user) {
-        return (
-          <tr key={user._id} onClick={() => this.props.selectUser(user)}>
-            <td>{user._id}</td>
-            <td>{user.username}</td>
-            <td>{user.password}</td>
-            <td>{moment(user.createdAt).format('MMM Do YY, h:mm:ss a')}</td>
-            <td>{moment(user.updatedAt).format('MMM Do YY, h:mm:ss a')}</td>
-          </tr>
-        );
-      });
+    return this.props.users.map((user) => {
+      return (
+        <tr key={user._id} onClick={() => this.props.selectUser(user)}>
+          <td>{user._id}</td>
+          <td>{user.username}</td>
+          <td>{user.password}</td>
+          <td>{moment(user.createdAt).format('MMM Do YY, h:mm:ss a')}</td>
+          <td>{moment(user.updatedAt).format('MMM Do YY, h:mm:ss a')}</td>
+        </tr>
+      );
+    });
   }
 }
 

@@ -15,7 +15,7 @@ class UserEditContainer extends Component {
         user={this.props.user}
         updateUser={this.updateUser.bind(this)}
         deleteUser={this.deleteUser.bind(this)} />
-      );
+    );
   }
 
   updateUser(user, _id) {
@@ -25,7 +25,6 @@ class UserEditContainer extends Component {
     } else {
       toastr.warning(res.payload.message);
     }
-
     this.props.getAllUser();
   }
 
@@ -36,7 +35,6 @@ class UserEditContainer extends Component {
     } else {
       toastr.warning(res.payload.message);
     }
-
     this.props.getAllUser();
   }
 }
@@ -46,18 +44,19 @@ class UserEditContainer extends Component {
 // "store.activeUser" is set in reducers/index.js
 function mapStateToProps(store) {
   return {
-    user: store.activeUser,
+    user: store.activeUser
   };
 }
 
 // Get actions and pass them as props to to UserEditContainer
+//  > now UserEditContainer has this.props.getAllUser
 //  > now UserEditContainer has this.props.updateUser
 //  > now UserEditContainer has this.props.deleteUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    updateUser: updateUser,
-    deleteUser: deleteUser,
     getAllUser: getAllUser,
+    updateUser: updateUser,
+    deleteUser: deleteUser
   }, dispatch);
 }
 

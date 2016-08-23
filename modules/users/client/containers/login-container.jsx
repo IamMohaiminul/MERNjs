@@ -11,29 +11,32 @@ import LoginComponent from '../components/login-component.jsx';
 
 class LoginContainer extends Component {
   render() {
-    return (<LoginComponent authUser={this.authUser.bind(this)} />);
+    return (
+      <LoginComponent authUser={this.authUser.bind(this)} />
+    );
   }
 
   authUser(user) {
     const res = this.props.authUser(user);
     if (res.payload.success) {
       toastr.success(res.payload.message);
-      browserHistory.push('/users');  // triggered to users
+      // triggered to users
+      browserHistory.push('/users');
     } else {
       toastr.warning(res.payload.message);
     }
   }
 }
 
-// Get actions and pass them as props to to AuthContainer
-//  > now AuthContainer has this.props.createUser
+// Get actions and pass them as props to to LoginContainer
+//  > now LoginContainer has this.props.authUser
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    authUser: authUser,
+    authUser: authUser
   }, dispatch);
 }
 
-// We don't want to return the plain AuthContainer (component) anymore,
+// We don't want to return the plain LoginContainer (component) anymore,
 // we want to return the smart Container
-//  > AuthContainer is now aware of actions
+//  > LoginContainer is now aware of actions
 export default connect(null, matchDispatchToProps)(LoginContainer);

@@ -6,7 +6,9 @@ import LoginContainer from '../containers/login-container.jsx';
 
 class AuthComponent extends Component {
   render() {
-    return (<LoginContainer/>);
+    return (
+      <LoginContainer />
+    );
   }
 }
 

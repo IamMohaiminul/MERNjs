@@ -10,7 +10,8 @@ import jwt from 'jsonwebtoken';
  * @returns JSON
  */
 export function verifyToken(req, res, next) {
-  var token = req.headers['x-access-token'];  // check header for token
+  // check header for token
+  var token = req.headers['x-access-token'];
   // decode token
   if (token) {
     // verifies secret and checks exp
@@ -18,7 +19,7 @@ export function verifyToken(req, res, next) {
       if (err) {
         return res.json({
           success: false,
-          message: 'Failed to authenticate token.',
+          message: 'Failed to authenticate token.'
         });
       } else {
         // if everything is good, save to request for use in other routes

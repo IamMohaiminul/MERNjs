@@ -17,9 +17,7 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -33,7 +31,7 @@ app.use('/api', api);
 // a script tag to your application's JavaScript file(s).
 app.get('*', function (req, res) {
   res.render('index', {
-    title: 'MERNjs',
+    title: 'MERNjs'
   });
 });
 
@@ -47,7 +45,7 @@ if (app.get('env') === 'development') {
     res.json({
       success: false,
       message: err.message,
-      error: err,
+      error: err
     });
   });
 }
@@ -59,7 +57,7 @@ app.use(function (err, req, res, next) {
   res.json({
     success: false,
     message: err.message,
-    error: {},
+    error: {}
   });
 });
 

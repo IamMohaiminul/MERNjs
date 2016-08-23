@@ -16,4 +16,6 @@ const store = createStore(userReducers);
 ReactDOM.render(
   <Provider store={store}>
     <Routes/>
-  </Provider>, document.getElementById('app'));
+  </Provider>,
+  document.getElementById('app')
+);

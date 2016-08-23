@@ -15,7 +15,8 @@ function isAuthRouter(nextState, replaceState) {
 export default function () {
   return (
     <Route path='users' component={UserLayout} onEnter={isAuthRouter}>
-      <IndexRoute component={UserComponent}/> {/*<Route path='create' component={UserCreate} />
+      <IndexRoute component={UserComponent}/>
+      {/*<Route path='create' component={UserCreate} />
       <Route path=':_id' component={UserShow} />
       <Route path=':_id/edit' component={UserEdit} />*/}
     </Route>

@@ -7,14 +7,15 @@ import NavComponent from '../components/nav-component.jsx';
 class UserLayout extends Component {
   render() {
     return (
-      <div className="container">
+      <div className='container'>
         <h1 className='text-center'>User Layout</h1>
-        <NavComponent/> {this.props.children}
+        <NavComponent/>
+        {this.props.children}
         <footer>
-          <div className="text-center padder clearfix">
+          <div className='text-center padder clearfix'>
             <p>
               <small>
-                <a href="https://github.com/IamMohaiminul/MERNjs">
+                <a href='https://github.com/IamMohaiminul/MERNjs'>
                   A scaffolding of MERN stack
                 </a>
                 &copy; 2016

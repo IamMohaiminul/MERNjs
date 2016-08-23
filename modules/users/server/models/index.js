@@ -4,38 +4,37 @@ import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt-nodejs';
 
 // create a schema
-const userSchema = new Schema({
+export const userSchema = new Schema({
   name: String,
   username: {
     type: String,
-    required: true,
-    unique: true,
+    required: [true, 'Username is required.'],
+    unique: true
   },
   password: {
     type: String,
-    required: true,
+    required: [true, 'Password is required.']
   },
   admin: Boolean,
   location: String,
   meta: {
     age: Number,
-    website: String,
+    website: String
   },
   createdAt: Date,
   updatedAt: Date,
-}, {
-  versionKey: false,
-});
+}, { versionKey: false });
 
 // on every save, add the date
 userSchema.pre('save', function (next) {
-  var currentDate = new Date(); // get the current date
-  this.updatedAt = currentDate; // change the updated_at field to current date
+  // get the current date
+  var currentDate = new Date();
+  // change the updated_at field to current date
+  this.updatedAt = currentDate;
   // if created_at doesn't exist, add to that field
   if (!this.createdAt) {
     this.createdAt = currentDate;
   }
-
   next();
 });
 

@@ -14,17 +14,16 @@ import User from '../models';
 export function getUsers(req, res) {
   User.find().sort('-createdAt').exec((err, users) => {
     if (err) {
-      return res.json({
+      return res.status(404).json({
         success: false,
         message: 'Unable to get all users.',
-        error: err,
+        error: err
       });
     }
-
-    return res.json({
+    return res.status(200).json({
       success: true,
       message: 'All Users',
-      users: users,
+      users: users
     });
   });
 }
@@ -40,35 +39,33 @@ export function addUser(req, res) {
   if (!req.body.username) {
     return res.json({
       success: false,
-      message: 'Username is required.',
+      message: 'Username is required.'
     });
   }
-
   if (!req.body.password) {
     return res.json({
       success: false,
-      message: 'Password is required',
+      message: 'Password is required'
     });
   }
 
   const newUser = new User({
     username: sanitizeHtml(req.body.username),
-    password: new User().generateHash(sanitizeHtml(req.body.password)),
+    password: new User().generateHash(sanitizeHtml(req.body.password))
   });
 
   newUser.save((err, user) => {
     if (err) {
-      return res.json({
+      return res.status(404).json({
         success: false,
         message: 'Unable to create a user.',
-        error: err,
+        error: err
       });
     }
-
-    return res.json({
+    return res.status(200).json({
       success: true,
       message: 'User is created successfully!',
-      user: user,
+      user: user
     });
   });
 }
@@ -83,17 +80,16 @@ export function addUser(req, res) {
 export function getUser(req, res) {
   User.findById(req.params._id).exec((err, user) => {
     if (err) {
-      return res.json({
+      return res.status(404).json({
         success: false,
         message: 'Unable to get a user',
-        error: err,
+        error: err
       });
     }
-
-    return res.json({
+    return res.status(200).json({
       success: true,
       message: 'Single User',
-      user: user,
+      user: user
     });
   });
 }
@@ -108,24 +104,23 @@ export function getUser(req, res) {
 export function updateUser(req, res) {
   User.findById(req.params._id).exec((err, user) => {
     if (err) {
-      return res.json({
+      return res.status(404).json({
         success: false,
         message: 'Unable to find a user',
-        error: err,
+        error: err
       });
     }
 
     if (!req.body.username) {
       return res.json({
         success: false,
-        message: 'Username is required.',
+        message: 'Username is required.'
       });
     }
-
     if (!req.body.password) {
       return res.json({
         success: false,
-        message: 'Password is required.',
+        message: 'Password is required.'
       });
     }
 
@@ -134,14 +129,13 @@ export function updateUser(req, res) {
 
     user.save((err, user) => {
       if (err) {
-        return res.json({
+        return res.status(404).json({
           success: false,
           message: 'Unable to update a user',
           error: err,
         });
       }
-
-      return res.json({
+      return res.status(200).json({
         success: true,
         message: 'User is updated successfully!',
         user: user,
@@ -162,14 +156,13 @@ export function deleteUser(req, res) {
     _id: req.params._id,
   }).exec((err, user) => {
     if (err) {
-      return res.json({
+      return res.status(404).json({
         success: false,
         message: 'Unable to delete a user',
         error: err,
       });
     }
-
-    return res.json({
+    return res.status(200).json({
       success: true,
       message: 'User is deleted successfully!',
     });
