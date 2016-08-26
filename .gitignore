@@ -10,3 +10,7 @@ npm-debug.log*
 
 # Optional npm cache directory
 .npm
+
+# Linter custom config
+.jshintrc
+.jscsrc

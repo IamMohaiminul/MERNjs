@@ -15,6 +15,11 @@ export const userSchema = new Schema({
     type: String,
     required: [true, 'Password is required.']
   },
+  avatar: {
+    name: String,
+    key: String,
+    location: String
+  },
   admin: Boolean,
   location: String,
   meta: {

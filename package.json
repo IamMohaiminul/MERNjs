@@ -30,12 +30,15 @@
     "postinstall": "webpack"
   },
   "dependencies": {
+    "aws-sdk": "~2.5.3",
     "bcrypt-nodejs": "~0.0.3",
     "body-parser": "~1.15.2",
+    "chance": "~1.0.4",
     "config": "~1.21.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",
+    "formidable": "~1.0.17",
     "jquery": "~2.2.4",
     "jsonwebtoken": "~7.1.7",
     "lodash": "~4.14.1",
