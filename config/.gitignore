@@ -1,5 +1,0 @@
-# Git ignore all files
-*
-# Except these files
-!.gitignore
-!default.json

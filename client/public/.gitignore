@@ -1,0 +1,5 @@
+# All Generated Build files
+build
+
+# Ignore Mac DS_Store files
+.DS_Store
