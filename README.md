@@ -1,5 +1,5 @@
 # MERN
-MERN is a javascript scaffolding tool which makes it easy to build isomorphic apps using MongoBD, ExpressJS, ReactJS and NodeJS with Redux.
+MERN is a javascript scaffolding tool which makes it easy to build isomorphic apps using MongoDB, ExpressJS, ReactJS and NodeJS with Redux and ES6.
 
 ### Server
 ###### Go to the server directory & install all dependency
