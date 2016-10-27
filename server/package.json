@@ -1,5 +1,5 @@
 {
-  "name": "MERNjs",
+  "name": "MERN",
   "version": "0.0.0",
   "description": "A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack with Redux.",
   "scripts": {

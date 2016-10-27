@@ -10,7 +10,7 @@ class NavBarComponent extends Component {
         <div className='container-fluid'>
           <div className='navbar-header'>
             <Link to='/' className='navbar-brand'>
-              MERNjs
+              MERN
               <small>v 0.0.0</small>
             </Link>
           </div>

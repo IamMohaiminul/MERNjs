@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // route handlers
 app.get('*', function (req, res) {
-  res.render('index', { title: 'MERNjs' });
+  res.render('index', { title: 'MERN' });
 });
 
 export default app;

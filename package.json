@@ -1,12 +1,12 @@
 {
-  "name": "MERNjs",
+  "name": "MERN",
   "version": "0.0.0",
   "description": "A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack with Redux.",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
+    "url": "git+ssh://git@github.com:IamMohaiminul/MERN.git"
   },
   "author": "IamMohaiminul",
   "license": "MIT",
-  "homepage": "https://github.com/IamMohaiminul/MERNjs#readme"
+  "homepage": "http://mern.js.org/"
 }

@@ -9,8 +9,8 @@ class FooterComponent extends Component {
         <div className='text-center'>
           <p>
             <small>
-              <a href='https://github.com/IamMohaiminul/MERNjs'>
-                MERNjs
+              <a href='http://IamMohaiminul.GitHub.io/MERN'>
+                MERN
               </a> &copy; 2016
             </small>
           </p>

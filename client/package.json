@@ -1,12 +1,14 @@
 {
-  "name": "MERNjs",
+  "name": "MERN",
   "version": "0.0.0",
     "description": "A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack with Redux.",
   "scripts": {
     "start": "babel-node ./bin/www",
     "nodemon": "nodemon --exec babel-node ./bin/www",
     "debug": "DEBUG=MERNjs:* npm run nodemon",
-    "watch": "webpack --watch"
+    "webpack": "webpack --progress -p",
+    "watch": "webpack --watch --progress -p",
+    "postinstall": "npm run webpack"
   },
   "dependencies": {
     "axios": "^0.14.0",

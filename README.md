@@ -1,5 +1,5 @@
-# MERNjs
-MERNjs is a javascript scaffolding tool which makes it easy to build isomorphic apps using MongoBD, ExpressJS, ReactJS and NodeJS with Redux.
+# MERN
+MERN is a javascript scaffolding tool which makes it easy to build isomorphic apps using MongoBD, ExpressJS, ReactJS and NodeJS with Redux.
 
 ### Server
 ###### Go to the server directory & install all dependency

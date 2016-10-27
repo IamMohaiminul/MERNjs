@@ -5,7 +5,7 @@ var path = require('path');
 var extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
   entry: [
     'babel-polyfill',
     './modules/index.jsx'
