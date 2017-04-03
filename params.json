@@ -1,6 +1,0 @@
-{
-  "name": "MERN",
-  "tagline": "A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack with Redux and ES6.",
-  "body": "# MERNjs\r\nMERNjs is a javascript scaffolding tool which makes it easy to build isomorphic apps using MongoBD, ExpressJS, ReactJS and NodeJS with Redux and ES6.\r\n\r\n### Server\r\n###### Go to the server directory & install all dependency\r\n```sh\r\n$ cd server && npm install\r\n```\r\n###### Start server with debug mode\r\n```sh\r\n$ npm run debug\r\n```\r\n*Note : Please make sure your MongoDB is running.*\r\n\r\nTo view project's RESTful API, go to: [http://localhost:8080/](http://localhost:8080/)\r\n### Client\r\n###### Go to the client directory & install all dependency\r\n```sh\r\n$ cd client && npm install\r\n```\r\n###### Start webpack with watch mode\r\n```sh\r\n$ npm run watch\r\n```\r\n###### Start client with debug mode\r\n```sh\r\n$ npm run debug\r\n```\r\nTo view project, go to: [http://localhost:8000/](http://localhost:8000/)\r\n\r\nDefault Admin User\r\n```sh\r\nEmail:    admin@mail.com\r\nPassword: admin\r\n```\r\n",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}

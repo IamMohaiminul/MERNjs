@@ -1,0 +1,8 @@
+title: MERN
+description: A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack with Redux and ES6.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-architect
+
+gems:
+  - jekyll-mentions
