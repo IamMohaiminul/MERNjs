@@ -1,66 +1,58 @@
-'use strict';
+import 'app-module-path/register';
 
-import express from 'express';
-import path from 'path';
-import logger from 'morgan';
-import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import express from 'express';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import path from 'path';
+import { addPath } from 'app-module-path';
 
-import * as authMiddleware from './modules/auth/middlewares/authMiddleware.js';
+import api from './routes.js';
 
-import routes from './modules/routes.js';
-import authRoutes from './modules/auth/routes/authRoutes.js';
-import roleRoutes from './modules/roles/routes/roleRoutes.js';
-import userRoutes from './modules/users/routes/userRoutes.js';
+let app = express();
 
-const app = express();
+// view engine setup
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'pug');
 
+app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
+addPath(__dirname);
 
-app.use('/', routes);
-app.use('/auth', authRoutes);
-app.use(authMiddleware.verifyToken);
-app.use('/roles', roleRoutes);
-app.use('/users', userRoutes);
+/* use RESTful APIs listing. */
+app.use('/api', api);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-      success: false,
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({
-    success: false,
-    message: err.message,
-    error: {}
+/* use for admin app. */
+app.get(['/admin', '/admin/*'], function (req, res) {
+  res.render('index', {
+    title: 'MERNjs - Admin',
+    name: 'description',
+    content: 'content',
+    stylesheet: app.get('env') === 'production' ?
+      '/dist/admin.bundle.min.css' : '/dist/admin.bundle.css',
+    javascript: app.get('env') === 'production' ?
+      '/dist/admin.bundle.min.js' : '/dist/admin.bundle.js',
   });
 });
 
+/* use for default app. */
+app.get('*', function (req, res) {
+  res.render('index', {
+    title: 'MERNjs - Client',
+    name: 'description',
+    content: 'content',
+    stylesheet: app.get('env') === 'production' ?
+      '/dist/client.bundle.min.css' : '/dist/client.bundle.css',
+    javascript: app.get('env') === 'production' ?
+      '/dist/client.bundle.min.js' : '/dist/client.bundle.js',
+  });
+});
 
 export default app;

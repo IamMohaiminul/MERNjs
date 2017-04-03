@@ -1,0 +1,39 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../../node_modules/toastr/build/toastr.min.css';
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+body {
+  font-family: "Raleway", sans-serif;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  min-height: 100vh;
+}
+
+a {
+  color: #00B7FF;
+}
+
+footer {
+  padding-top: 15px;
+  background-color: #FFFFFF;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #d2d6de;
+}
+
+.btn {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-width: 1px;
+}

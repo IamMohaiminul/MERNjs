@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules
+
+# Build/Generate directories
+build
+dist
+
+# Log directories/files
+logs
+*.log*
+
+# Optional npm cache directory
+.npm
+
+# Ignore files
+.DS_Store

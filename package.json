@@ -1,12 +1,73 @@
 {
-  "name": "MERN",
-  "version": "0.0.0",
-  "description": "A Scaffolding of MERN (MongoDB, ExpressJS, ReactJS and NodeJS) stack with Redux.",
+  "name": "MERNjs",
+  "version": "1.0.0",
+  "description": "A Open-Source Full-Stack Solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) Applications.",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:IamMohaiminul/MERN.git"
+    "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
   },
-  "author": "IamMohaiminul",
+  "author": "Muhammad Mohaiminul Islam <IamMohaiminul>",
   "license": "MIT",
+  "engines": {
+    "node": "~6.x"
+  },
+  "scripts": {
+    "start": "node ./build",
+    "debug": "node --debug ./build",
+    "build": "npm run clean:server && npm run build:server && npm run build:client",
+    "clean:server": "rm -rf build && mkdir build",
+    "build:server": "babel -d ./build ./server -s",
+    "build:client": "webpack --progress --profile",
+    "live:server": "nodemon --exec babel-node ./server",
+    "live:server:debug": "DEBUG=MERNjs:* npm run live:server",
+    "live:client": "webpack --watch --progress --profile"
+  },
+  "dependencies": {
+    "app-module-path": "~2.2.0",
+    "axios": "~0.15.3",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.17.1",
+    "config": "~1.25.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "~2.8.1",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jsonwebtoken": "~7.3.0",
+    "lodash": "~4.17.4",
+    "moment": "~2.18.1",
+    "mongoose": "~4.9.1",
+    "morgan": "~1.8.1",
+    "pug": "~2.0.0-beta11",
+    "serve-favicon": "~2.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "~6.24.0",
+    "babel-core": "~6.24.0",
+    "babel-loader": "~6.4.1",
+    "babel-preset-env": "~1.2.2",
+    "babel-preset-react": "~6.23.0",
+    "bootstrap": "~3.3.7",
+    "clean-webpack-plugin": "~0.1.16",
+    "compression-webpack-plugin": "~0.3.2",
+    "css-loader": "~0.27.3",
+    "extract-text-webpack-plugin": "~2.1.0",
+    "file-loader": "~0.10.1",
+    "font-awesome": "~4.7.0",
+    "jquery": "~2.2.4",
+    "node-sass": "~4.5.1",
+    "nodemon": "~1.11.0",
+    "react": "~15.4.2",
+    "react-dom": "~15.4.2",
+    "react-redux": "~5.0.3",
+    "react-router": "~3.0.2",
+    "redux": "~3.6.0",
+    "redux-logger": "~2.10.2",
+    "redux-thunk": "~2.2.0",
+    "sass-loader": "~6.0.3",
+    "style-loader": "~0.15.0",
+    "toastr": "~2.1.2",
+    "url-loader": "~0.5.8",
+    "webpack": "~2.3.0"
+  },
   "homepage": "http://mern.js.org/"
 }

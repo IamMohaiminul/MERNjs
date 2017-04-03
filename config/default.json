@@ -1,0 +1,16 @@
+{
+  "HOST": "127.0.0.1",
+  "PORT": "3000",
+  "BASE_URL": "http://127.0.0.1:3000/",
+  "API_URL": "http://127.0.0.1:3000/api/",
+  "MONGO_URL": "mongodb://127.0.0.1:27017/MERNjs",
+  "JWT": {
+    "SECRET": "MERNjsJsonWebTokenSecret",
+    "EXPIRES": "24h"
+  },
+  "LOGGER": {
+    "FILE_NAME": "MERNjs.log",
+    "MAX_SIZE": "5242880",
+    "MAX_FILES": "5"
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "MONGO_URL": "mongodb://localhost:27017/MERNjs",
-  "PORT": "8080",
-  "JWT": {
-    "SECRET": "JsonWebTokenSecret",
-    "EXPIRES": "1h"
-  }
-}
