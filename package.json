@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node ./build",
-    "debug": "node --debug ./build",
+    "debug": "node --inspect ./build",
     "build": "npm run clean:server && npm run build:server && npm run build:client",
     "clean:server": "rm -rf build && mkdir build",
     "build:server": "babel -d ./build ./server -s",
