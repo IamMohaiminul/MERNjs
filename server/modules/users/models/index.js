@@ -2,33 +2,36 @@ import bcrypt from 'bcrypt-nodejs';
 import mongoose, { Schema } from 'mongoose';
 
 // create a userSchema
-export const userSchema = new Schema({
-  fullName: {
-    type: String,
-    required: [true, 'Full Name is required.'],
+export const userSchema = new Schema(
+  {
+    fullName: {
+      type: String,
+      required: [true, 'Full Name is required.'],
+    },
+    emailAddress: {
+      type: String,
+      required: [true, 'Email Address is required.'],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, 'Password is required.'],
+    },
+    status: {
+      type: String,
+      enum: ['Active', 'Inactive'],
+      default: 'Active',
+    },
+    role: {
+      type: String,
+      enum: ['Subscriber', 'Administrator'],
+      default: 'Subscriber',
+    },
+    createdAt: Date,
+    updatedAt: Date,
   },
-  emailAddress: {
-    type: String,
-    required: [true, 'Email Address is required.'],
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required.'],
-  },
-  status: {
-    type: String,
-    enum: ['Active', 'Inactive'],
-    default: 'Active',
-  },
-  role: {
-    type: String,
-    enum: ['Subscriber', 'Administrator'],
-    default: 'Subscriber',
-  },
-  createdAt: Date,
-  updatedAt: Date,
-}, { versionKey: false });
+  { versionKey: false },
+);
 
 /*
  * userSchema middlewares

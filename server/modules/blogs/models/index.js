@@ -1,31 +1,34 @@
 import mongoose, { Schema } from 'mongoose';
 
 // create a blogSchema
-export const blogSchema = new Schema({
-  title: {
-    type: String,
-    required: [true, 'Blog title is required.'],
+export const blogSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: [true, 'Blog title is required.'],
+    },
+    description: {
+      type: String,
+      required: [true, 'Blog description is required.'],
+    },
+    category: {
+      type: String,
+    },
+    status: {
+      type: String,
+      enum: ['Active', 'Inactive'],
+      default: 'Active',
+    },
+    _createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, 'Blog created by is required.'],
+    },
+    createdAt: Date,
+    updatedAt: Date,
   },
-  description: {
-    type: String,
-    required: [true, 'Blog description is required.'],
-  },
-  category: {
-    type: String,
-  },
-  status: {
-    type: String,
-    enum: ['Active', 'Inactive'],
-    default: 'Active',
-  },
-  _createdBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: [true, 'Blog created by is required.'],
-  },
-  createdAt: Date,
-  updatedAt: Date,
-}, { versionKey: false });
+  { versionKey: false },
+);
 
 /*
  * userSchema middlewares

@@ -5,8 +5,8 @@ import HomeContainer from '../containers/home.jsx';
 
 export default function () {
   return (
-    <Route path='home'>
+    <Route path="home">
       <IndexRoute component={HomeContainer} />
     </Route>
   );
-};
+}

@@ -5,10 +5,10 @@ import toastr from 'toastr';
 class UserComponent extends Component {
   render() {
     return (
-      <div className='row'>
-        <div className='col-xs-12 text-center'>
-          <div className='table-responsive'>
-            <table className='table table-bordered table-striped table-hover'>
+      <div className="row">
+        <div className="col-xs-12 text-center">
+          <div className="table-responsive">
+            <table className="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
                   <td>SL</td>
@@ -19,9 +19,7 @@ class UserComponent extends Component {
                   <td>Updated At</td>
                 </tr>
               </thead>
-              <tbody>
-                {this.renderAllUser()}
-              </tbody>
+              <tbody>{this.renderAllUser()}</tbody>
             </table>
           </div>
         </div>
@@ -47,7 +45,6 @@ class UserComponent extends Component {
       return null;
     }
   }
-
 }
 
 export default UserComponent;

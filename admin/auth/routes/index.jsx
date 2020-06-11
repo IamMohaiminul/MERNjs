@@ -14,11 +14,11 @@ function signOut(nextState, replaceState) {
 
 export default function () {
   return (
-    <Route path='auth'>
-      <IndexRedirect to='login' />
-      <Route path='login' component={LoginContainer} />
-      <Route path='register' component={RegistrationContainer} />
-      <Route path='logout' onEnter={signOut} />
+    <Route path="auth">
+      <IndexRedirect to="login" />
+      <Route path="login" component={LoginContainer} />
+      <Route path="register" component={RegistrationContainer} />
+      <Route path="logout" onEnter={signOut} />
     </Route>
   );
 }

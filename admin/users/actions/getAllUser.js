@@ -5,7 +5,8 @@ export function getAllUser(callback) {
     dispatch({
       type: 'FETCH_ALL_USER_REQUEST',
     });
-    axios.get('users')
+    axios
+      .get('users')
       .then((response) => {
         dispatch({
           type: 'FETCH_ALL_USER_SUCCESS',

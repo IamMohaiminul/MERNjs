@@ -12,7 +12,7 @@ function isAuth(nextState, replaceState) {
 
 export default function () {
   return (
-    <Route path='dashboard'>
+    <Route path="dashboard">
       <IndexRoute component={DashboardContainer} onEnter={isAuth} />
     </Route>
   );

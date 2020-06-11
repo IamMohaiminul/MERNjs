@@ -6,10 +6,10 @@ import toastr from 'toastr';
 class BlogComponent extends Component {
   render() {
     return (
-      <div className='row'>
-        <div className='col-xs-12 text-center'>
-          <div className='table-responsive'>
-            <table className='table table-bordered table-striped table-hover'>
+      <div className="row">
+        <div className="col-xs-12 text-center">
+          <div className="table-responsive">
+            <table className="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
                   <td>SL</td>
@@ -20,9 +20,7 @@ class BlogComponent extends Component {
                   <td>Updated At</td>
                 </tr>
               </thead>
-              <tbody>
-                {this.renderAllBlog()}
-              </tbody>
+              <tbody>{this.renderAllBlog()}</tbody>
             </table>
           </div>
         </div>
@@ -48,7 +46,6 @@ class BlogComponent extends Component {
       return null;
     }
   }
-
 }
 
 export default BlogComponent;

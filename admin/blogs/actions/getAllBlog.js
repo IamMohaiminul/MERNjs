@@ -5,7 +5,8 @@ export function getAllBlog(callback) {
     dispatch({
       type: 'FETCH_ALL_BLOG_REQUEST',
     });
-    axios.get('blogs')
+    axios
+      .get('blogs')
       .then((response) => {
         dispatch({
           type: 'FETCH_ALL_BLOG_SUCCESS',

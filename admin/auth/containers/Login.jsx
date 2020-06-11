@@ -8,25 +8,24 @@ import { loginUser } from '../actions/login.js';
 
 class LoginContainer extends Component {
   render() {
-    return (
-      <LoginComponent
-        loginUser={this.props.loginUser} />
-    );
+    return <LoginComponent loginUser={this.props.loginUser} />;
   }
 }
 
 // Get apps store and pass it as props to LoginContainer
 //  > whenever store changes, the LoginContainer will automatically re-render
 function mapStateToProps(store) {
-  return {
-  };
+  return {};
 }
 
 // Get actions and pass them as props to to LoginContainer
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    loginUser: loginUser,
-  }, dispatch);
+  return bindActionCreators(
+    {
+      loginUser: loginUser,
+    },
+    dispatch,
+  );
 }
 
 // We don't want to return the plain LoginContainer (component) anymore,

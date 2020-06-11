@@ -59,7 +59,7 @@ if (config.util.getEnv('NODE_ENV') == 'production') {
         comments: false,
       },
       sourceMap: true,
-    })
+    }),
   );
   plugins.push(new webpack.optimize.AggressiveMergingPlugin());
   plugins.push(
@@ -69,7 +69,7 @@ if (config.util.getEnv('NODE_ENV') == 'production') {
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8,
-    })
+    }),
   );
 }
 
@@ -90,13 +90,15 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
-      }, {
+      },
+      {
         test: /\.(css|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader'],
         }),
-      }, {
+      },
+      {
         test: /\.(png|jpg|jpeg|gif)$/,
         use: {
           loader: 'url-loader',
@@ -105,7 +107,8 @@ module.exports = {
             name: 'images/[name].[ext]',
           },
         },
-      }, {
+      },
+      {
         test: /\.(svg|eot|woff|woff2|ttf)(\?.*$|$)/,
         use: {
           loader: 'url-loader',

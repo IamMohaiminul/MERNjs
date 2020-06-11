@@ -4,9 +4,7 @@ import HomeComponent from '../components/home.jsx';
 
 class HomeContainer extends Component {
   render() {
-    return (
-      <HomeComponent />
-    );
+    return <HomeComponent />;
   }
 }
 

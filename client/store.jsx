@@ -4,9 +4,6 @@ import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers.js';
 
-const store = createStore(
-  reducers,
-  applyMiddleware(thunk, logger())
-);
+const store = createStore(reducers, applyMiddleware(thunk, logger()));
 
 export default store;

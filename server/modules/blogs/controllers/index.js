@@ -6,17 +6,20 @@ import Blog from '../models/index.js';
 export function getAllBlog(req, res, next) {
   Blog.find({
     status: 'Active',
-  }).sort({
-    createdAt: -1,
-  }).populate('_createdBy').exec((err, blogs) => {
-    if (err) return next(err);
-    console.log('getAllBlog(blogs): ', blogs);
-    return res.status(200).json({
-      success: true,
-      message: 'Get all blog',
-      data: blogs,
+  })
+    .sort({
+      createdAt: -1,
+    })
+    .populate('_createdBy')
+    .exec((err, blogs) => {
+      if (err) return next(err);
+      console.log('getAllBlog(blogs): ', blogs);
+      return res.status(200).json({
+        success: true,
+        message: 'Get all blog',
+        data: blogs,
+      });
     });
-  });
 }
 
 /**
@@ -44,13 +47,15 @@ export function addBlog(req, res, next) {
  * get blog
  */
 export function getBlog(req, res, next) {
-  Blog.findById(req.params._id).populate('_createdBy').exec((err, blog) => {
-    if (err) return next(err);
+  Blog.findById(req.params._id)
+    .populate('_createdBy')
+    .exec((err, blog) => {
+      if (err) return next(err);
 
-    return res.status(200).json({
-      success: true,
-      message: 'Get blog',
-      data: blog,
+      return res.status(200).json({
+        success: true,
+        message: 'Get blog',
+        data: blog,
+      });
     });
-  });
 }

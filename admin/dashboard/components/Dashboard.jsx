@@ -8,11 +8,13 @@ class DashboardComponent extends Component {
 
   render() {
     return (
-      <div className='row'>
-        <div className='col-xs-12 text-center'>
-          <img src='/images/mernjs.png' width='150px' alt='MERNjs' />
+      <div className="row">
+        <div className="col-xs-12 text-center">
+          <img src="/images/mernjs.png" width="150px" alt="MERNjs" />
           <h1>Welcome to MERNjs</h1>
-          <p>Admin Dashboard <small> in {process.env.NODE_ENV}</small></p>
+          <p>
+            Admin Dashboard <small> in {process.env.NODE_ENV}</small>
+          </p>
         </div>
       </div>
     );

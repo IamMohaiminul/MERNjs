@@ -6,10 +6,8 @@ const authRoutes = express.Router();
 
 authRoutes.use(AuthController.createAdminUserIfNotExist);
 
-authRoutes.route('/')
-  .post(AuthController.authenticateUser);
+authRoutes.route('/').post(AuthController.authenticateUser);
 
-authRoutes.route('/register')
-  .post(AuthController.registerUser);
+authRoutes.route('/register').post(AuthController.registerUser);
 
 export default authRoutes;

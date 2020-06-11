@@ -3,11 +3,12 @@ import axios from 'axios';
 /*
  * Get all user
  */
-export const registerUser = ((object, callback) => {
+export const registerUser = (object, callback) => {
   try {
     return function (dispatch) {
       dispatch({ type: 'AUTH_REGISTER_REQUEST' });
-      axios.post('auth/register', object)
+      axios
+        .post('auth/register', object)
         .then((response) => {
           dispatch({
             type: 'AUTH_REGISTER_SUCCESS',
@@ -31,4 +32,4 @@ export const registerUser = ((object, callback) => {
       error: e,
     });
   }
-});
+};

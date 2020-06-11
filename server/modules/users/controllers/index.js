@@ -6,17 +6,19 @@ import User from '../models/index.js';
 export function getAllUser(req, res, next) {
   User.find({
     status: 'Active',
-  }).sort({
-    createdAt: -1,
-  }).exec((err, users) => {
-    if (err) return next(err);
-    console.log('getAllUser(users): ', users);
-    return res.status(200).json({
-      success: true,
-      message: 'Get all user',
-      data: users,
+  })
+    .sort({
+      createdAt: -1,
+    })
+    .exec((err, users) => {
+      if (err) return next(err);
+      console.log('getAllUser(users): ', users);
+      return res.status(200).json({
+        success: true,
+        message: 'Get all user',
+        data: users,
+      });
     });
-  });
 }
 
 /**

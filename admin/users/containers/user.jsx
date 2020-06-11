@@ -12,10 +12,7 @@ class UserContainer extends Component {
   }
 
   render() {
-    return (
-      <UserComponent
-        allUser={this.props.allUser} />
-    );
+    return <UserComponent allUser={this.props.allUser} />;
   }
 }
 
@@ -31,9 +28,12 @@ function mapStateToProps(store) {
 // Get actions and pass them as props to to UserContainer
 //  > now UserContainer has this.props.getAllUser
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    getAllUser: getAllUser,
-  }, dispatch);
+  return bindActionCreators(
+    {
+      getAllUser: getAllUser,
+    },
+    dispatch,
+  );
 }
 
 // We don't want to return the plain UserContainer (component) anymore,

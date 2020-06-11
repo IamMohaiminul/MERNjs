@@ -12,10 +12,7 @@ class BlogContainer extends Component {
   }
 
   render() {
-    return (
-      <BlogComponent
-        allBlog={this.props.allBlog} />
-    );
+    return <BlogComponent allBlog={this.props.allBlog} />;
   }
 }
 
@@ -31,9 +28,12 @@ function mapStateToProps(store) {
 // Get actions and pass them as props to to BlogContainer
 //  > now BlogContainer has this.props.getAllBlog
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    getAllBlog: getAllBlog,
-  }, dispatch);
+  return bindActionCreators(
+    {
+      getAllBlog: getAllBlog,
+    },
+    dispatch,
+  );
 }
 
 // We don't want to return the plain BlogContainer (component) anymore,

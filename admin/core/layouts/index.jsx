@@ -6,11 +6,9 @@ import FooterComponent from '../components/footer.jsx';
 class CoreLayout extends Component {
   render() {
     return (
-      <div className='container-fluid'>
+      <div className="container-fluid">
         <NavbarComponent />
-        <div className='content'>
-          {this.props.children}
-        </div>
+        <div className="content">{this.props.children}</div>
         <FooterComponent />
       </div>
     );

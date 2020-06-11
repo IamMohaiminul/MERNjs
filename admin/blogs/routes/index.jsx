@@ -5,8 +5,8 @@ import BlogContainer from '../containers/blog.jsx';
 
 export default function () {
   return (
-    <Route path='blogs'>
+    <Route path="blogs">
       <IndexRoute component={BlogContainer} />
     </Route>
   );
-};
+}

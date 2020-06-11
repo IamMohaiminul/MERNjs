@@ -35,10 +35,14 @@ app.get(['/admin', '/admin/*'], function (req, res) {
     title: 'MERNjs - Admin',
     name: 'description',
     content: 'content',
-    stylesheet: app.get('env') === 'production' ?
-      '/dist/admin.bundle.min.css' : '/dist/admin.bundle.css',
-    javascript: app.get('env') === 'production' ?
-      '/dist/admin.bundle.min.js' : '/dist/admin.bundle.js',
+    stylesheet:
+      app.get('env') === 'production'
+        ? '/dist/admin.bundle.min.css'
+        : '/dist/admin.bundle.css',
+    javascript:
+      app.get('env') === 'production'
+        ? '/dist/admin.bundle.min.js'
+        : '/dist/admin.bundle.js',
   });
 });
 
@@ -48,10 +52,14 @@ app.get('*', function (req, res) {
     title: 'MERNjs - Client',
     name: 'description',
     content: 'content',
-    stylesheet: app.get('env') === 'production' ?
-      '/dist/client.bundle.min.css' : '/dist/client.bundle.css',
-    javascript: app.get('env') === 'production' ?
-      '/dist/client.bundle.min.js' : '/dist/client.bundle.js',
+    stylesheet:
+      app.get('env') === 'production'
+        ? '/dist/client.bundle.min.css'
+        : '/dist/client.bundle.css',
+    javascript:
+      app.get('env') === 'production'
+        ? '/dist/client.bundle.min.js'
+        : '/dist/client.bundle.js',
   });
 });
 

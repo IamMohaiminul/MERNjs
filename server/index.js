@@ -16,13 +16,15 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_URL || config.get('MONGO_URL'));
 
 mongoose.connection.on('error', function () {
-  console.error('Could not connect to MongoDB. Did you forget to run `mongod`?');
+  console.error(
+    'Could not connect to MongoDB. Did you forget to run `mongod`?',
+  );
 });
 
 mongoose.connection.on('connected', function () {
   console.info(
     `APP MONGODB@${mongoose.version}:`,
-    process.env.MONGO_URL || config.get('MONGO_URL')
+    process.env.MONGO_URL || config.get('MONGO_URL'),
   );
 });
 
@@ -80,9 +82,7 @@ function onError(error) {
     throw error;
   }
 
-  let bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  let bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -105,8 +105,8 @@ function onError(error) {
 
 function onListening() {
   let addr = server.address();
-  let bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('MERNjs:app')('Listening on ' + bind + ' in ' + app.get('env') + ' env');
+  let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  debug('MERNjs:app')(
+    'Listening on ' + bind + ' in ' + app.get('env') + ' env',
+  );
 }

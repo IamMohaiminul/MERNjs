@@ -1,5 +1,5 @@
 {
-  "name": "MERNjs",
+  "name": "mernjs",
   "version": "1.0.0",
   "description": "A Open-Source Full-Stack Solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) Applications.",
   "repository": {
@@ -7,7 +7,6 @@
     "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
   },
   "author": "Muhammad Mohaiminul Islam <IamMohaiminul>",
-  "license": "MIT",
   "engines": {
     "node": "~6.x"
   },

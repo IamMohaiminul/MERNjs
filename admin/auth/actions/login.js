@@ -3,11 +3,12 @@ import axios from 'axios';
 /*
  * Get all user
  */
-export const loginUser = ((object, callback) => {
+export const loginUser = (object, callback) => {
   try {
     return function (dispatch) {
       dispatch({ type: 'AUTH_LOGIN_REQUEST' });
-      axios.post('auth', object)
+      axios
+        .post('auth', object)
         .then((response) => {
           dispatch({
             type: 'AUTH_LOGIN_SUCCESS',
@@ -33,4 +34,4 @@ export const loginUser = ((object, callback) => {
       error: e,
     });
   }
-});
+};
