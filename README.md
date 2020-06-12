@@ -1,4 +1,4 @@
-<img src="public/images/mernjs.png" height="128" />
+<img src="public/images/logo.png" height="128" />
 
 MERNjs is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [ExpressJS](http://expressjs.com/), [ReactJS](http//facebook.github.io/react/) and [NodeJS](http://www.nodejs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
 

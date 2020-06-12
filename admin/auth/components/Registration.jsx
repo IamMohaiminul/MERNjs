@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 class RegistrationComponent extends Component {

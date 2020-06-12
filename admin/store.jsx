@@ -14,7 +14,7 @@ const accessToken = (store) => (next) => (action) => {
 
 const store = createStore(
   reducers,
-  applyMiddleware(thunk, accessToken, logger()),
+  applyMiddleware(thunk, accessToken, logger),
 );
 
 export default store;
