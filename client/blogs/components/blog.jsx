@@ -27,8 +27,8 @@ class BlogComponent extends Component {
       });
     } else {
       return (
-        <div className="col-xs-offset-3 col-xs-6 text-center">
-          <p>Currently, There is no blog.</p>;
+        <div className="col-lg-12 text-center">
+          <h1 className="msg-h1">Currently, there is no blog!</h1>
         </div>
       );
     }

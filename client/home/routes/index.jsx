@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 
 import HomeContainer from '../containers/home.jsx';
 
 export default function () {
   return (
-    <Route path="home">
-      <IndexRoute component={HomeContainer} />
-    </Route>
+    <Switch>
+      <Route exact path="/home" component={HomeContainer} />
+      <Route path="/home/about" render={() => <p>home about page...</p>} />
+    </Switch>
   );
 }

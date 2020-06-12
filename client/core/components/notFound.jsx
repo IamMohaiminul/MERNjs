@@ -3,11 +3,9 @@ import React, { Component } from 'react';
 class NotFoundComponent extends Component {
   render() {
     return (
-      <div className="row">
-        <div className="col-xs-12">
-          <h1 className="text-center">
-            404... Page is not found in Client App!
-          </h1>
+      <div className="row text-center">
+        <div className="col-lg-12">
+          <h1 className="msg-h1">404 - Page Not Found!</h1>
         </div>
       </div>
     );

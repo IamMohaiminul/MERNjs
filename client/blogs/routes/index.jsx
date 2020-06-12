@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 
 import BlogContainer from '../containers/blog.jsx';
 
 export default function () {
   return (
-    <Route path="blogs">
-      <IndexRoute component={BlogContainer} />
-    </Route>
+    <Switch>
+      <Route exact path="/blogs" component={BlogContainer} />
+      <Route path="/blogs/about" render={() => <p>blogs about page...</p>} />
+    </Switch>
   );
 }

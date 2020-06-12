@@ -1,11 +1,16 @@
 {
   "name": "mernjs",
-  "version": "1.0.0",
-  "description": "A Open-Source Full-Stack Solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) Applications.",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
-  },
+  "version": "2.0.0",
+  "description": "An open-source full-stack JavaScript solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) application.",
+  "keywords": [
+    "NodeJS",
+    "ExpressJS",
+    "ReactJS",
+    "MongoDB",
+    "ReduxJS",
+    "Webpack",
+    "babel"
+  ],
   "author": "Muhammad Mohaiminul Islam <IamMohaiminul>",
   "engines": {
     "node": "14.x"
@@ -17,9 +22,8 @@
     "clean:server": "rm -rf build && mkdir build",
     "build:server": "babel -d ./build ./server -s",
     "build:client": "webpack",
-    "live:server": "nodemon --exec babel-node ./server",
-    "live:server:debug": "DEBUG=MERNjs:* npm run live:server",
-    "live:client": "webpack --watch",
+    "watch:server": "DEBUG=MERNjs:* nodemon --exec babel-node ./server",
+    "watch:client": "webpack --watch",
     "prestart": "npm run build"
   },
   "dependencies": {
@@ -80,6 +84,10 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
   },
   "homepage": "http://mern.js.org/"
 }

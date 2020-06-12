@@ -1,18 +1,18 @@
-'use strict';
-
 import React, { Component } from 'react';
 
 class FooterComponent extends Component {
   render() {
     return (
-      <footer className="navbar navbar-fixed-bottom">
-        <div className="text-center">
-          <p>
-            <small>
-              <a href="http://IamMohaiminul.GitHub.io/MERN">MERNjs</a> &copy;
-              2017
-            </small>
-          </p>
+      <footer id="footer" className="fixed-bottom text-center">
+        <div className="row">
+          <div className="col-lg-12">
+            <p>
+              <a href="https://mern.js.org/" target="_blank">
+                MERNjs
+              </a>{' '}
+              &copy; 2020
+            </p>
+          </div>
         </div>
       </footer>
     );
