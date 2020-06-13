@@ -15,7 +15,11 @@ class BlogComponent extends Component {
             <td>{blog._createdBy.role}</td>
             <td>{moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
             <td>
-              {blog.status.toLowerCase() === 'active' ? <i className="fa fa-eye" /> : <i className="fa fa-eye-slash" />}
+              {blog.status.toLowerCase() === 'active' ? (
+                <i className="fa fa-eye text-success" />
+              ) : (
+                <i className="fa fa-eye-slash text-danger" />
+              )}
             </td>
           </tr>
         );
@@ -35,14 +39,14 @@ class BlogComponent extends Component {
       <div className="row">
         <table className="table table-hover">
           <thead>
-            <tr>
+            <tr className="table-active">
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Author</th>
               <th scope="col">Role</th>
               <th scope="col">Last Update</th>
               <th scope="col">
-                <i className="fa fa-info" />
+                <i className="fa fa-info-circle text-info" />
               </th>
             </tr>
           </thead>
