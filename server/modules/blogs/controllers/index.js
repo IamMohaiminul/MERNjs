@@ -4,14 +4,15 @@ import Blog from '../models/index';
  * get blogs
  */
 export function getAllBlog(req, res, next) {
+  console.log('getAllBlog(): ', req.params, req.body, req.auth);
   Blog.find({})
     .sort({
       createdAt: -1,
     })
-    .populate('_createdBy', '-status -createdAt -updatedAt')
+    .populate('_createdBy', '-password')
     .exec((err, blogs) => {
       if (err) return next(err);
-      console.log('getAllBlog(blogs): ', blogs);
+
       return res.status(200).json({
         success: true,
         message: 'Get all blog',
@@ -24,12 +25,11 @@ export function getAllBlog(req, res, next) {
  * add blog
  */
 export function addBlog(req, res, next) {
-  console.log('addBlog(): ', req.body, req.auth);
+  console.log('addBlog(): ', req.params, req.body, req.auth);
   const newBlog = new Blog();
   Object.assign(newBlog, req.body, {
     _createdBy: req.auth._id,
   });
-  console.log('addBlog(newBlog): ', newBlog);
   newBlog.save((err, blog) => {
     if (err) return next(err);
 
@@ -45,8 +45,9 @@ export function addBlog(req, res, next) {
  * get blog by id
  */
 export function getBlog(req, res, next) {
+  console.log('getBlog(): ', req.params, req.body, req.auth);
   Blog.findById(req.params._id)
-    .populate('_createdBy')
+    .populate('_createdBy', '-password')
     .exec((err, blog) => {
       if (err) return next(err);
 

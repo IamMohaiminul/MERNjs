@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import User from '../../users/models/index';
 
 const createAdminUserIfNotExist = async (req, res, next) => {
-  console.log('createAdminUserIfNotExist: ', req.body);
+  console.log('createAdminUserIfNotExist(): ', req.params, req.body, req.auth);
   try {
     const users = await User.find();
     console.log('users: ', users);
@@ -23,7 +23,7 @@ const createAdminUserIfNotExist = async (req, res, next) => {
 };
 
 const authenticateUser = async (req, res, next) => {
-  console.log('authenticateUser: ', req.body);
+  console.log('authenticateUser(): ', req.params, req.body, req.auth);
   try {
     const user = await User.findOne({
       emailAddress: req.body.emailAddress,
@@ -58,7 +58,7 @@ const authenticateUser = async (req, res, next) => {
 };
 
 const registerUser = async (req, res, next) => {
-  console.log('registerUser: ', req.body);
+  console.log('registerUser(): ', req.params, req.body, req.auth);
   try {
     const newUser = new User();
     Object.assign(newUser, req.body, {
