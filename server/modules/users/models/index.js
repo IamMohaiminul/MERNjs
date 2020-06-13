@@ -1,4 +1,5 @@
-import bcrypt from 'bcrypt-nodejs';
+/* eslint-disable func-names */
+import bcrypt from 'bcryptjs';
 import mongoose, { Schema } from 'mongoose';
 
 // create a userSchema
@@ -16,6 +17,7 @@ export const userSchema = new Schema(
     password: {
       type: String,
       required: [true, 'Password is required.'],
+      select: false,
     },
     status: {
       type: String,
@@ -27,31 +29,9 @@ export const userSchema = new Schema(
       enum: ['Subscriber', 'Administrator'],
       default: 'Subscriber',
     },
-    createdAt: Date,
-    updatedAt: Date,
   },
-  { versionKey: false },
+  { timestamps: true, versionKey: false },
 );
-
-/*
- * userSchema middlewares
- */
-
-// on every save, add the date
-userSchema.pre('save', function (next) {
-  // get the current date
-  var currentDate = new Date();
-
-  // change the updated_at field to current date
-  this.updatedAt = currentDate;
-
-  // if created_at doesn't exist, add to that field
-  if (!this.createdAt) {
-    this.createdAt = currentDate;
-  }
-
-  next();
-});
 
 /*
  * userSchema methods

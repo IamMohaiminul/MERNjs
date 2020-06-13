@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { verifyToken } from '../../auth/middlewares/verifyToken.js';
-import { getAllBlog, addBlog, getBlog } from '../controllers/index.js';
+import verifyToken from '../../auth/middlewares/verifyToken';
+import { getAllBlog, addBlog, getBlog } from '../controllers/index';
 
 const blogRoutes = express.Router();
 

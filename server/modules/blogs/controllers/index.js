@@ -1,4 +1,4 @@
-import Blog from '../models/index.js';
+import Blog from '../models/index';
 
 /**
  * get blogs
@@ -10,7 +10,7 @@ export function getAllBlog(req, res, next) {
     .sort({
       createdAt: -1,
     })
-    .populate('_createdBy')
+    .populate('_createdBy', '-status -createdAt -updatedAt')
     .exec((err, blogs) => {
       if (err) return next(err);
       console.log('getAllBlog(blogs): ', blogs);
@@ -26,13 +26,13 @@ export function getAllBlog(req, res, next) {
  * add blog
  */
 export function addBlog(req, res, next) {
-  console.log('addBlog(req.body): ', req.body);
-  let newBlog = new Blog();
+  console.log('addBlog(): ', req.body, req.auth);
+  const newBlog = new Blog();
   Object.assign(newBlog, req.body, {
-    _createdBy: req.authUser._id,
+    _createdBy: req.auth._id,
   });
   console.log('addBlog(newBlog): ', newBlog);
-  newBlog.save(function (err, blog) {
+  newBlog.save((err, blog) => {
     if (err) return next(err);
 
     return res.status(201).json({
@@ -44,7 +44,7 @@ export function addBlog(req, res, next) {
 }
 
 /**
- * get blog
+ * get blog by id
  */
 export function getBlog(req, res, next) {
   Blog.findById(req.params._id)

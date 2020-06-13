@@ -1,12 +1,15 @@
-import User from '../models/index.js';
+import User from '../models/index';
 
 /**
  * get users
  */
 export function getAllUser(req, res, next) {
-  User.find({
-    status: 'Active',
-  })
+  User.find(
+    {
+      status: 'Active',
+    },
+    '-status',
+  )
     .sort({
       createdAt: -1,
     })
@@ -31,7 +34,7 @@ export function addUser(req, res, next) {
     password: newUser.generateHash(req.body.password),
   });
   console.log('addUser(newUser): ', newUser);
-  newUser.save(function (err, user) {
+  newUser.save((err, user) => {
     if (err) return next(err);
 
     return res.status(201).json({
@@ -43,7 +46,7 @@ export function addUser(req, res, next) {
 }
 
 /**
- * get user
+ * get user by id
  */
 export function getUser(req, res, next) {
   User.findById(req.params._id).exec((err, user) => {

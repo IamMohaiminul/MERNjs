@@ -1,12 +1,12 @@
 require('dotenv').config();
 const path = require('path');
 const webpack = require('webpack');
-const dotENV = require('dotenv-webpack');
+const DotENV = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-let pluginList = [
-  new dotENV(),
+const pluginList = [
+  new DotENV(),
   new CleanWebpackPlugin(),
   new webpack.ProvidePlugin({
     $: 'jquery',
@@ -14,7 +14,7 @@ let pluginList = [
   }),
 ];
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
   pluginList.push(new CompressionPlugin());
 }
 
@@ -30,11 +30,6 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'src'),
-    compress: true,
-    port: process.env.PORT || 3000,
   },
   module: {
     rules: [
