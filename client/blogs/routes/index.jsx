@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import BlogContainer from '../containers/blog.jsx';
+import BlogContainer from '../containers/blog';
 
 export default function () {
   return (

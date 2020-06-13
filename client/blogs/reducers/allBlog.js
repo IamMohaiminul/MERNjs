@@ -3,7 +3,7 @@
  * You need to return something, so if there are no users then just return an empty array
  */
 
-export const allBlogReducer = (state = [], action) => {
+const allBlogReducer = (state = [], action) => {
   switch (action.type) {
     case 'FETCH_ALL_BLOG_REQUEST':
       return state;
@@ -15,3 +15,5 @@ export const allBlogReducer = (state = [], action) => {
       return state;
   }
 };
+
+export default allBlogReducer;

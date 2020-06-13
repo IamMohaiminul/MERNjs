@@ -4,9 +4,7 @@ import Blog from '../models/index';
  * get blogs
  */
 export function getAllBlog(req, res, next) {
-  Blog.find({
-    status: 'Active',
-  })
+  Blog.find({})
     .sort({
       createdAt: -1,
     })

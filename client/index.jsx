@@ -9,10 +9,10 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'toastr/build/toastr.min.css';
 import '../public/stylesheets/client.css';
 
-import './config.jsx';
+import './config';
 
-import store from './store.jsx';
-import Routes from './routes.jsx';
+import store from './store';
+import Routes from './routes';
 
 ReactDOM.render(
   <Provider store={store}>

@@ -3,7 +3,7 @@
     "browser": true,
     "es2020": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -14,18 +14,9 @@
   "plugins": ["react"],
   "rules": {
     "no-console": "off",
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allow": ["_id"]
-      }
-    ],
-    "no-param-reassign": [
-      "error",
-      {
-        "props": true,
-        "ignorePropertyModificationsFor": ["req", "res", "err"]
-      }
-    ]
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_createdBy"] }],
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["req", "res", "err"] }],
+    "import/no-extraneous-dependencies": ["error", { "peerDependencies": true }],
+    "react/forbid-prop-types": ["error", { "forbid": ["any"] }]
   }
 }
