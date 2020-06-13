@@ -1,19 +1,28 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import toastr from 'toastr';
+import { Redirect } from 'react-router';
 
-import DashboardContainer from '../containers/Dashboard.jsx';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-function isAuth(nextState, replaceState) {
+import DashboardContainer from '../containers/Dashboard';
+import NotFoundComponent from '../../core/components/notFound';
+
+function isAuth() {
   if (!localStorage.getItem('token') || !localStorage.getItem('email')) {
-    replaceState('/admin/auth');
+    return false;
   }
+  return true;
 }
 
 export default function () {
+  const match = useRouteMatch();
   return (
-    <Route path="dashboard">
-      <IndexRoute component={DashboardContainer} onEnter={isAuth} />
-    </Route>
+    <Switch>
+      <Route
+        exact
+        path={match.path}
+        render={() => (isAuth() ? <DashboardContainer /> : <Redirect to="/admin/auth" />)}
+      />
+      <Route component={NotFoundComponent} />
+    </Switch>
   );
 }

@@ -4,19 +4,19 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../public/stylesheets/lux.bootswatch.css';
 import 'font-awesome/css/font-awesome.min.css';
 import 'toastr/build/toastr.min.css';
 import '../public/stylesheets/admin.css';
 
-// import './config.jsx';
+import './config';
 
-import store from './store.jsx';
-// import Routes from './routes.jsx';
+import store from './store';
+import Routes from './routes';
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <Routes /> */}
-    <h1>Hello, Admin!</h1>
+    <Routes />
   </Provider>,
   document.getElementById('app'),
 );

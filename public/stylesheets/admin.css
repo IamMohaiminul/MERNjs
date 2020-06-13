@@ -1,35 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
+/*!
+ * MERNjs v2.0.0 (http://mern.js.org/)
+ * Author Muhammad Mohaiminul Islam <IamMohaiminul>
+ */
 
 body {
-  font-family: 'Raleway', sans-serif;
-  padding-top: 70px;
-  padding-bottom: 70px;
-  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 60px;
 }
 
-a {
-  color: #00b7ff;
+.msg-h1 {
+  text-transform: none;
 }
 
-footer {
-  padding-top: 15px;
-  background-color: #ffffff;
-}
-
-.title {
-  font-weight: bold;
-}
-
-.form-control {
-  border-radius: 0;
-  box-shadow: none;
-  border-color: #d2d6de;
-}
-
-.btn {
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border-width: 1px;
+.navbar-brand {
+  text-transform: none;
 }

@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FooterComponent extends Component {
-  render() {
-    return (
-      <footer className="navbar navbar-fixed-bottom">
-        <div className="text-center">
-          <p>
-            <small>
-              <a href="http://IamMohaiminul.GitHub.io/MERN">MERNjs</a> &copy;
-              2017
-            </small>
-          </p>
-        </div>
-      </footer>
-    );
-  }
-}
+const FooterComponent = () => (
+  <footer id="footer" className="fixed-bottom text-center">
+    <div className="row">
+      <div className="col-lg-12">
+        <p>
+          <a href="https://mern.js.org/">MERNjs</a>
+          &nbsp;&copy;&nbsp;2016-2020
+        </p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default FooterComponent;

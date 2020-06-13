@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     client: path.join(__dirname, 'client', 'index.jsx'),
     admin: path.join(__dirname, 'admin', 'index.jsx'),

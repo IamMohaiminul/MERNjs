@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import LoginComponent from '../components/Login.jsx';
+import LoginComponent from '../components/Login';
+import loginUser from '../actions/login';
 
-import { loginUser } from '../actions/login.js';
+const LoginContainer = ({ login, history }) => <LoginComponent loginUser={login} history={history} />;
 
-class LoginContainer extends Component {
-  render() {
-    return <LoginComponent loginUser={this.props.loginUser} />;
-  }
-}
+LoginContainer.propTypes = {
+  login: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 // Get apps store and pass it as props to LoginContainer
 //  > whenever store changes, the LoginContainer will automatically re-render
-function mapStateToProps(store) {
-  return {};
-}
+// eslint-disable-next-line no-unused-vars
+const mapStateToProps = (store) => ({});
 
 // Get actions and pass them as props to to LoginContainer
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators(
+const matchDispatchToProps = (dispatch) =>
+  bindActionCreators(
     {
-      loginUser: loginUser,
+      login: loginUser,
     },
     dispatch,
   );
-}
 
 // We don't want to return the plain LoginContainer (component) anymore,
 // we want to return the smart Container

@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import NavbarComponent from '../components/navbar.jsx';
-import FooterComponent from '../components/footer.jsx';
+import NavbarComponent from '../components/navbar';
+import FooterComponent from '../components/footer';
 
-class CoreLayout extends Component {
-  render() {
-    return (
-      <div className="container-fluid">
-        <NavbarComponent />
-        <div className="content">{this.props.children}</div>
-        <FooterComponent />
-      </div>
-    );
-  }
-}
+const CoreLayout = ({ children }) => (
+  <div className="container">
+    <NavbarComponent />
+    <div className="main-container">{children}</div>
+    <FooterComponent />
+  </div>
+);
+
+CoreLayout.propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 export default CoreLayout;
