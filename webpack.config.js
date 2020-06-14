@@ -17,7 +17,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public/dist'),
     filename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.js' : '[name].bundle.js',
-    sourceMapFilename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.map' : '[name].bundle.map',
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
