@@ -3,68 +3,28 @@ const path = require('path');
 const webpack = require('webpack');
 const DotENV = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-let constants = {};
-if (process.env.NODE_ENV === 'production') {
-  constants = {
-    devtool: 'cheap-module-source-map',
-    output: {
-      filename: '[name].bundle.min.js',
-      sourceMapFilename: '[name].bundle.min.map',
-    },
-    MiniCssExtractPlugin: {
-      filename: '[name].bundle.min.css',
-      chunkFilename: '[id].bundle.min.css',
-    },
-  };
-} else {
-  constants = {
-    devtool: 'source-map',
-    output: {
-      filename: '[name].bundle.js',
-      sourceMapFilename: '[name].bundle.map',
-    },
-    MiniCssExtractPlugin: {
-      filename: '[name].bundle.css',
-      chunkFilename: '[id].bundle.css',
-    },
-  };
-}
-
-const pluginList = [
-  new DotENV(),
-  new CleanWebpackPlugin(),
-  new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-  }),
-  new MiniCssExtractPlugin({
-    filename: constants.MiniCssExtractPlugin.filename,
-    chunkFilename: constants.MiniCssExtractPlugin.chunkFilename,
-    ignoreOrder: false,
-  }),
-];
-
-if (process.env.NODE_ENV === 'production') {
-  pluginList.push(new CompressionPlugin());
-}
-
 module.exports = {
-  devtool: constants.devtool,
+  devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   entry: {
     client: path.join(__dirname, 'client', 'index.jsx'),
     admin: path.join(__dirname, 'admin', 'index.jsx'),
   },
   output: {
     path: path.join(__dirname, 'public/dist'),
-    filename: constants.output.filename,
-    sourceMapFilename: constants.output.sourceMapFilename,
+    filename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.js' : '[name].bundle.js',
+    sourceMapFilename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.map' : '[name].bundle.map',
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   module: {
     rules: [
@@ -96,5 +56,18 @@ module.exports = {
       },
     ],
   },
-  plugins: pluginList,
+  plugins: [
+    new DotENV(),
+    new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
+    new MiniCssExtractPlugin({
+      filename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.css' : '[name].bundle.css',
+      chunkFilename: process.env.NODE_ENV === 'production' ? '[id].bundle.min.css' : '[id].bundle.css',
+      ignoreOrder: false,
+    }),
+    new CompressionPlugin(),
+  ],
 };
