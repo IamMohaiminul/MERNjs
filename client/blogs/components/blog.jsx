@@ -44,7 +44,7 @@ class BlogComponent extends Component {
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Author</th>
-              <th scope="col">Last Update</th>
+              <th scope="col">Last Update At</th>
               <th scope="col">
                 <i className="fa fa-info-circle text-info" />
               </th>
