@@ -5,13 +5,17 @@
 
 body {
   padding-top: 120px;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
+}
+
+.navbar-brand {
+  text-transform: none;
 }
 
 .msg-h1 {
   text-transform: none;
 }
 
-.navbar-brand {
-  text-transform: none;
+.fixed-bottom {
+  padding-top: 20px;
 }
