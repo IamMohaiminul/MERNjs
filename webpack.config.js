@@ -8,6 +8,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
+const pluginList = [
+  new DotENV(),
+  new CleanWebpackPlugin(),
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+  }),
+  new MiniCssExtractPlugin({
+    filename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.css' : '[name].bundle.css',
+    chunkFilename: process.env.NODE_ENV === 'production' ? '[id].bundle.min.css' : '[id].bundle.css',
+    ignoreOrder: false,
+  }),
+];
+
+if (process.env.NODE_ENV === 'production') {
+  pluginList.push(new CompressionPlugin());
+}
+
 module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   entry: {
@@ -55,18 +73,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new DotENV(),
-    new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-    }),
-    new MiniCssExtractPlugin({
-      filename: process.env.NODE_ENV === 'production' ? '[name].bundle.min.css' : '[name].bundle.css',
-      chunkFilename: process.env.NODE_ENV === 'production' ? '[id].bundle.min.css' : '[id].bundle.css',
-      ignoreOrder: false,
-    }),
-    new CompressionPlugin(),
-  ],
+  plugins: pluginList,
 };
