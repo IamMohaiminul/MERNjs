@@ -1,7 +1,7 @@
 {
   "name": "mernjs",
   "version": "2.0.0",
-  "description": "An open-source full-stack JavaScript solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) application.",
+  "description": "An open-source full-stack JavaScript solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) application",
   "keywords": [
     "NodeJS",
     "ExpressJS",
@@ -11,20 +11,19 @@
     "Webpack",
     "babel"
   ],
-  "author": "Muhammad Mohaiminul Islam <IamMohaiminul>",
+  "author": "Muhd Mohaiminul Islam <IamMohaiminul>",
   "engines": {
     "node": "14.x"
   },
   "scripts": {
     "start": "node ./build",
     "debug": "node --inspect ./build",
-    "build": "npm run clean && npm run build:server && npm run build:client",
-    "clean": "rimraf ./build",
-    "watch": "concurrently \"npm:watch:server\" \"npm:watch:client\"",
     "build:server": "babel -d ./build ./server -s",
-    "build:client": "webpack",
+    "build:client": "webpack --progress --profile",
+    "build": "rimraf ./build && npm run build:server && npm run build:client",
     "watch:server": "DEBUG=MERNjs:* nodemon --exec babel-node ./server",
-    "watch:client": "webpack --watch"
+    "watch:client": "webpack --watch --progress --profile",
+    "watch": "concurrently \"npm:watch:server\" \"npm:watch:client\""
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
