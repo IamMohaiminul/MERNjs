@@ -18,12 +18,12 @@
   "scripts": {
     "start": "node ./build",
     "debug": "node --inspect ./build",
+    "build:client": "webpack",
     "build:server": "babel -d ./build ./server -s",
-    "build:client": "webpack --progress --profile",
-    "build": "rimraf ./build && npm run build:server && npm run build:client",
+    "build": "rimraf ./build && concurrently \"npm:build:client\" \"npm:build:server\"",
+    "watch:client": "webpack --watch",
     "watch:server": "DEBUG=MERNjs:* nodemon --exec babel-node ./server",
-    "watch:client": "webpack --watch --progress --profile",
-    "watch": "concurrently \"npm:watch:server\" \"npm:watch:client\""
+    "watch": "concurrently \"npm:watch:client\" \"npm:watch:server\""
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
