@@ -1,26 +1,21 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import toastr from 'toastr';
 
+import { isAuth, signOut } from '../../utils';
 import LoginContainer from '../containers/Login';
 import RegistrationContainer from '../containers/Registration';
 import NotFoundComponent from '../../core/components/notFound';
-
-function signOut() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('email');
-  toastr.success('Logout successfully', 'MERNjs');
-  return true;
-}
 
 export default function () {
   const match = useRouteMatch();
   return (
     <Switch>
-      <Route exact path={match.path}>
-        <Redirect to={`${match.path}/login`} />
-      </Route>
+      <Route
+        exact
+        path={match.path}
+        render={() => (isAuth() ? <Redirect to="/admin/dashboard" /> : <Redirect to={`${match.path}/login`} />)}
+      />
       <Route exact path={`${match.path}/login`} component={LoginContainer} />
       <Route path={`${match.path}/register`} component={RegistrationContainer} />
       <Route

@@ -1,9 +1,0 @@
-{
-  "fullName": "Administrator",
-  "emailAddress": "admin@mail.com",
-  "password": "$2a$10$zswQZ5HGCWdLlqHt729yCeARmkrmHk2GZWLgZ.iOJT0Uj.Vh/PSLq",
-  "status": "Active",
-  "role": "Administrator",
-  "createdAt": "2020-06-01T00:00:00.000Z",
-  "updatedAt": "2020-06-15T00:00:00.000Z"
-}

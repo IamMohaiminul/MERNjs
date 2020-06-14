@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import toastr from 'toastr';
 
 class HomeComponent extends Component {
   componentDidMount() {
-    toastr.info('Welcome to MERNjs.', 'Client | MERNjs');
+    console.log('Welcome to MERNjs!');
   }
 
   render() {

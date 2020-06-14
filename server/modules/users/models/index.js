@@ -24,11 +24,6 @@ export const userSchema = new Schema(
       enum: ['Active', 'Inactive'],
       default: 'Active',
     },
-    role: {
-      type: String,
-      enum: ['Subscriber', 'Administrator'],
-      default: 'Subscriber',
-    },
   },
   { timestamps: true, versionKey: false },
 );

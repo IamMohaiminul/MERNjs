@@ -63,14 +63,10 @@ $ npm run watch:server
 $ npm run watch:client
 ```
 
-###### To import the default admin user in db
-
-```sh
-$ mongoimport --db MERNjs --collection users --drop --file ./default.users.json
-```
-
 _Note: Please make sure our MongoDB is running._
 
 Our application should run on port 3000 based on the environment configuration, so in our browser just go to [http://127.0.0.1:3000/](http://127.0.0.1:3000/) for Client App, [http://127.0.0.1:3000/admin](http://127.0.0.1:3000/admin) for Admin App & [http://127.0.0.1:3000/api](http://127.0.0.1:3000/api) for RESTful APIs.
 
-_FYI, default admin user's email is `admin@mail.com` & password is `admin`._
+## License
+
+[The MIT License](LICENSE)

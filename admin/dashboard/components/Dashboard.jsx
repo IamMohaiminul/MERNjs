@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import toastr from 'toastr';
 
 class DashboardComponent extends Component {
   componentDidMount() {
-    toastr.info('Welcome to MERNjs.', 'Admin | MERNjs');
+    console.log('Welcome to MERNjs!');
   }
 
   render() {

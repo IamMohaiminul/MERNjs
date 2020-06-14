@@ -9,10 +9,10 @@ class BlogComponent extends Component {
       return blogs.map((blog, idx) => {
         return (
           <tr key={idx.toString()}>
+            <td>{idx + 1}</td>
             <td>{blog.title}</td>
             <td>{blog.description}</td>
             <td>{blog._createdBy.fullName}</td>
-            <td>{blog._createdBy.role}</td>
             <td>{moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
             <td>
               {blog.status.toLowerCase() === 'active' ? (
@@ -40,10 +40,10 @@ class BlogComponent extends Component {
         <table className="table table-hover">
           <thead>
             <tr className="table-active">
+              <th scope="col">No</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Author</th>
-              <th scope="col">Role</th>
               <th scope="col">Last Update</th>
               <th scope="col">
                 <i className="fa fa-info-circle text-info" />
