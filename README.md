@@ -49,7 +49,7 @@ $ npm install
 ###### To build the application
 
 ```sh
-// watch both server and client
+// build both server and client
 $ npm run build
 
 // build only server
