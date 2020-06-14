@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import 'app-module-path/register';
 import 'dotenv/config';
 import bodyParser from 'body-parser';
