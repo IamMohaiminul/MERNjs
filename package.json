@@ -98,5 +98,6 @@
     "type": "git",
     "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
   },
+  "license": "MIT",
   "homepage": "http://mern.js.org/"
 }
