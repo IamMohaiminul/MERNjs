@@ -2,26 +2,6 @@ import jwt from 'jsonwebtoken';
 
 import User from '../../users/models/index';
 
-const createAdminUserIfNotExist = async (req, res, next) => {
-  console.log('createAdminUserIfNotExist(): ', req.params, req.body, req.auth);
-  try {
-    const users = await User.find();
-    console.log('users: ', users);
-    if (users.length) return next();
-    const user = new User();
-    Object.assign(user, {
-      fullName: 'Administrator',
-      emailAddress: 'admin@mail.com',
-      password: user.generateHash('admin'),
-      role: 'Administrator',
-    });
-    await user.save();
-    return next();
-  } catch (err) {
-    return next(err);
-  }
-};
-
 const authenticateUser = async (req, res, next) => {
   console.log('authenticateUser(): ', req.params, req.body, req.auth);
   try {
@@ -76,4 +56,4 @@ const registerUser = async (req, res, next) => {
   }
 };
 
-export { createAdminUserIfNotExist, authenticateUser, registerUser };
+export { authenticateUser, registerUser };

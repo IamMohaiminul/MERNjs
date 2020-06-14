@@ -80,19 +80,19 @@ class RegistrationComponent extends Component {
                   className="form-control"
                   value={fullName}
                   onChange={this.handleInputChange}
-                  placeholder="Enter full Name"
+                  placeholder="Enter full name"
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="emailAddress">Email address</label>
+                <label htmlFor="emailAddress">Email Address</label>
                 <input
                   name="emailAddress"
                   type="email"
                   className="form-control"
                   value={emailAddress}
                   onChange={this.handleInputChange}
-                  placeholder="Enter email"
+                  placeholder="Enter email address"
                 />
               </div>
               <div className="form-group">
@@ -103,7 +103,7 @@ class RegistrationComponent extends Component {
                   className="form-control"
                   value={password}
                   onChange={this.handleInputChange}
-                  placeholder="Enter Password"
+                  placeholder="Enter password"
                 />
               </div>
               <div className="form-group">
@@ -114,14 +114,14 @@ class RegistrationComponent extends Component {
                   className="form-control"
                   value={confirmPassword}
                   onChange={this.handleInputChange}
-                  placeholder="Enter Confirm Password"
+                  placeholder="Enter confirm password"
                 />
               </div>
               <button type="submit" className="btn btn-block btn-primary">
                 Submit
               </button>
               <hr />
-              <Link to="/admin/auth/login" className="btn btn-block btn-primary">
+              <Link to="/admin/auth/login" className="btn btn-block btn-dark">
                 Already have an account
               </Link>
             </fieldset>

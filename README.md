@@ -4,7 +4,7 @@ MERNjs is an open-source full-stack JavaScript solution, which provides a solid 
 
 ## Before You Begin
 
-Before you begin we recommend you read about the basic building blocks that assemble a MERNjs application:
+Before we begin, recommend to read about the basic building blocks that assemble a MERNjs application:
 
 - MongoDB - Go through [MongoDB Official Website](http://mongodb.org/) and proceed to their [Official Manual](http://docs.mongodb.org/manual/), which should help you understand NoSQL and MongoDB better.
 - Express - The best way to understand express is through its [Official Website](http://expressjs.com/), which has a [Getting Started](http://expressjs.com/starter/installing.html) guide, as well as an [ExpressJS](http://expressjs.com/en/guide/routing.html) guide for general express topics.
@@ -13,7 +13,7 @@ Before you begin we recommend you read about the basic building blocks that asse
 
 ## Prerequisites
 
-Make sure you have installed all of the following prerequisites on your development machine:
+Make sure we have installed all of the following prerequisites on our development machine:
 
 - Git - [Download & Install Git](https://git-scm.com/downloads). OSX and Linux machines typically have this already installed.
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
@@ -21,7 +21,7 @@ Make sure you have installed all of the following prerequisites on your developm
 
 ## Downloading MERNjs
 
-Currently there is a single way you can get the MERNjs boilerplate:
+Currently there is a single way that we can get the MERNjs boilerplate:
 
 ### Cloning The GitHub Repository
 
@@ -33,9 +33,9 @@ $ git clone https://github.com/IamMohaiminul/MERNjs MERNjs
 
 This will clone the latest version of the MERNjs repository to a **MERNjs** folder.
 
-## Running Your Application
+## Run our Application
 
-To run your application follow this steps.
+To run our application follow this steps.
 
 ###### To install all dependencies
 
@@ -46,36 +46,31 @@ $ npm install
 ###### To start application
 
 ```sh
-// build the application
 $ npm run build
-
-// start the application (without debug mode)
 $ npm start
-// start the application (with debug mode)
-$ npm run debug
 ```
 
-###### To live changes of application (not for production environment)
+###### To watch the live changes of application
 
 ```sh
-// live changes of client side
-$ npm run live:client
+// watch both server and client
+$ npm run watch:client
 
-// live changes of server side (without debug mode)
-$ npm run live:server
-// live changes of server side (with debug mode)
-$ npm run live:server:debug
+// watch only server
+$ npm run watch:server
+
+// watch only client
+$ npm run watch:client
 ```
 
-_Note: Please make sure your MongoDB is running._
-
-Your application should run on port 3000 with the _default (development)_ environment configuration, so in your browser just go to [http://127.0.0.1:3000/](http://127.0.0.1:3000/) for Client App, [http://127.0.0.1:3000/admin](http://127.0.0.1:3000/admin) for Admin App & [http://127.0.0.1:3000/api](http://127.0.0.1:3000/api) for RESTful APIs.
-
-###### Default Admin User
+###### To import the default admin user in db
 
 ```sh
-Full Name:  Administrator
-Email:      admin@mail.com
-Password:   admin
-Role:       Administrator
+$ mongoimport --db MERNjs --collection users --drop --file ./default.users.json
 ```
+
+_Note: Please make sure our MongoDB is running._
+
+Our application should run on port 3000 based on the environment configuration, so in our browser just go to [http://127.0.0.1:3000/](http://127.0.0.1:3000/) for Client App, [http://127.0.0.1:3000/admin](http://127.0.0.1:3000/admin) for Admin App & [http://127.0.0.1:3000/api](http://127.0.0.1:3000/api) for RESTful APIs.
+
+_FYI, default admin user's email is `admin@mail.com` & password is `admin`._
