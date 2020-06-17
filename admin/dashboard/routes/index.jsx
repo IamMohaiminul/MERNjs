@@ -1,8 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-import { isAuth } from '../../utils';
+import { AdminRoute } from '../../core/components/privateRoute';
 import DashboardContainer from '../containers/Dashboard';
 import NotFoundComponent from '../../core/components/notFound';
 
@@ -10,11 +9,7 @@ export default function () {
   const match = useRouteMatch();
   return (
     <Switch>
-      <Route
-        exact
-        path={match.path}
-        render={() => (isAuth() ? <DashboardContainer /> : <Redirect to="/admin/auth" />)}
-      />
+      <AdminRoute exact path={match.path} component={DashboardContainer} />
       <Route component={NotFoundComponent} />
     </Switch>
   );

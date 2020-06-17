@@ -19,7 +19,6 @@ const Routes = () => (
           <Redirect to="/admin/dashboard" />
         </Route>
         <Route path="/admin/auth" component={authRoute} />
-        {/* <Route path="/admin/about" render={() => <p>admin about page...</p>} /> */}
         <Route path="/admin/dashboard" component={dashboardRoute} />
         {/* <Route path="/admin/users" component={userRoute} /> */}
         {/* <Route path="/admin/blogs" component={blogRoute} /> */}
