@@ -2,7 +2,7 @@ title: MERNjs
 description: A Open-Source Full-Stack Solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) Applications.
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-architect
+theme: jekyll-theme-cayman
 
 gems:
   - jekyll-mentions
