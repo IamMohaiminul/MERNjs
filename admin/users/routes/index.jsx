@@ -1,12 +1,16 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-import UserContainer from '../containers/user.jsx';
+import UserContainer from '../containers/user';
+import NotFoundComponent from '../../core/components/notFound';
 
 export default function () {
+  const match = useRouteMatch();
   return (
-    <Route path='users'>
-      <IndexRoute component={UserContainer} />
-    </Route>
+    <Switch>
+      <Route exact path={match.path} component={UserContainer} />
+      <Route path={`${match.path}/about`} render={() => <p>users about page...</p>} />
+      <Route component={NotFoundComponent} />
+    </Switch>
   );
-};
+}

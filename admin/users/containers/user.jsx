@@ -1,40 +1,44 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import UserComponent from '../components/user.jsx';
-
-import { getAllUser } from '../actions/getAllUser.js';
+import getAllUser from '../actions/getAllUser';
+import UserComponent from '../components/user';
 
 class UserContainer extends Component {
-  componentWillMount() {
-    this.props.getAllUser();
+  componentDidMount() {
+    const { getUsers } = this.props;
+    getUsers();
   }
 
   render() {
-    return (
-      <UserComponent
-        allUser={this.props.allUser} />
-    );
+    const { users } = this.props;
+    return <UserComponent users={users} />;
   }
 }
+
+UserContainer.propTypes = {
+  getUsers: PropTypes.func.isRequired,
+  users: PropTypes.array.isRequired,
+};
 
 // Get apps store and pass it as props to UserContainer
 //  > whenever store changes, the UserContainer will automatically re-render
 // "store.allUser" is set in reducers.js
-function mapStateToProps(store) {
-  return {
-    allUser: store.allUser,
-  };
-}
+const mapStateToProps = (store) => ({
+  users: store.allUser,
+});
 
 // Get actions and pass them as props to to UserContainer
 //  > now UserContainer has this.props.getAllUser
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    getAllUser: getAllUser,
-  }, dispatch);
-}
+const matchDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      getUsers: getAllUser,
+    },
+    dispatch,
+  );
 
 // We don't want to return the plain UserContainer (component) anymore,
 // we want to return the smart Container

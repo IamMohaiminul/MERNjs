@@ -1,33 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import RegistrationComponent from '../components/Registration.jsx';
+import RegistrationComponent from '../components/Registration';
 
-import { registerUser } from '../actions/register.js';
+import registerUser from '../actions/register';
 
-class RegistrationContainer extends Component {
-  render() {
-    return (
-      <RegistrationComponent
-        registerUser={this.props.registerUser} />
-    );
-  }
-}
+const RegistrationContainer = ({ register, history }) => (
+  <RegistrationComponent registerUser={register} history={history} />
+);
+
+RegistrationContainer.propTypes = {
+  register: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 // Get apps store and pass it as props to RegistrationContainer
 //  > whenever store changes, the RegistrationContainer will automatically re-render
-function mapStateToProps(store) {
-  return {
-  };
-}
+// eslint-disable-next-line no-unused-vars
+const mapStateToProps = (store) => ({});
 
 // Get actions and pass them as props to to RegistrationContainer
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    registerUser: registerUser,
-  }, dispatch);
-}
+const matchDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      register: registerUser,
+    },
+    dispatch,
+  );
 
 // We don't want to return the plain RegistrationContainer (component) anymore,
 // we want to return the smart Container

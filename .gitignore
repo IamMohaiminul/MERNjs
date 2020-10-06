@@ -1,6 +1,9 @@
 # Dependency directories
 node_modules
 
+# Environment variables
+.env
+
 # Build/Generate directories
 build
 dist

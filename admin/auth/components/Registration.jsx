@@ -1,115 +1,140 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Link, browserHistory } from 'react-router';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 class RegistrationComponent extends Component {
-  render() {
-    return (
-      <div className='row'>
-        <div className='col-xs-12 text-center'>
-          <h1 className='title'>MERNjs</h1>
-        </div>
-        <div className='col-xs-4 col-xs-offset-4'>
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <div className='form-group'>
-              <label htmlFor='fullName'>Full Name</label>
-              <input
-                ref='fullName'
-                type='text'
-                className='form-control'
-                placeholder='Full Name' />
-            </div>
-            <div className='form-group'>
-              <label htmlFor='emailAddress'>Email address</label>
-              <input
-                ref='emailAddress'
-                type='email'
-                className='form-control'
-                placeholder='Email Address' />
-            </div>
-            <div className='form-group'>
-              <label htmlFor='password'>Password</label>
-              <input
-                ref='password'
-                type='password'
-                className='form-control'
-                placeholder='Password' />
-            </div>
-            <div className='form-group'>
-              <label htmlFor='confirmPassword'>Confirm Password</label>
-              <input
-                ref='confirmPassword'
-                type='password'
-                className='form-control'
-                placeholder='Confirm Password' />
-            </div>
-            <div className='col-xs-offset-6'>
-              <button
-                type='submit'
-                className='btn btn-block btn-primary'>
-                Register
-              </button>
-            </div>
-            <div className='text-center'>
-              <p><br/>- OR -<br/></p>
-              <Link
-                to='/admin/auth/login'
-                className='btn btn-block btn-default'>
-                I already have a account
-              </Link>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      fullName: '',
+      emailAddress: '',
+      password: '',
+      confirmPassword: '',
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleSubmit(event) {
-    const _this = this;
+  handleInputChange(event) {
+    const { name } = event.target;
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    this.setState({ [name]: value });
+  }
+
+  handleFormSubmit(event) {
     event.preventDefault();
+    const { registerUser, history } = this.props;
+    const { fullName, emailAddress, password, confirmPassword } = this.state;
 
-    let fullName = ReactDOM.findDOMNode(_this.refs.fullName).value.trim();
-    let emailAddress = ReactDOM.findDOMNode(_this.refs.emailAddress).value.trim();
-    let password = ReactDOM.findDOMNode(_this.refs.password).value.trim();
-    let confirmPassword = ReactDOM.findDOMNode(_this.refs.confirmPassword).value.trim();
-
-    /*
-     * Validation rules
-     */
-    if (fullName.length < 1) {
+    if (fullName.trim().length < 1) {
       toastr.warning('Full Name is required.', 'MERNjs');
       return false;
     }
-
-    if (emailAddress.length < 1) {
+    if (emailAddress.trim().length < 1) {
       toastr.warning('Email Address is required.', 'MERNjs');
       return false;
     }
-
-    if (password.length < 1) {
+    if (password.trim().length < 1) {
       toastr.warning('Password is required.', 'MERNjs');
       return false;
     }
-
     if (password !== confirmPassword) {
       toastr.warning('Confirm Password is not match.', 'MERNjs');
       return false;
     }
 
-    this.props.registerUser({
-      fullName, emailAddress, password,
-    }, function (err, res) {
-      if (err) {
-        console.error('registerUser: ', err);
-        toastr.error(err.message, 'MERNjs');
-      } else {
-        console.log('registerUser: ', res);
+    registerUser(
+      {
+        fullName,
+        emailAddress,
+        password,
+      },
+      (err, res) => {
+        if (err) {
+          toastr.error(err.message, 'MERNjs');
+          return false;
+        }
         toastr.success(res.message, 'MERNjs');
-        browserHistory.push('/admin/auth');
-      }
-    });
+        history.push('/admin/auth');
+        return true;
+      },
+    );
+    return null;
+  }
+
+  render() {
+    const { fullName, emailAddress, password, confirmPassword } = this.state;
+    return (
+      <div className="row">
+        <div className="col-lg-4 offset-lg-4">
+          <form onSubmit={this.handleFormSubmit}>
+            <fieldset>
+              <legend className="text-center">Registration</legend>
+              <div className="form-group">
+                <label htmlFor="fullName">Full Name</label>
+                <input
+                  name="fullName"
+                  type="text"
+                  className="form-control"
+                  value={fullName}
+                  onChange={this.handleInputChange}
+                  placeholder="Enter full name"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="emailAddress">Email Address</label>
+                <input
+                  name="emailAddress"
+                  type="email"
+                  className="form-control"
+                  value={emailAddress}
+                  onChange={this.handleInputChange}
+                  placeholder="Enter email address"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  className="form-control"
+                  value={password}
+                  onChange={this.handleInputChange}
+                  placeholder="Enter password"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  name="confirmPassword"
+                  type="password"
+                  className="form-control"
+                  value={confirmPassword}
+                  onChange={this.handleInputChange}
+                  placeholder="Enter confirm password"
+                />
+              </div>
+              <button type="submit" className="btn btn-block btn-primary">
+                Submit
+              </button>
+              <hr />
+              <Link to="/admin/auth/login" className="btn btn-block btn-dark">
+                Already have an account
+              </Link>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    );
   }
 }
+
+RegistrationComponent.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default RegistrationComponent;

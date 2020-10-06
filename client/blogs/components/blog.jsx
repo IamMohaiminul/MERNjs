@@ -1,47 +1,64 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import toastr from 'toastr';
 
 class BlogComponent extends Component {
-  render() {
+  renderAllBlog() {
+    const { blogs } = this.props;
+    if (blogs.length) {
+      return blogs.map((blog, idx) => {
+        return (
+          <tr key={idx.toString()}>
+            <td>{idx + 1}</td>
+            <td>{blog.title}</td>
+            <td>{blog.description}</td>
+            <td>{blog._createdBy.fullName}</td>
+            <td>{moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
+            <td>
+              {blog.status.toLowerCase() === 'active' ? (
+                <i className="fa fa-eye text-success" />
+              ) : (
+                <i className="fa fa-eye-slash text-danger" />
+              )}
+            </td>
+          </tr>
+        );
+      });
+    }
     return (
-      <div className='row'>
-        {this.renderAllBlog()}
-      </div>
+      <tr>
+        <td colSpan="6" className="text-center">
+          <h1 className="msg-h1">Currently, there is no blog!</h1>
+        </td>
+      </tr>
     );
   }
 
-  renderAllBlog() {
-    if (this.props.allBlog.length) {
-      return this.props.allBlog.map(function (blog, index) {
-        return (
-          <div
-            className='col-xs-6 text-center'
-            key={blog._id}>
-            <h4>{blog.title}</h4>
-            <small>
-              {blog._createdBy.fullName} ({blog._createdBy.emailAddress})
-              <br/>
-              {moment(blog.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
-              &nbsp;|&nbsp;
-              {moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}
-            </small>
-            <p className='text-justify'>
-              {blog.description}
-            </p>
-          </div>
-        );
-      });
-    } else {
-      return (
-        <div className='col-xs-offset-3 col-xs-6 text-center'>
-          <p>Currently, There is no blog.</p>;
-        </div>
-      );
-    }
+  render() {
+    return (
+      <div className="row">
+        <table className="table table-hover">
+          <thead>
+            <tr className="table-active">
+              <th scope="col">No</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Author</th>
+              <th scope="col">Last Update At</th>
+              <th scope="col">
+                <i className="fa fa-info-circle text-info" />
+              </th>
+            </tr>
+          </thead>
+          <tbody>{this.renderAllBlog()}</tbody>
+        </table>
+      </div>
+    );
   }
-
 }
+
+BlogComponent.propTypes = {
+  blogs: PropTypes.array.isRequired,
+};
 
 export default BlogComponent;

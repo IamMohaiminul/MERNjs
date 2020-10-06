@@ -1,35 +1,35 @@
-import User from '../models/index.js';
+import User from '../models/index';
 
 /**
  * get users
  */
 export function getAllUser(req, res, next) {
-  User.find({
-    status: 'Active',
-  }).sort({
-    createdAt: -1,
-  }).exec((err, users) => {
-    if (err) return next(err);
-    console.log('getAllUser(users): ', users);
-    return res.status(200).json({
-      success: true,
-      message: 'Get all user',
-      data: users,
+  console.log('getAllUser(): ', req.params, req.body, req.auth);
+  User.find({}, '-password')
+    .sort({
+      createdAt: -1,
+    })
+    .exec((err, users) => {
+      if (err) return next(err);
+
+      return res.status(200).json({
+        success: true,
+        message: 'Get all user',
+        data: users,
+      });
     });
-  });
 }
 
 /**
  * add user
  */
 export function addUser(req, res, next) {
-  console.log('addUser(req.body): ', req.body);
+  console.log('addUser(): ', req.params, req.body, req.auth);
   const newUser = new User();
   Object.assign(newUser, req.body, {
     password: newUser.generateHash(req.body.password),
   });
-  console.log('addUser(newUser): ', newUser);
-  newUser.save(function (err, user) {
+  newUser.save((err, user) => {
     if (err) return next(err);
 
     return res.status(201).json({
@@ -41,10 +41,11 @@ export function addUser(req, res, next) {
 }
 
 /**
- * get user
+ * get user by id
  */
 export function getUser(req, res, next) {
-  User.findById(req.params._id).exec((err, user) => {
+  console.log('getUser(): ', req.params, req.body, req.auth);
+  User.findById(req.params._id, '-password').exec((err, user) => {
     if (err) return next(err);
 
     return res.status(200).json({

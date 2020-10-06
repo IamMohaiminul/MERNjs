@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
-import { Router, Route, IndexRoute, IndexRedirect, browserHistory } from 'react-router';
+import React from 'react';
+import { Router, Redirect } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
-import CoreLayout from './core/layouts/index.jsx';
-import NotFoundComponent from './core/components/notFound.jsx';
+import CoreLayout from './core/layouts';
+import NotFoundComponent from './core/components/notFound';
 
-import authRoute from './auth/routes/index.jsx';
-import dashboardRoute from './dashboard/routes/index.jsx';
-import userRoute from './users/routes/index.jsx';
-import blogRoute from './blogs/routes/index.jsx';
+import authRoute from './auth/routes';
+import dashboardRoute from './dashboard/routes';
+import userRoute from './users/routes';
+import blogRoute from './blogs/routes';
 
-class Routes extends Component {
-  render() {
-    return (
-      <Router history={browserHistory}>
-        <Route path='admin' component={CoreLayout}>
-          <IndexRedirect to='dashboard'/>
-          {authRoute()}
-          {dashboardRoute()}
-          {userRoute()}
-          {blogRoute()}
-          <Route path='*' component={NotFoundComponent} />
+const Routes = () => (
+  <Router history={createBrowserHistory()}>
+    <CoreLayout>
+      <Switch>
+        <Route exact path="/admin">
+          <Redirect to="/admin/dashboard" />
         </Route>
-      </Router>
-    );
-  }
-}
+        <Route path="/admin/auth" component={authRoute} />
+        <Route path="/admin/dashboard" component={dashboardRoute} />
+        <Route path="/admin/users" component={userRoute} />
+        <Route path="/admin/blogs" component={blogRoute} />
+        <Route component={NotFoundComponent} />
+      </Switch>
+    </CoreLayout>
+  </Router>
+);
 
 export default Routes;

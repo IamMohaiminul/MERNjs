@@ -8,19 +8,19 @@ const defaultState = {
   email: localStorage.getItem('email') ? localStorage.getItem('email') : null,
 };
 
-export const authReducer = (state = defaultState, action) => {
+const authReducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'AUTH_LOGIN_REQUEST':
       return state;
     case 'AUTH_LOGIN_FAILURE':
       return state;
     case 'AUTH_LOGIN_SUCCESS':
-      return Object.assign({}, state, {
+      return Object.assign(state, {
         token: action.payload.data.token ? action.payload.data.token : null,
         email: action.payload.data.email ? action.payload.data.email : null,
       });
     case 'AUTH_LOGOUT_SUCCESS':
-      return Object.assign({}, state, {
+      return Object.assign(state, {
         token: null,
         email: null,
       });
@@ -28,3 +28,5 @@ export const authReducer = (state = defaultState, action) => {
       return state;
   }
 };
+
+export default authReducer;

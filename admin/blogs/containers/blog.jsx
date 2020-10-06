@@ -1,40 +1,44 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import BlogComponent from '../components/blog.jsx';
-
-import { getAllBlog } from '../actions/getAllBlog.js';
+import getAllBlog from '../actions/getAllBlog';
+import BlogComponent from '../components/blog';
 
 class BlogContainer extends Component {
-  componentWillMount() {
-    this.props.getAllBlog();
+  componentDidMount() {
+    const { getBlogs } = this.props;
+    getBlogs();
   }
 
   render() {
-    return (
-      <BlogComponent
-        allBlog={this.props.allBlog} />
-    );
+    const { blogs } = this.props;
+    return <BlogComponent blogs={blogs} />;
   }
 }
+
+BlogContainer.propTypes = {
+  getBlogs: PropTypes.func.isRequired,
+  blogs: PropTypes.array.isRequired,
+};
 
 // Get apps store and pass it as props to BlogContainer
 //  > whenever store changes, the BlogContainer will automatically re-render
 // "store.allBlog" is set in reducers.js
-function mapStateToProps(store) {
-  return {
-    allBlog: store.allBlog,
-  };
-}
+const mapStateToProps = (store) => ({
+  blogs: store.allBlog,
+});
 
 // Get actions and pass them as props to to BlogContainer
 //  > now BlogContainer has this.props.getAllBlog
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({
-    getAllBlog: getAllBlog,
-  }, dispatch);
-}
+const matchDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      getBlogs: getAllBlog,
+    },
+    dispatch,
+  );
 
 // We don't want to return the plain BlogContainer (component) anymore,
 // we want to return the smart Container

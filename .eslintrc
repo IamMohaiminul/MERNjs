@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-console": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_createdBy"] }],
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["req", "res", "err"] }],
+    "import/no-extraneous-dependencies": ["error", { "peerDependencies": true }],
+    "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }]
+  }
+}
