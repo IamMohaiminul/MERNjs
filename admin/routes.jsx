@@ -8,8 +8,8 @@ import NotFoundComponent from './core/components/notFound';
 
 import authRoute from './auth/routes';
 import dashboardRoute from './dashboard/routes';
-// import userRoute from './users/routes';
-// import blogRoute from './blogs/routes';
+import userRoute from './users/routes';
+import blogRoute from './blogs/routes';
 
 const Routes = () => (
   <Router history={createBrowserHistory()}>
@@ -20,8 +20,8 @@ const Routes = () => (
         </Route>
         <Route path="/admin/auth" component={authRoute} />
         <Route path="/admin/dashboard" component={dashboardRoute} />
-        {/* <Route path="/admin/users" component={userRoute} /> */}
-        {/* <Route path="/admin/blogs" component={blogRoute} /> */}
+        <Route path="/admin/users" component={userRoute} />
+        <Route path="/admin/blogs" component={blogRoute} />
         <Route component={NotFoundComponent} />
       </Switch>
     </CoreLayout>
