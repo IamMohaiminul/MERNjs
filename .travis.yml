@@ -1,0 +1,17 @@
+language: node_js
+
+node_js:
+  - 'stable'
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: mernjs-v2
+  run:
+    - restart
