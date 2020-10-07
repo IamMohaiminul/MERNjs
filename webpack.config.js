@@ -9,7 +9,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 const pluginList = [
-  new DotENV(),
+  new DotENV({ systemvars: true }),
   new CleanWebpackPlugin(),
   new webpack.ProvidePlugin({
     $: 'jquery',
