@@ -1,6 +1,6 @@
 {
   "name": "mernjs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An open-source full-stack JavaScript solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) application",
   "keywords": [
     "NodeJS",
@@ -12,18 +12,22 @@
     "babel"
   ],
   "author": "Muhd Mohaiminul Islam <IamMohaiminul>",
+  "license": "UNLICENSED",
   "engines": {
-    "node": "12.x"
+    "node": "14.x"
   },
   "scripts": {
-    "start": "node ./build",
-    "debug": "node --inspect ./build",
+    "prebuild": "rimraf ./dist ./public/dist",
+    "build": "concurrently \"npm:build:client\" \"npm:build:server\"",
     "build:client": "webpack",
-    "build:server": "babel -d ./build ./server -s",
-    "build": "rimraf ./build && concurrently \"npm:build:client\" \"npm:build:server\"",
-    "watch:client": "webpack --watch",
-    "watch:server": "DEBUG=MERNjs:* nodemon --exec babel-node ./server",
-    "watch": "concurrently \"npm:watch:client\" \"npm:watch:server\""
+    "build:server": "babel -d ./dist ./server -s",
+    "start": "node ./dist",
+    "start:debug": "node --inspect ./dist",
+    "start:dev": "concurrently \"npm:start:dev:client\" \"npm:start:dev:server\"",
+    "start:dev:client": "webpack --watch",
+    "start:dev:server": "DEBUG=MERNjs:* nodemon --exec babel-node ./server",
+    "format": "prettier \"{server,client,admin,public/stylesheets}/**/*.{js,jsx,css}\" --write",
+    "lint": "eslint \"{server,client,admin}/**/*.{js,jsx}\" --fix"
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
@@ -78,6 +82,7 @@
     "popper.js": "^1.16.1",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
+    "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -98,6 +103,5 @@
     "type": "git",
     "url": "git+ssh://git@github.com:IamMohaiminul/MERNjs.git"
   },
-  "license": "MIT",
   "homepage": "http://mern.js.org/"
 }

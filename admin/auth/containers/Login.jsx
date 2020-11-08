@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import LoginComponent from '../components/Login';
 import loginUser from '../actions/login';
 
-const LoginContainer = ({ login, history }) => <LoginComponent loginUser={login} history={history} />;
+const LoginContainer = ({ login, history }) => (
+  <LoginComponent loginUser={login} history={history} />
+);
 
 LoginContainer.propTypes = {
   login: PropTypes.func.isRequired,

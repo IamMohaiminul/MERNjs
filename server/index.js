@@ -15,7 +15,9 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 mongoose.connection.on('error', () => {
-  console.error('Could not connect to MongoDB. Did you forget to run `mongod`?');
+  console.error(
+    'Could not connect to MongoDB. Did you forget to run `mongod`?',
+  );
 });
 
 mongoose.connection.on('connected', () => {

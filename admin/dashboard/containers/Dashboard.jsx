@@ -16,4 +16,7 @@ const matchDispatchToProps = (dispatch) => bindActionCreators({}, dispatch);
 // We don't want to return the plain DashboardContainer (component) anymore,
 // we want to return the smart Container
 //  > DashboardContainer is now aware of state and actions
-export default connect(mapStateToProps, matchDispatchToProps)(DashboardContainer);
+export default connect(
+  mapStateToProps,
+  matchDispatchToProps,
+)(DashboardContainer);

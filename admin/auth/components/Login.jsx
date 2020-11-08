@@ -17,7 +17,10 @@ class LoginComponent extends Component {
 
   handleInputChange(event) {
     const { name } = event.target;
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const value =
+      event.target.type === 'checkbox'
+        ? event.target.checked
+        : event.target.value;
     this.setState({ [name]: value });
   }
 
@@ -87,7 +90,10 @@ class LoginComponent extends Component {
                 Submit
               </button>
               <hr />
-              <Link to="/admin/auth/register" className="btn btn-block btn-dark">
+              <Link
+                to="/admin/auth/register"
+                className="btn btn-block btn-dark"
+              >
                 Register a new account
               </Link>
             </fieldset>

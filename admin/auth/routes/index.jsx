@@ -16,8 +16,14 @@ export default function () {
         <Redirect to={`${match.path}/login`} />
       </Route>
       <AuthRoute path={`${match.path}/login`} component={LoginContainer} />
-      <AuthRoute path={`${match.path}/register`} component={RegistrationContainer} />
-      <Route path={`${match.path}/logout`} render={() => (signOut() ? <Redirect to={match.path} /> : null)} />
+      <AuthRoute
+        path={`${match.path}/register`}
+        component={RegistrationContainer}
+      />
+      <Route
+        path={`${match.path}/logout`}
+        render={() => (signOut() ? <Redirect to={match.path} /> : null)}
+      />
       <Route component={NotFoundComponent} />
     </Switch>
   );

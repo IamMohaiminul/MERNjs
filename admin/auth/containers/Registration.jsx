@@ -33,4 +33,7 @@ const matchDispatchToProps = (dispatch) =>
 // We don't want to return the plain RegistrationContainer (component) anymore,
 // we want to return the smart Container
 //  > RegistrationContainer is now aware of state and actions
-export default connect(mapStateToProps, matchDispatchToProps)(RegistrationContainer);
+export default connect(
+  mapStateToProps,
+  matchDispatchToProps,
+)(RegistrationContainer);

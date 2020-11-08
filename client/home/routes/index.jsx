@@ -9,7 +9,10 @@ export default function () {
   return (
     <Switch>
       <Route exact path={match.path} component={HomeContainer} />
-      <Route path={`${match.path}/about`} render={() => <p>home about page...</p>} />
+      <Route
+        path={`${match.path}/about`}
+        render={() => <p>home about page...</p>}
+      />
       <Route component={NotFoundComponent} />
     </Switch>
   );

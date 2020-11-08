@@ -33,65 +33,46 @@ $ git clone https://github.com/IamMohaiminul/MERNjs MERNjs
 
 This will clone the latest version of the MERNjs repository to a **MERNjs** folder.
 
-## Run our Application
+## Getting Started
 
-To run our application follow this steps.
+#### Install the dependencies:
 
-_Note: Before start the process, rename `.env.example` to `.env` and configure the environment variables._
-
-###### To install the dependencies
-
-```sh
-// both dependencies and devDependencies
+```
 $ npm install
 ```
 
-###### To build the application
+#### Build the application:
 
-```sh
-// build both server and client
+```
 $ npm run build
-
-// build only server
-$ npm run build:server
-
-// build only client
-$ npm run build:client
 ```
 
-###### To start the application
+#### Run the application:
 
-```sh
-// without debug mode
-$ npm start
-
-// with debug mode
-$ npm run debug
+```
+$ npm run start
+$ npm run start:debug
+$ npm run start:dev
+$ npm run start:dev:client
+$ npm run start:dev:server
 ```
 
-###### To watch the live changes of application
+#### Run the Linter and Prettier:
 
-```sh
-// watch both server and client
-$ npm run watch
-
-// watch only server
-$ npm run watch:server
-
-// watch only client
-$ npm run watch:client
+```
+$ npm run lint
+$ npm run format
 ```
 
-_Note: Please make sure our MongoDB is running._
+_Note: Set the environment variables in `.env` file and make sure the **MongoDB** server is running._
 
-###### Running application endpoints
+#### Setup git hooks for commit (`.git/hooks/pre-commit`):
 
-Our application should run on port `3000` based on the environment configuration.
+```
+#!/bin/sh
 
-- Client App: [http://127.0.0.1:3000](http://127.0.0.1:3000)
-- Admin App: [http://127.0.0.1:3000/admin](http://127.0.0.1:3000/admin)
-- RESTful APIs: [http://127.0.0.1:3000/api](http://127.0.0.1:3000/api)
-
-## License
-
-[The MIT License](LICENSE)
+npm run format
+npm run lint
+npm run test
+npm run test:e2e
+```
