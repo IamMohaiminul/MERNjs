@@ -1,6 +1,16 @@
-<img src="public/images/logo.png" height="128" />
+<h1 align="center">MERNjs</h1>	
 
-MERNjs is an open-source full-stack JavaScript solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [ExpressJS](http://expressjs.com/), [ReactJS](https://reactjs.org/) and [NodeJS](http://www.nodejs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+<p align="center">an open-source full-stack JavaScript solution</p>	
+
+<p align="center">
+  <a href="https://mern.js.org/" target="_blank">
+    <img src="https://raw.githubusercontent.com/IamMohaiminul/MERNjs/master/public/images/logo.png" width="128" alt="MERNjs Logo" />
+  </a>
+</p>
+
+<p align="center">
+  <strong>MERNjs</strong> is an open-source full-stack JavaScript solution, which provides a solid starting point for <a href="http://www.mongodb.org/" target="_blank">MongoDB</a>, <a href="http://expressjs.com/" target="_blank">Express</a>, <a href="https://reactjs.org/" target="_blank">React</a> and <a href="http://www.nodejs.org/" target="_blank">Node.js</a> based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+</p>
 
 ## Before You Begin
 
@@ -18,20 +28,6 @@ Make sure we have installed all of the following prerequisites on our developmen
 - Git - [Download & Install Git](https://git-scm.com/downloads). OSX and Linux machines typically have this already installed.
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 - MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
-
-## Downloading MERNjs
-
-Currently there is a single way that we can get the MERNjs boilerplate:
-
-### Cloning The GitHub Repository
-
-The recommended way to get MERNjs is to use git to directly clone the MERNjs repository:
-
-```bash
-$ git clone https://github.com/IamMohaiminul/MERNjs MERNjs
-```
-
-This will clone the latest version of the MERNjs repository to a **MERNjs** folder.
 
 ## Getting Started
 
