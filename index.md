@@ -4,12 +4,12 @@
 
 <p align="center">
   <a href="https://mern.js.org/" target="_blank">
-		<img src="https://github.com/IamMohaiminul/MERNjs/blob/master/public/images/logo.png" width="128" alt="MERNjs Logo" />
-	</a>
+    <img src="https://github.com/IamMohaiminul/MERNjs/blob/master/public/images/logo.png" width="128" alt="MERNjs Logo" />
+  </a>
 </p>
 
 <p align="center">
-  MERNjs is an open-source full-stack JavaScript solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [ExpressJS (http://expressjs.com/), [ReactJS](https://reactjs.org/) and [NodeJS](http://www.nodejs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+  <strong>MERNjs</strong> is an open-source full-stack JavaScript solution, which provides a solid starting point for <a href="http://www.mongodb.org/" target="_blank">MongoDB</a>, <a href="http://expressjs.com/" target="_blank">Express</a>, <a href="https://reactjs.org/" target="_blank">React</a> and <a href="http://www.nodejs.org/" target="_blank">Node.js</a> based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
 </p>
 
 ## Before You Begin
