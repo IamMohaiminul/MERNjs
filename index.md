@@ -1,6 +1,16 @@
-<img src="https://github.com/IamMohaiminul/MERNjs/raw/master/public/images/logo.png" height="128" />
+<h1 align="center">MERNjs</h1>
 
-MERNjs is an open-source full-stack JavaScript solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [ExpressJS](http://expressjs.com/), [ReactJS](https://reactjs.org/) and [NodeJS](http://www.nodejs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+<p align="center">an open-source full-stack JavaScript solution</p>
+
+<p align="center">
+  <a href="https://mern.js.org/" target="_blank">
+		<img src="https://github.com/IamMohaiminul/MERNjs/blob/master/public/images/logo.png" width="128" alt="MERNjs Logo" />
+	</a>
+</p>
+
+<p align="center">
+  MERNjs is an open-source full-stack JavaScript solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [ExpressJS (http://expressjs.com/), [ReactJS](https://reactjs.org/) and [NodeJS](http://www.nodejs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
+</p>
 
 ## Before You Begin
 
@@ -33,65 +43,45 @@ $ git clone https://github.com/IamMohaiminul/MERNjs MERNjs
 
 This will clone the latest version of the MERNjs repository to a **MERNjs** folder.
 
-## Run our Application
+## Getting Started
 
-To run our application follow this steps.
+#### Install the dependencies:
 
-_Note: Before start the process, rename `.env.example` to `.env` and configure the environment variables._
-
-###### To install the dependencies
-
-```sh
-// both dependencies and devDependencies
+```
 $ npm install
 ```
 
-###### To build the application
+#### Build the application:
 
-```sh
-// build both server and client
+```
 $ npm run build
-
-// build only server
-$ npm run build:server
-
-// build only client
-$ npm run build:client
 ```
 
-###### To start the application
+#### Run the application:
 
-```sh
-// without debug mode
-$ npm start
-
-// with debug mode
-$ npm run debug
+```
+$ npm run start
+$ npm run start:debug
+$ npm run start:dev
+$ npm run start:dev:client
+$ npm run start:dev:server
 ```
 
-###### To watch the live changes of application
+#### Run the Linter and Prettier:
 
-```sh
-// watch both server and client
-$ npm run watch
-
-// watch only server
-$ npm run watch:server
-
-// watch only client
-$ npm run watch:client
+```
+$ npm run lint
+$ npm run format
 ```
 
-_Note: Please make sure our MongoDB is running._
+_Note: Set the environment variables in `.env` file and make sure the **MongoDB** server is running._
 
-###### Running application endpoints
+#### Setup git hooks for commit (`.git/hooks/pre-commit`):
 
-Our application should run on port `3000` based on the environment configuration.
+```
+#!/bin/sh
 
-- Client App: [http://127.0.0.1:3000](http://127.0.0.1:3000)
-- Admin App: [http://127.0.0.1:3000/admin](http://127.0.0.1:3000/admin)
-- RESTful APIs: [http://127.0.0.1:3000/api](http://127.0.0.1:3000/api)
-
-## License
-
-[The MIT License](LICENSE)
+npm run lint
+npm run format
+npm run build
+```
