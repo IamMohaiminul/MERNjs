@@ -71,8 +71,7 @@ _Note: Set the environment variables in `.env` file and make sure the **MongoDB*
 ```
 #!/bin/sh
 
-npm run format
 npm run lint
-npm run test
-npm run test:e2e
+npm run format
+npm run build
 ```

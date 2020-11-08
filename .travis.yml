@@ -3,8 +3,15 @@ language: node_js
 node_js:
   - 'stable'
 
+services:
+  - mongodb
+
 install:
   - npm install
+
+before_script:
+  - sleep 5
+  - mongo mernjs --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 
 script:
   - npm run lint
