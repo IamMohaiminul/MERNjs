@@ -1,21 +1,19 @@
 {
   "name": "mernjs",
   "version": "2.0.1",
-  "description": "An open-source full-stack JavaScript solution For MERN (MongoDB, ExpressJS, ReactJS and NodeJS) application",
+  "description": "an open-source full-stack JavaScript solution",
   "keywords": [
-    "NodeJS",
-    "ExpressJS",
-    "ReactJS",
+    "Node.js",
+    "Express",
+    "React",
     "MongoDB",
-    "ReduxJS",
+    "Redux",
     "Webpack",
     "babel"
   ],
   "author": "Muhd Mohaiminul Islam <IamMohaiminul>",
+  "private": false,
   "license": "UNLICENSED",
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "prebuild": "rimraf ./dist ./public/dist",
     "build": "concurrently \"npm:build:client\" \"npm:build:server\"",
@@ -26,7 +24,7 @@
     "start:dev": "concurrently \"npm:start:dev:client\" \"npm:start:dev:server\"",
     "start:dev:client": "webpack --watch",
     "start:dev:server": "DEBUG=MERNjs:* nodemon --exec babel-node ./server",
-    "format": "prettier \"{server,client,admin,public/stylesheets}/**/*.{js,jsx,css}\" --write",
+    "format": "prettier \"{server,client,admin,public/{styles,scripts}}/**/*.{js,jsx,css}\" --write",
     "lint": "eslint \"{server,client,admin}/**/*.{js,jsx}\" --fix"
   },
   "dependencies": {
