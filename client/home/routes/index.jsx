@@ -1,8 +1,7 @@
 import React from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-
-import HomeContainer from '../containers/home';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import NotFoundComponent from '../../core/components/notFound';
+import HomeContainer from '../containers/home';
 
 export default function () {
   const match = useRouteMatch();

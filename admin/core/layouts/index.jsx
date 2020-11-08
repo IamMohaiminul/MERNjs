@@ -1,8 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-
-import NavbarComponent from '../components/navbar';
+import React from 'react';
 import FooterComponent from '../components/footer';
+import NavbarComponent from '../components/navbar';
 
 const CoreLayout = ({ children }) => (
   <div className="container">

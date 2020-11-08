@@ -1,15 +1,14 @@
 import '@babel/polyfill';
+import { addPath } from 'app-module-path';
 import 'app-module-path/register';
-import 'dotenv/config';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import 'dotenv/config';
 import express from 'express';
-import favicon from 'serve-favicon';
 import logger from 'morgan';
 import path from 'path';
-import { addPath } from 'app-module-path';
-
+import favicon from 'serve-favicon';
 import api from './routes';
 
 const app = express();

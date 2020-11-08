@@ -1,12 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-
-import { signOut } from '../../utils';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import NotFoundComponent from '../../core/components/notFound';
 import { AuthRoute } from '../../core/components/privateRoute';
+import { signOut } from '../../utils';
 import LoginContainer from '../containers/Login';
 import RegistrationContainer from '../containers/Registration';
-import NotFoundComponent from '../../core/components/notFound';
 
 export default function () {
   const match = useRouteMatch();

@@ -1,11 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import RegistrationComponent from '../components/Registration';
-
+import { bindActionCreators } from 'redux';
 import registerUser from '../actions/register';
+import RegistrationComponent from '../components/Registration';
 
 const RegistrationContainer = ({ register, history }) => (
   <RegistrationComponent registerUser={register} history={history} />

@@ -1,15 +1,13 @@
-import React from 'react';
-import { Router, Redirect } from 'react-router';
-import { Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-
-import CoreLayout from './core/layouts';
-import NotFoundComponent from './core/components/notFound';
-
+import React from 'react';
+import { Redirect, Router } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import authRoute from './auth/routes';
+import blogRoute from './blogs/routes';
+import NotFoundComponent from './core/components/notFound';
+import CoreLayout from './core/layouts';
 import dashboardRoute from './dashboard/routes';
 import userRoute from './users/routes';
-import blogRoute from './blogs/routes';
 
 const Routes = () => (
   <Router history={createBrowserHistory()}>

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-
-import BlogContainer from '../containers/blog';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import NotFoundComponent from '../../core/components/notFound';
+import BlogContainer from '../containers/blog';
 
 export default function () {
   const match = useRouteMatch();

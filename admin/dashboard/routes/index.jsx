@@ -1,9 +1,8 @@
 import React from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import NotFoundComponent from '../../core/components/notFound';
 import { AdminRoute } from '../../core/components/privateRoute';
 import DashboardContainer from '../containers/Dashboard';
-import NotFoundComponent from '../../core/components/notFound';
 
 export default function () {
   const match = useRouteMatch();

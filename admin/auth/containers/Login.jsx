@@ -1,10 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import LoginComponent from '../components/Login';
+import { bindActionCreators } from 'redux';
 import loginUser from '../actions/login';
+import LoginComponent from '../components/Login';
 
 const LoginContainer = ({ login, history }) => (
   <LoginComponent loginUser={login} history={history} />
