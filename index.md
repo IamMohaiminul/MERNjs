@@ -25,20 +25,6 @@ Make sure we have installed all of the following prerequisites on our developmen
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 - MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
 
-## Downloading MERNjs
-
-Currently there is a single way that we can get the MERNjs boilerplate:
-
-### Cloning The GitHub Repository
-
-The recommended way to get MERNjs is to use git to directly clone the MERNjs repository:
-
-```bash
-$ git clone https://github.com/IamMohaiminul/MERNjs MERNjs
-```
-
-This will clone the latest version of the MERNjs repository to a **MERNjs** folder.
-
 ## Getting Started
 
 #### Install the dependencies:
