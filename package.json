@@ -30,7 +30,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
     "app-module-path": "^2.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
