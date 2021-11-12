@@ -17,3 +17,4 @@ logs
 
 # Ignore files
 .DS_Store
+.vscode/settings.json
