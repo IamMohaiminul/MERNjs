@@ -13,7 +13,6 @@
   ],
   "author": "Muhd Mohaiminul Islam <IamMohaiminul>",
   "private": false,
-  "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf ./dist ./public/dist",
     "build": "concurrently \"npm:build:client\" \"npm:build:server\"",
