@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://mern.js.org/" target="_blank">
-    <img src="https://raw.githubusercontent.com/IamMohaiminul/MERNjs/master/public/images/logo.png" width="128" alt="MERNjs Logo" />
+    <img src="./public/images/logo.png" width="128" alt="MERNjs Logo" />
   </a>
 </p>
 
